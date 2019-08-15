@@ -240,18 +240,76 @@ from urllib import request,error
 # print(result)
 # print('\n',result.scheme,result[0])
 
-# #解析链接-urlunsplit
+#解析链接-urlunsplit
 # from urllib.parse import urlunsplit
 # data = ['http', 'www.baidu.com', 'index.html', 'a=6', 'comment']
 # print(urlunsplit(data))
 
-#解析链接-urljoin
+# #解析链接-urljoin
+# """
+#     可以提供一个 base_url（基础链接）作为第一个参数，将新的链接作为第二个参数，
+#     该方法会分析 base_url 的 scheme、netloc 和 path 这 3 个内容并对新链接缺失的部分进行补充，
+#     最后返回结果
+# """
+# from urllib.parse import urljoin
+#
+# print(urljoin('http://baidu.com','FAQ.html'))
+# print(urljoin('http://baidu.com','https://cuiqingcai.com/FAQ.html'))
+# print(urljoin('http://baidu.com/about.html','https://cuiqingcai.com/FAQ.html'))
+# print(urljoin('http://baidu.com/about.html','https://cuiqingcai.com/FAQ.html?question=2'))
+# print(urljoin('http://baidu.com?wd=abc','https://cuiqingcai.com/index.php'))
+# print(urljoin('http://baidu.com','?category=2#comment'))
+# print(urljoin('http://baidu.com#comment','?category=2'))
 
+# #解析链接-urlencode
+# from urllib.parse import urlencode
+#
+# params = {
+#     'name' : 'germey',
+#     'age' : 22
+# }
+# base_url = 'http://www.baidu.com?'
+# url = base_url + urlencode(params)
+#
+# print(url)
 
+# #解析链接-parse_qs()
+# from urllib.parse import parse_qs
+#
+# query = 'name=germey&age=22'
+# print(parse_qs(query))
 
+#解析链接-parse_qsl()
+# from urllib.parse import parse_qsl
+#
+# query = 'name=germry&age=22'
+# print(parse_qsl(query))
 
+# #解析链接-quote()
+# #将内容转化为 URL 编码的格式
+# from urllib.parse import quote
+#
+# keyword = '壁纸'
+# url = 'http://www.baidu.com?wd='  + quote(keyword)
+# print(url)
 
+# #解析链接-unquote()
+# #进行 URL 解码
+# from urllib.parse import unquote
+#
+# url = 'http://www.baidu.com?wd=%E5%A3%81%E7%BA%B8'
+# print(unquote(url))
 
+#robotparse
+from urllib.robotparser import RobotFileParser
+from urllib.request import urlopen
+rp = RobotFileParser()
+print(rp.parse(urlopen('http://www.baidu.com/robots.txt').read().decode('utf-8').split('\n')))
+
+rp.set_url('http://www.jianshu.com/robots.txt')
+rp.read()
+print(rp.can_fetch('*','http://www.jianshu.com/p/b67554025d7d'))
+print(rp.can_fetch('*','http://www.jianshu.com/search?q=python&page=1&type=collections'))
 
 
 
