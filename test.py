@@ -303,16 +303,19 @@ from urllib import request,error
 # url = 'http://www.baidu.com?wd=%E5%A3%81%E7%BA%B8'
 # print(unquote(url))
 
-#robotparse
-from urllib.robotparser import RobotFileParser
-from urllib.request import urlopen
-rp = RobotFileParser()
-print(rp.parse(urlopen('http://www.baidu.com/robots.txt').read().decode('utf-8').split('\n')))
+# #robotparse
+# from urllib.robotparser import RobotFileParser
+# from urllib.request import urlopen
+# rp = RobotFileParser()
+# print(rp.parse(urlopen('http://www.baidu.com/robots.txt').read().decode('utf-8').split('\n')))
+#
+# rp.set_url('http://www.jianshu.com/robots.txt')
+# rp.read()
+# print(rp.can_fetch('*','http://www.jianshu.com/p/b67554025d7d'))
+# print(rp.can_fetch('*','http://www.jianshu.com/search?q=python&page=1&type=collections'))
 
-rp.set_url('http://www.jianshu.com/robots.txt')
-rp.read()
-print(rp.can_fetch('*','http://www.jianshu.com/p/b67554025d7d'))
-print(rp.can_fetch('*','http://www.jianshu.com/search?q=python&page=1&type=collections'))
+
+
 #使用requests库
 
 import requests
@@ -346,14 +349,93 @@ import requests
 # r = requests.get('http://httpbin.org/get?name=germey&age=23')
 # print(r.text)
 
+# data = {
+#     'name':'germey',
+#     'age': 22
+# }
+#
+# r = requests.get('http://httpbin.org/get',params=data)
+#
+# print(r.text)
 
+# r = requests.get('http://httpbin.org/get')
+# print(type(r.text))
+# print(r.json())
+# print(type(r.json()))
 
+import re
 
+# headers = {'User-Agent':'Mozilla/5.0 (Macintosh;Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'}
+# r = requests.get('https://www.zhihu.com/explore',headers=headers)
+# print(r.text)
+# pattern = re.compile('data-za-detail-view-id=".*">(.*?)</a>',re.S)
+# titles = re.findall(pattern,r.text)
+# print(titles)
 
+import os
 
+# r = requests.get('http://github.com/favicon.ico')
+# # print(r.text)
+# # print(r.content)
+# filedir = os.path.dirname(os.path.realpath(__file__))
+# with open(filedir+r'\favicon.ico','wb') as f:
+#     f.write(r.content)
 
+# r = requests.get('https://www.zhihu.com/explore')
+# print(r.text)
+#
+# print('修改后\n')
+# headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+#            }
+# r1 = requests.get('https://www.zhihu.com/explore',headers=headers)
+# print(r1.text)
 
+# data = {'name':'germey','age':22}
+# r = requests.post('http://httpbin.org/post',data=data)
+# print(r.text)
 
+# headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+#                        }
+# r = requests.get('http://www.jianshu.com',headers=headers)
+# print(type(r.status_code),r.status_code)
+# print(type(r.headers),r.headers)
+# print(type(r.cookies),r.cookies)
+# print(type(r.url),r.url)
+# print(type(r.history),r.history)
 
+# headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'}
+# r = requests.get('http://www.jianshu.com',headers=headers)
+# exit() if not r.status_code == requests.codes.ok else print('Response Seccessfully')
+#
 
+# filedir = os.path.dirname(os.path.realpath(__file__))
+# files = {'file':open(filedir+r'\favicon.ico','rb')}
+# r = requests.post('http://httpbin.org/post',files=files)
+# print(r.text)
+
+# r = requests.get('https://www.baidu.com')
+# print(r.cookies)
+# for key,value in r.cookies.items():
+#     print(key+'='+value)
+#
+# headers = {
+#     'Cookie': 'q_c1=31653b264a074fc9a57816d1ea93ed8b|1474273938000|1474273938000; d_c0="AGDAs254kAqPTr6NW1U3XTLFzKhMPQ6H_nc=|1474273938"; __utmv=51854390.100-1|2=registration_date=20130902=1^3=entry_date=20130902=1;a_t="2.0AACAfbwdAAAXAAAAso0QWAAAgH28HQAAAGDAs254kAoXAAAAYQJVTQ4FCVgA360us8BAklzLYNEHUd6kmHtRQX5a6hiZxKCynnycerLQ3gIkoJLOCQ==";z_c0=Mi4wQUFDQWZid2RBQUFBWU1DemJuaVFDaGNBQUFCaEFsVk5EZ1VKV0FEZnJTNnp3RUNTWE10ZzBRZFIzcVNZZTFGQmZn|1474887858|64b4d4234a21de774c42c837fe0b672fdb5763b0',
+#     'Host': 'www.zhihu.com',
+#     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36',
+# }
+# r = requests.get('https://www.zhihu.com', headers=headers)
+# print(r.text)
+#
+
+# cookies = 'q_c1=31653b264a074fc9a57816d1ea93ed8b|1474273938000|1474273938000; d_c0="AGDAs254kAqPTr6NW1U3XTLFzKhMPQ6H_nc=|1474273938"; __utmv=51854390.100-1|2=registration_date=20130902=1^3=entry_date=20130902=1;a_t="2.0AACAfbwdAAAXAAAAso0QWAAAgH28HQAAAGDAs254kAoXAAAAYQJVTQ4FCVgA360us8BAklzLYNEHUd6kmHtRQX5a6hiZxKCynnycerLQ3gIkoJLOCQ==";z_c0=Mi4wQUFDQWZid2RBQUFBWU1DemJuaVFDaGNBQUFCaEFsVk5EZ1VKV0FEZnJTNnp3RUNTWE10ZzBRZFIzcVNZZTFGQmZn|1474887858|64b4d4234a21de774c42c837fe0b672fdb5763b0'
+# jar = requests.cookies.RequestsCookieJar()
+# headers = {
+#     'Host': 'www.zhihu.com',
+#     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36'
+# }
+# for cookie in cookies.split(';'):
+#     key, value = cookie.split('=', 1)
+#     jar.set(key, value)
+# r = requests.get('http://www.zhihu.com', cookies=jar, headers=headers)
+# print(r.text)
 
