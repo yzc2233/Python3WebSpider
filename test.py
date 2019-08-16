@@ -44,6 +44,9 @@
 # print(response.status)
 # print(response.getheaders())
 # print(response.getheader('Server'))
+#response是一个 HTTPResposne 类型的对象，主要包含 read、readinto、getheader、getheaders、fileno 等方法，
+# 以及 msg、version、status、reason、debuglevel、closed 等属性
+
 
 # import urllib.parse
 # import urllib.request
@@ -240,7 +243,7 @@ from urllib import request,error
 # print(result)
 # print('\n',result.scheme,result[0])
 
-#解析链接-urlunsplit
+# #解析链接-urlunsplit
 # from urllib.parse import urlunsplit
 # data = ['http', 'www.baidu.com', 'index.html', 'a=6', 'comment']
 # print(urlunsplit(data))
@@ -310,6 +313,47 @@ rp.set_url('http://www.jianshu.com/robots.txt')
 rp.read()
 print(rp.can_fetch('*','http://www.jianshu.com/p/b67554025d7d'))
 print(rp.can_fetch('*','http://www.jianshu.com/search?q=python&page=1&type=collections'))
+#使用requests库
+
+import requests
+
+# r = requests.get('https://www.baidu.com')
+# print(type(r))
+# print(r.status_code)
+# print(type(r.text))
+# print(r.text)
+# print(r.cookies)
+#
+
+# r = requests.post('http://httpbin.org/post')
+# print(r.text)
+
+# r = requests.put('http://httpbin.org/put')
+# print(r.text)
+
+# r = requests.delete('http://httpbin.org/delete')
+# print(r.text)
+
+# r = requests.head('http://httpbin.org/head')
+# print(r.text)
+#
+# r = requests.options('http://httpbin.org/get')
+# print(r.text)
+
+# r = requests.get('http://httpbin.org/get')
+# print(r.text)
+
+# r = requests.get('http://httpbin.org/get?name=germey&age=23')
+# print(r.text)
+
+
+
+
+
+
+
+
+
 
 
 
