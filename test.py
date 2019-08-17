@@ -439,3 +439,147 @@ import os
 # r = requests.get('http://www.zhihu.com', cookies=jar, headers=headers)
 # print(r.text)
 
+
+#正则表达式
+import re
+
+# #match方法
+# content = 'Hello 123 4567 World_This is a Regex Demo'
+# print(len(content))
+# result = re.match('^Hello\s\d\d\d\s\d{4}\s\w{10}',content)
+# print(result)
+# print(result.group())
+# print(result.span())
+#
+# #匹配目标
+# content = 'Hello 1234567 World_This is a Regex Demo'
+# results = re.match('^Hello\s(\d+)\sWorld(\w{4})',content)
+# print(results)
+# print(results.group())
+# print(results.group(1))
+# print(results.group(2))
+# print(results.span())
+
+# #通用匹配
+# content = 'Hello 123 4567 World_This is a Regex Demo'
+# results = re.match('^Hello.*Demo$',content)
+# print(results)
+# print(results.group())
+# print(results.span())
+#
+
+# #贪婪与非贪婪
+# content = 'Hello 1234567 World_This is a Regex Demo'
+# results = re.match('^He.*(\d+).*Demo$',content)
+# print(results)
+# print(results.group(1))
+#
+# '''
+# 贪婪匹配是尽可能匹配多的字符，非贪婪匹配就是尽可能匹配少的字符。
+# 当 .? 匹配到 Hello 后面的空白字符时，再往后的字符就是数字了，
+# 而 \d + 恰好可以匹配，那么这里 .? 就不再进行匹配，交给 \d+ 去匹配后面的数字。
+# 所以这样 .*? 匹配了尽可能少的字符，\d+ 的结果就是 1234567 了
+# '''
+# results1 = re.match('^He.*?(\d+).*Demo$',content)
+# print(results1)
+# print (results1.group(1))
+#
+# #需要注意，如果匹配的结果在字符串结尾，.*? 就有可能匹配不到任何内容了，
+# #因为它会匹配尽可能少的字符
+# content = 'http://weibo.com/comment/kEraCN'
+# results2 = re.match('http.*?comment/(.*?)',content)
+# results3 = re.match('http.*?comment/(.*)',content)
+# print('results2',results2.group(1))
+# print('results3',results3.group(1))
+
+# #修饰符
+# #re.S加上后可以匹配节点与节点之间的换行
+# content = '''Hello 1234567 World_This
+# is a Regex Demo
+# '''
+# results = re.match('^He.*?(\d+).*Demo$',content)
+# #print(results.group(1))
+# results1 = re.match('^He.*?(\d+).*Demo$',content,re.S)
+# print(results1.group(1))
+#
+
+# #转义匹配
+# content = '(百度)www.baidu.com'
+# results = re.match('\(百度\)www\.baidu\.com',content)
+# print(results)
+#
+
+# #search
+# content = 'Extra stings Hello 1234567 World_This is a Regex Demo Extra stings'
+# result = re.match('Hello.*?(\d+).*?Demo', content)
+# print(result)
+# result1 = re.search('Hello.*?(\d+).*?Demo', content)
+# print(result1)
+
+html = '''<div id="songs-list">
+<h2 class="title"> 经典老歌 </h2>
+<p class="introduction">
+经典老歌列表
+</p>
+<ul id="list" class="list-group">
+<li data-view="2"> 一路上有你 </li>
+<li data-view="7">
+<a href="/2.mp3" singer="任贤齐">沧海一声笑 </a>
+</li>
+<li data-view="4" class="active">
+<a href="/3.mp3" singer="齐秦">往事随风 </a>
+</li>
+<li data-view="6"><a href="/4.mp3" singer="beyond"> 光辉岁月 </a></li>
+<li data-view="5"><a href="/5.mp3" singer="陈慧琳"> 记事本 </a></li>
+<li data-view="5">
+<a href="/6.mp3" singer="邓丽君"> 但愿人长久 </a>
+</li>
+</ul>
+</div>'''
+#
+# results = re.search('<li.*?active.*?singer="(.*?)">(.*?)</a>',html,re.S)
+# if results:
+#     print(results.group(1),results.group(2),sep='')
+#
+# result1 = re.search('<li.*?singer="(.*?)">(.*?)</a>', html, re.S)
+# if result1:
+#     print(result1.group(1),result1.group(2),sep ='')
+#
+# result = re.search('<li.*?singer="(.*?)">(.*?)</a>', html)
+# if result:
+#     print(result.group(1), result.group(2))
+
+
+# results = re.findall('<li.*?href="(.*?)".*?singer="(.*?)">(.*?)</a>', html, re.S)
+# print(results)
+# print(type(results))
+# for result in results:
+#     print(result)
+#     print(result[0], result[1], result[2])
+#
+#
+
+# #sub
+# content = '54aK54yr5oiR54ix5L2g'
+# content = re.sub('\d+', '', content)
+# print(content)
+
+# html = re.sub('<a.*?>|</a>', '', html)
+# print(html)
+# results = re.findall('<li.*?>(.*?)</li>', html, re.S)
+# for result in results:
+#     print(result.strip())
+
+
+#compile
+content1 = '2016-12-15 12:00'
+content2 = '2016-12-17 12:55'
+content3 = '2016-12-22 13:21'
+pattern = re.compile('\d{2}:\d{2}')
+result1 = re.sub(pattern, '', content1)
+result2 = re.sub(pattern, '', content2)
+result3 = re.sub(pattern, '', content3)
+print(result1, result2, result3)
+
+
+
