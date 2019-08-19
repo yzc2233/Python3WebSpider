@@ -571,15 +571,156 @@ html = '''<div id="songs-list">
 #     print(result.strip())
 
 
-#compile
-content1 = '2016-12-15 12:00'
-content2 = '2016-12-17 12:55'
-content3 = '2016-12-22 13:21'
-pattern = re.compile('\d{2}:\d{2}')
-result1 = re.sub(pattern, '', content1)
-result2 = re.sub(pattern, '', content2)
-result3 = re.sub(pattern, '', content3)
-print(result1, result2, result3)
+# #compile
+# content1 = '2016-12-15 12:00'
+# content2 = '2016-12-17 12:55'
+# content3 = '2016-12-22 13:21'
+# pattern = re.compile('\d{2}:\d{2}')
+# result1 = re.sub(pattern, '', content1)
+# result2 = re.sub(pattern, '', content2)
+# result3 = re.sub(pattern, '', content3)
+# print(result1, result2, result3)
 
 
 
+from lxml import etree
+
+
+text = '''
+<div>
+    <ul>
+         <li class="item-0"><a href="link1.html">first item</a></li>
+         <li class="item-1"><a href="link2.html">second item</a></li>
+         <li class="item-inactive"><a href="link3.html">third item</a></li>
+         <li class="item-1"><a href="link4.html">fourth item</a></li>
+         <li class="item-0"><a href="link5.html">fifth item</a>
+     </ul>
+ </div>
+'''
+
+
+html = etree.parse('test.html',etree.HTMLParser())
+
+# results = html.xpath('//*')
+# print(results)
+#
+# results1 = html.xpath('//li')
+# print(results1)
+# print(results1[0])
+
+# #//li 用于选中所有 li 节点，/a 用于选中 li 节点的所有直接子节点 a
+# results2 = html.xpath('//li/a')
+# print(results2)
+
+# #取 ul 节点下的所有子孙 a 节点
+# results3 = html.xpath('//ul//a')
+# print(results3)
+
+# results4 = html.xpath('//ul/a')
+# print(results4)
+
+#选中 href 属性为 link4.html 的 a 节点，然后再获取其父节点，然后再获取其 class 属性
+# results4 = html.xpath('//a[@href="link4.html"]/../@class')
+# print(results4)
+#可以通过 parent:: 来获取父节点
+# results5 = html.xpath('//a[@href="link4.html"]/parent::*/@class')
+# print(results5)
+
+# #选取 class 为 item-0 的 li 节点
+# results6 = html.xpath('//li[@class="item-0"]')
+# print(results6)
+
+# # text 方法获取节点中的文本
+# results7 = html.xpath('//li[@class="item-0"]/text()')
+# print(results7)
+#
+# result8 = html.xpath('//li[@class="item-0"]/a/text()')
+# print(result8)
+#
+# # html1 = etree.tostring(html)
+# # print(html1.decode('utf-8'))
+# result9 = html.xpath('//li[@class="item-0"]//text()')
+# print(result9)
+
+#获取所有 li 节点下所有 a 节点的 href 属性
+# result10 = html.xpath('//li/a/@href')
+# print(result10)
+
+
+# #属性多值匹配
+# text = '''
+# <li class="li li-first"><a href="link.html">first item</a></li>
+# '''
+# html = etree.HTML(text)
+# results = html.xpath('//li[@class="li"]/a/text()')
+# print(results)
+#
+# results1 = html.xpath('//li[contains(@class,"li")]/a/text()')
+# print(results1)
+
+
+
+# #多属性匹配
+# text = '''
+# <li class="li li-first" name="item"><a href="link.html">first item</a></li>
+# '''
+# html = etree.HTML(text)
+# results = html.xpath('//li[contains(@class,"li") and @name="item"]/a/text()')
+# print(results)
+
+#按序选择
+text = '''
+<div>
+    <ul>
+         <li class="item-0"><a href="link1.html">first item</a></li>
+         <li class="item-1"><a href="link2.html">second item</a></li>
+         <li class="item-inactive"><a href="link3.html">third item</a></li>
+         <li class="item-1"><a href="link4.html">fourth item</a></li>
+         <li class="item-0"><a href="link5.html">fifth item</a>
+     </ul>
+ </div>
+'''
+# html = etree.HTML(text)
+# results = html.xpath('//li[1]/a/text()')
+# print(results)
+# results1 = html.xpath('//li[last()]/a/text()')
+# print(results1)
+# results2 = html.xpath('//li[position()<3]/a/text()')
+# print(results2)
+# results3 = html.xpath('//li[last()-2]/a/text()')
+# print(results3)
+
+#节点轴选择
+text = '''
+<div>
+    <ul>
+         <li class="item-0"><a href="link1.html"><span>first item</span></a></li>
+         <li class="item-1"><a href="link2.html">second item</a></li>
+         <li class="item-inactive"><a href="link3.html">third item</a></li>
+         <li class="item-1"><a href="link4.html">fourth item</a></li>
+         <li class="item-0"><a href="link5.html">fifth item</a>
+     </ul>
+ </div>
+'''
+html = etree.HTML(text)
+#调用了 ancestor 轴,是第一个 li 节点的所有祖先节点，包括 html、body、div 和 ul
+results = html.xpath('//li[1]/ancestor::*')
+print(results)
+#只有 div 这个祖先节点
+results1 = html.xpath('//li[1]/ancestor::*/div')
+print(results1)
+# 调用了 attribute 轴,li 节点的所有属性值
+results2 = html.xpath('//li[1]/attribute::*')
+print(results2)
+#调用了 child 轴
+results3 = html.xpath('//li[1]/child::a[@href="link1.html"]')
+print(results3)
+#调用了 descendant 轴，可以获取所有子孙节点
+results4 = html.xpath('//li[1]/descendant::span')
+print(results4)
+#调用了 following 轴，可以获取当前节点之后的所有节点
+results5 = html.xpath('//li[1]/following::*[2]')
+print(results5)
+#调用了 following-sibling 轴，可以获取当前节点之后的所有同级节点
+results6 = html.xpath('//li[1]/following-sibling::*')
+print(results6)
