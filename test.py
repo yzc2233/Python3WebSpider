@@ -571,15 +571,56 @@ html = '''<div id="songs-list">
 #     print(result.strip())
 
 
-#compile
-content1 = '2016-12-15 12:00'
-content2 = '2016-12-17 12:55'
-content3 = '2016-12-22 13:21'
-pattern = re.compile('\d{2}:\d{2}')
-result1 = re.sub(pattern, '', content1)
-result2 = re.sub(pattern, '', content2)
-result3 = re.sub(pattern, '', content3)
-print(result1, result2, result3)
+# #compile
+# content1 = '2016-12-15 12:00'
+# content2 = '2016-12-17 12:55'
+# content3 = '2016-12-22 13:21'
+# pattern = re.compile('\d{2}:\d{2}')
+# result1 = re.sub(pattern, '', content1)
+# result2 = re.sub(pattern, '', content2)
+# result3 = re.sub(pattern, '', content3)
+# print(result1, result2, result3)
+
+
+#Xpath的使用
+from lxml import etree
+
+text = '''
+<div>
+    <ul>
+         <li class="item-0"><a href="link1.html">first item</a></li>
+         <li class="item-1"><a href="link2.html">second item</a></li>
+         <li class="item-inactive"><a href="link3.html">third item</a></li>
+         <li class="item-1"><a href="link4.html">fourth item</a></li>
+         <li class="item-0"><a href="link5.html">fifth item</a>
+     </ul>
+ </div>
+'''
+# html = etree.HTML(text)
+# results = etree.tostring(html)
+# print(results.decode('utf-8'))
+
+# html1 = etree.parse('./test.html',etree.HTMLParser())
+# results1 = etree.tostring(html1)
+# print(results1.decode('utf-8'))
+
+html = etree.parse('./test.html',etree.HTMLParser())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
