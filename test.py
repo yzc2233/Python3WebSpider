@@ -599,7 +599,7 @@ text = '''
 '''
 
 
-html = etree.parse('test.html',etree.HTMLParser())
+# html = etree.parse('test.html',etree.HTMLParser())
 
 # results = html.xpath('//*')
 # print(results)
@@ -702,25 +702,135 @@ text = '''
      </ul>
  </div>
 '''
-html = etree.HTML(text)
-#调用了 ancestor 轴,是第一个 li 节点的所有祖先节点，包括 html、body、div 和 ul
-results = html.xpath('//li[1]/ancestor::*')
-print(results)
-#只有 div 这个祖先节点
-results1 = html.xpath('//li[1]/ancestor::*/div')
-print(results1)
-# 调用了 attribute 轴,li 节点的所有属性值
-results2 = html.xpath('//li[1]/attribute::*')
-print(results2)
-#调用了 child 轴
-results3 = html.xpath('//li[1]/child::a[@href="link1.html"]')
-print(results3)
-#调用了 descendant 轴，可以获取所有子孙节点
-results4 = html.xpath('//li[1]/descendant::span')
-print(results4)
-#调用了 following 轴，可以获取当前节点之后的所有节点
-results5 = html.xpath('//li[1]/following::*[2]')
-print(results5)
-#调用了 following-sibling 轴，可以获取当前节点之后的所有同级节点
-results6 = html.xpath('//li[1]/following-sibling::*')
-print(results6)
+# html = etree.HTML(text)
+# #调用了 ancestor 轴,是第一个 li 节点的所有祖先节点，包括 html、body、div 和 ul
+# results = html.xpath('//li[1]/ancestor::*')
+# print(results)
+# #只有 div 这个祖先节点
+# results1 = html.xpath('//li[1]/ancestor::*/div')
+# print(results1)
+# # 调用了 attribute 轴,li 节点的所有属性值
+# results2 = html.xpath('//li[1]/attribute::*')
+# print(results2)
+# #调用了 child 轴
+# results3 = html.xpath('//li[1]/child::a[@href="link1.html"]')
+# print(results3)
+# #调用了 descendant 轴，可以获取所有子孙节点
+# results4 = html.xpath('//li[1]/descendant::span')
+# print(results4)
+# #调用了 following 轴，可以获取当前节点之后的所有节点
+# results5 = html.xpath('//li[1]/following::*[2]')
+# print(results5)
+# #调用了 following-sibling 轴，可以获取当前节点之后的所有同级节点
+# results6 = html.xpath('//li[1]/following-sibling::*')
+# print(results6)
+
+
+
+
+
+
+#BeautifulSoup
+
+from bs4 import BeautifulSoup
+
+# soup = BeautifulSoup('<p>Hello</p>','lxml')
+# print(soup.p.string)
+
+html = """
+<html><head><title>The Dormouse's story</title></head>
+<body>
+<p class="title" name="dromouse"><b>The Dormouse's story</b></p>
+<p class="story">Once upon a time there were three little sisters; and their names were
+<a href="http://example.com/elsie" class="sister" id="link1"><!-- Elsie --></a>,
+<a href="http://example.com/lacie" class="sister" id="link2">Lacie</a> and
+<a href="http://example.com/tillie" class="sister" id="link3">Tillie</a>;
+and they lived at the bottom of a well.</p>
+<p class="story">...</p>
+"""
+
+# soup = BeautifulSoup(html,'lxml')
+# #prettify() 方法把要解析的字符串以标准的缩进格式输出,
+# #，输出结果里面包含 body 和 html 节点
+# print(soup.prettify(),'\n\n')
+# print(soup.title.string)
+
+#节点选择器
+# soup = BeautifulSoup(html,'lxml')
+# print(soup.title)
+# print(type(soup.title))
+# print(soup.title.string)
+# print(soup.head)
+# print(soup.p)
+
+# #获取名称
+# soup = BeautifulSoup(html,'lxml')
+# #name 属性获取节点的名称
+# print(soup.title.name)
+# print(soup.p.name)
+
+# #获取属性
+# soup = BeautifulSoup(html,'lxml')
+# #调用 attrs 获取所有属性
+# print(soup.p.attrs)
+# print(soup.p.attrs['name'])
+# print(soup.p.attrs['class'])
+#
+# print(soup.p['name'])
+# print(soup.p['class'])
+
+# #获取内容
+# soup = BeautifulSoup(html,'lxml')
+# print(soup.p.string)
+
+# #嵌套选择
+# html = """
+# <html><head><title>The Dormouse's story</title></head>
+# <body>
+# """
+# soup =  BeautifulSoup(html,'lxml')
+# print(soup.head.title)
+# print(type(soup.head.title))
+# print(soup.head.title.string)
+
+
+#关联选择
+html = """
+<html>
+    <head>
+        <title>The Dormouse's story</title>
+    </head>
+    <body>
+        <p class="story">
+            Once upon a time there were three little sisters; and their names were
+            <a href="http://example.com/elsie" class="sister" id="link1">
+                <span>Elsie</span>
+            </a>
+            <a href="http://example.com/lacie" class="sister" id="link2">Lacie</a> 
+            and
+            <a href="http://example.com/tillie" class="sister" id="link3">Tillie</a>
+            and they lived at the bottom of a well.
+        </p>
+        <p class="story">...</p>
+"""
+soup = BeautifulSoup(html,'lxml')
+#contents 属性得到的结果是直接子节点的列表
+# print(soup.p.contents)
+#可以调用 children 属性得到相应的结果
+# print(soup.p.children)
+# for i,child in enumerate(soup.p.children):
+#     print(i,child)
+
+#得到所有的子孙节点
+# print(soup.p.descendants)
+# for i,child in enumerate(soup.p.descendants):
+#     print(i,child)
+
+#获取某个节点元素的父节点
+# print(soup.a.parent)
+
+#获取所有的祖先节点
+# print(type(soup.a.parents))
+# print(list(enumerate(soup.a.parents)))
+
+
