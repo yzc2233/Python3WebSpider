@@ -1,9 +1,649 @@
-<div>
-    <ul>
-         <li class="item-0"><a href="link1.html">first item</a></li>
-         <li class="item-1"><a href="link2.html">second item</a></li>
-         <li class="item-inactive"><a href="link3.html">third item</a></li>
-         <li class="item-1"><a href="link4.html">fourth item</a></li>
-         <li class="item-0"><a href="link5.html">fifth item</a>
-     </ul>
- </div>
+
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Eureka</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="eureka/css/wro.css">
+
+</head>
+
+<body id="one">
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href=""><span></span></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="">Home</a>
+                </li>
+                <li>
+                    <a href="/lastn">Last 1000 since startup</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container-fluid xd-container">
+    <h1>System Status</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <table id='instances' class="table table-condensed table-striped table-hover">
+                <tr>
+                    <td>Environment</td>
+                    <td>stage-a</td>
+                </tr>
+                <tr>
+                    <td>Data center</td>
+                    <td>stage</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <table id='instances' class="table table-condensed table-striped table-hover">
+                <tr>
+                    <td>Current time</td>
+                    <td>2019-08-23T00:12:38 +0800</td>
+                </tr>
+                <tr>
+                    <td>Uptime</td>
+                    <td>407 days 07:01</td>
+                </tr>
+                <tr>
+                    <td>Lease expiration enabled</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>Renews threshold</td>
+                    <td>81</td>
+                </tr>
+                <tr>
+                    <td>Renews (last min)</td>
+                    <td>120</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <h1>DS Replicas</h1>
+    <ul class="list-group">
+        <li class="list-group-item"><a href="http://10.157.24.78:1111/eureka/">10.157.24.78</a></li>
+        <li class="list-group-item"><a href="http://10.157.24.77:1111/eureka/">10.157.24.77</a></li>
+    </ul>
+
+    <h1>Instances currently registered with Eureka</h1>
+    <table id='instances' class="table table-striped table-hover">
+        <thead>
+        <tr><th>Application</th><th>AMIs</th><th>Availability Zones</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><b>BACKEND-COMMUNITY-CORE-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.73:10016/info" target="_blank">sephora-backend-community-core-service-10.157.24.73-a:10016</a>
+                ,
+                <a href="http://10.157.24.97:10016/info" target="_blank">sephora-backend-community-core-service-10.157.24.97-a:10016</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>BACKEND-GATEWAY</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.69:81/info" target="_blank">sephora-soa-backend-api-gateway-10.157.24.69-81:81</a>
+                ,
+                <a href="http://10.157.24.68:81/info" target="_blank">sephora-soa-backend-api-gateway-10.157.24.68-81:81</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>BACKEND-PASSPORT</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.128:8081/passport/info.json" target="_blank">10.157.24.128</a>
+                ,
+                <a href="http://10.157.24.127:8081/passport/info.json" target="_blank">10.157.24.127</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>BACKEND-USER-MGT</b></td>
+            <td>
+                <b>n/a</b> (1)
+            </td>
+            <td>
+                <b></b> (1)
+            </td>
+            <td>
+                <b>UP</b> (1) -
+                <a href="http://10.157.24.131:10017/info" target="_blank">sephora-backend-user-mgt-service-10.157.24.131-b:10017</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>COMMUNITY-CORE-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.137:10016/info" target="_blank">sephora-community-core-service-10.157.24.137-a:10016</a>
+                ,
+                <a href="http://10.157.24.72:10016/info" target="_blank">sephora-community-core-service-10.157.24.72-a:10016</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>CRM-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.130:10003/info" target="_blank">sephora-crm-service-10.157.24.130-b:10003</a>
+                ,
+                <a href="http://10.157.24.141:10003/info" target="_blank">sephora-crm-service-10.157.24.141-b:10003</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>FINANCE-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.72:10023/info" target="_blank">sephora-finance-service-10.157.24.72-b:10023</a>
+                ,
+                <a href="http://10.157.24.126:10023/info" target="_blank">sephora-finance-service-10.157.24.126-b:10023</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>GATEWAY</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.68:80/info" target="_blank">sephora-soa-api-gateway-10.157.24.68-b:80</a>
+                ,
+                <a href="http://10.157.24.69:80/info" target="_blank">sephora-soa-api-gateway-10.157.24.69-b:80</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>INV-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.138:10012/info" target="_blank">sephora-inv-service-10.157.24.138-a:10012</a>
+                ,
+                <a href="http://10.157.24.130:10012/info" target="_blank">sephora-inv-service-10.157.24.130-a:10012</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>JOBS-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (1)
+            </td>
+            <td>
+                <b></b> (1)
+            </td>
+            <td>
+                <b>UP</b> (1) -
+                <a href="http://10.157.24.70:10013/info" target="_blank">sephora-soa-jobs-10.157.24.70-10013:10013</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>KOL-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (1)
+            </td>
+            <td>
+                <b></b> (1)
+            </td>
+            <td>
+                <b>UP</b> (1) -
+                <a href="http://10.157.24.133:10008/info" target="_blank">sephora-kol-service-10.157.24.133-b:10008</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>MARKETING-ACTIVITY-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.133:10004/info" target="_blank">sephora-marketing-activity-service-10.157.24.133-b:10004</a>
+                ,
+                <a href="http://10.157.24.131:10004/info" target="_blank">sephora-marketing-activity-service-10.157.24.131-b:10004</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>MESSAGES-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.96:10014/info" target="_blank">sephora-messages-service-10.157.24.96-a:10014</a>
+                ,
+                <a href="http://10.157.24.131:10014/info" target="_blank">sephora-messages-service-10.157.24.131-a:10014</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>MP-CMS-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.137:10020/info" target="_blank">sephora-mp-cms-service-10.157.24.137-b:10020</a>
+                ,
+                <a href="http://10.157.24.73:10020/info" target="_blank">sephora-mp-cms-service-10.157.24.73-b:10020</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>MYACCOUNT-PORTAL-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.134:10022/info" target="_blank">sephora-myaccount-portal-service-10.157.24.134-a:10022</a>
+                ,
+                <a href="http://10.157.24.73:10022/info" target="_blank">sephora-myaccount-portal-service-10.157.24.73-a:10022</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>MYACCOUNT-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.98:10011/info" target="_blank">sephora-myaccount-service-10.157.24.98-a:10011</a>
+                ,
+                <a href="http://10.157.24.137:10011/info" target="_blank">sephora-myaccount-service-10.157.24.137-a:10011</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>OFFLINE-SHOP-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (1)
+            </td>
+            <td>
+                <b></b> (1)
+            </td>
+            <td>
+                <b>UP</b> (1) -
+                <a href="http://10.157.24.75:10000/info" target="_blank">sephora-offline-shop-service-10.157.24.75-a:10000</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>OMNI-CRMHUB-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.71:10021/info" target="_blank">omni-crmhub-service-10.157.24.71-a:10021</a>
+                ,
+                <a href="http://10.157.24.130:10021/info" target="_blank">omni-crmhub-service-10.157.24.130-a:10021</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>ORDER-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.74:10010/info" target="_blank">sephora-order-service-10.157.24.74-a:10010</a>
+                ,
+                <a href="http://10.157.24.137:10010/info" target="_blank">sephora-order-service-10.157.24.137-a:10010</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>PASSPORT</b></td>
+            <td>
+                <b>n/a</b> (4)
+            </td>
+            <td>
+                <b></b> (4)
+            </td>
+            <td>
+                <b>UP</b> (4) -
+                <a href="http://10.157.24.140:8080/passport/info.json" target="_blank">10.157.24.140</a>
+                ,
+                <a href="http://10.157.24.132:8080/passport/info.json" target="_blank">10.157.24.132</a>
+                ,
+                <a href="http://10.157.24.124:8080/passport/info.json" target="_blank">10.157.24.124</a>
+                ,
+                <a href="http://10.157.24.75:8080/passport/info.json" target="_blank">10.157.24.75</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>PIM-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.95:10006/info" target="_blank">sephora-pim-backend-10.157.24.95-a:10006</a>
+                ,
+                <a href="http://10.157.24.132:10006/info" target="_blank">sephora-pim-backend-10.157.24.132-a:10006</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>PRODUCT-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.134:10002/info" target="_blank">sephora-product-service-10.157.24.134-a:10002</a>
+                ,
+                <a href="http://10.157.24.138:10002/info" target="_blank">sephora-product-service-10.157.24.138-a:10002</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>PROMOTION-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.126:10009/info" target="_blank">sephora-promotion-service-10.157.24.126-a:10009</a>
+                ,
+                <a href="http://10.157.24.130:10009/info" target="_blank">sephora-promotion-service-10.157.24.130-a:10009</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>REGISTRY</b></td>
+            <td>
+                <b>n/a</b> (3)
+            </td>
+            <td>
+                <b></b> (3)
+            </td>
+            <td>
+                <b>UP</b> (3) -
+                <a href="http://10.157.24.76:1111/info" target="_blank">dpsvdocmid00.sephora.cn:registry:1111</a>
+                ,
+                <a href="http://10.157.24.77:1111/info" target="_blank">dpsvdocmid01.sephora.cn:registry:1111</a>
+                ,
+                <a href="http://10.157.24.78:1111/info" target="_blank">dpsvdocmid02.sephora.cn:registry:1111</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>SEARCH-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.96:10025/info" target="_blank">sephora-search-service-10.157.24.96-b:10025</a>
+                ,
+                <a href="http://10.157.24.128:10025/info" target="_blank">sephora-search-service-10.157.24.128-b:10025</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>SHOPCART-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.71:10007/info" target="_blank">sephora-shop-cart-service-10.157.24.71-a:10007</a>
+                ,
+                <a href="http://10.157.24.141:10007/info" target="_blank">sephora-shop-cart-service-10.157.24.141-a:10007</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>SOA-MANAGEMENT</b></td>
+            <td>
+                <b>n/a</b> (1)
+            </td>
+            <td>
+                <b></b> (1)
+            </td>
+            <td>
+                <b>UP</b> (1) -
+                <a href="http://10.157.24.96:9998/info" target="_blank">sephora-soa-management-10.157.24.96-9998:9998</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>SOA-OMS-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.132:10015/info" target="_blank">sephora-oms-service-10.157.24.132-a:10015</a>
+                ,
+                <a href="http://10.157.24.96:10015/info" target="_blank">sephora-oms-service-10.157.24.96-a:10015</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>TURBINESERVER</b></td>
+            <td>
+                <b>n/a</b> (1)
+            </td>
+            <td>
+                <b></b> (1)
+            </td>
+            <td>
+                <b>UP</b> (1) -
+                <a href="http://10.157.24.75:9999/info" target="_blank">sephora-soa-turbine-server-10.157.24.75-9999:9999</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>WCS-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (1)
+            </td>
+            <td>
+                <b></b> (1)
+            </td>
+            <td>
+                <b>UP</b> (1) -
+                <a href="http://10.157.24.125:10001/info" target="_blank">sephora-wcs-service-10.157.24.125-b:10001</a>
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>WECHATCENTER-SERVICE</b></td>
+            <td>
+                <b>n/a</b> (2)
+            </td>
+            <td>
+                <b></b> (2)
+            </td>
+            <td>
+                <b>UP</b> (2) -
+                <a href="http://10.157.24.130:10018/info" target="_blank">sephora-wechatcenter-service-10.157.24.130-b:10018</a>
+                ,
+                <a href="http://10.157.24.74:10018/info" target="_blank">sephora-wechatcenter-service-10.157.24.74-b:10018</a>
+
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <h1>General Info</h1>
+
+    <table id='generalInfo' class="table table-striped table-hover">
+        <thead>
+        <tr><th>Name</th><th>Value</th></tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>total-avail-memory</td><td>64mb</td>
+        </tr>
+        <tr>
+            <td>environment</td><td>stage-a</td>
+        </tr>
+        <tr>
+            <td>num-of-cpus</td><td>16</td>
+        </tr>
+        <tr>
+            <td>current-memory-usage</td><td>44mb (68%)</td>
+        </tr>
+        <tr>
+            <td>server-uptime</td><td>407 days 07:01</td>
+        </tr>
+        <tr>
+            <td>registered-replicas</td><td>http://10.157.24.78:1111/eureka/, http://10.157.24.77:1111/eureka/</td>
+        </tr>
+        <tr>
+            <td>unavailable-replicas</td><td></td>
+        </tr>
+        <tr>
+            <td>available-replicas</td><td>http://10.157.24.78:1111/eureka/,http://10.157.24.77:1111/eureka/,</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h1>Instance Info</h1>
+
+    <table id='instanceInfo' class="table table-striped table-hover">
+        <thead>
+        <tr><th>Name</th><th>Value</th></tr>
+        <thead>
+        <tbody>
+        <tr>
+            <td>ipAddr</td><td>10.157.24.76</td>
+        </tr>
+        <tr>
+            <td>status</td><td>UP</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript" src="eureka/js/wro.js" ></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('table.stripeable tr:odd').addClass('odd');
+        $('table.stripeable tr:even').addClass('even');
+    });
+</script>
+</body>
+</html>
