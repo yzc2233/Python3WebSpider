@@ -34,7 +34,7 @@ def get_services_ip(html):
         iplen = len(ip)
         for i in range(iplen):
             results = urlsplit(ip[i])
-            ip[i] = results.scheme + ':' + results.netloc
+            ip[i] = results.scheme + '://' + results.netloc
         services_ip = dict(zip(services,ip))
         return services_ip
 
@@ -45,6 +45,14 @@ def get_service_ip(service,services_ip):
     for key in services_ip.keys():
         if service in str(key):
             ip = services_ip.get(key)
+    return ip
+
+
+def get_ip(service,env='stage'):
+    html = get_html(env)
+    services = get_services_ip(html)
+    ip = get_service_ip(service,services)
+    # print(ip)
     return ip
 
 def main(service,env='stage'):
