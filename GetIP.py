@@ -29,6 +29,7 @@ def getIp(env='stage',service=''):
 
     if ip == '':
         return '未找到对应Service的IP，请检查入参！'
+        exit()
     else:
         return ip
 
