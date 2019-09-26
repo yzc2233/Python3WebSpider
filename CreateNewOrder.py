@@ -38,7 +38,7 @@ def addToCartForSingleProduct():
         exit()
     else:
         print('开始添加单个商品至购物车成功')
-    print('-'*20,'添加单个商品至购物车结束','-'*20)
+    print('-'*20,'添加单个商品至购物车结束','-'*20 ,'\n\n')
 
 def getShopcartStepTwo():
     print('-'*20,'开始购物车第二步','-'*20)
@@ -52,7 +52,7 @@ def getShopcartStepTwo():
         exit()
     else:
         print('开始购物车第二步成功')
-    print('-'*20,'开始购物车第二步结束','-'*20)
+    print('-'*20,'开始购物车第二步结束','-'*20 ,'\n\n')
 
 def changePayment():
     print('-'*20,'开始修改支付方式','-'*20)
@@ -66,7 +66,7 @@ def changePayment():
         exit()
     else:
         print('修改支付方式成功')
-    print('-'*20,'修改支付方式结束','-'*20)
+    print('-'*20,'修改支付方式结束','-'*20 ,'\n\n')
 
 def addOrders():
     print('-'*20,'开始提交订单','-'*20)
@@ -81,8 +81,9 @@ def addOrders():
     else:
         orderId = response['results']['orderId']
         print('提交订单成功，订单号：',orderId)
+        print('-'*20,'提交订单结束','-'*20 ,'\n\n')
         return orderId
-    print('-'*20,'提交订单结束','-'*20)
+
 
 def orderSync(orderId):
     print('-'*20,'开始推送订单至OMS并索引至elasticSearch','-'*20)
@@ -94,7 +95,7 @@ def orderSync(orderId):
         exit()
     else:
         print('推送订单至OMS并索引至elasticSearch成功')
-    print('-'*20,'推送订单至OMS并索引至elasticSearch结束','-'*20)
+    print('-'*20,'推送订单至OMS并索引至elasticSearch结束','-'*20 ,'\n\n')
 
 def forwadOnehour(orderId):
     print('-'*20,'开始将订单提前一小时','-'*20)
@@ -126,7 +127,9 @@ def forwadOnehour(orderId):
         conn.rollback()
         print('数据库开始将订单号为 %s 的订单记录创建时间提前一小时失败' %orderId)
         exit()
-    print('-'*20,'将订单提前一小时结束','-'*20)
+    finally:
+        cursor.close()
+        print('-'*20,'将订单提前一小时结束','-'*20 ,'\n\n')
 
 
 def CreateNewOrder():
@@ -138,6 +141,7 @@ def CreateNewOrder():
     changePayment()
     ## 提交订单
     orderId = addOrders()
+    time.sleep(5)
     ## 将订单提前一小时
     forwadOnehour(orderId)
     ## 推送订单至OMS并索引至elasticSearch
