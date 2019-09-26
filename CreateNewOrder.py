@@ -9,27 +9,69 @@ import time
 config =configparser.ConfigParser()
 config.read('properties.conf')
 
+allowedenv = config.get('allowedenv','allowedenv')
+allowedenv = allowedenv.split(',')
 
-# env = sys.argv[1].lower()
-env = 'qa2'
+# env = 'qa2'
+# env = 'qa2'
 
-# uid = sys.argv[2]
-uid = '2001844981'
+def getskuIdlist():
+    print('-'*20,'开始数据库获取随机两个skuId','-'*20)
+    datalist = []
+    conn = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'product')
+    cur = conn.cursor()
+    sql = "select b.sku_id from prod_product a LEFT JOIN prod_sku b on a.id=b.product_id left join  inventory.inventory c on CONVERT(c.sku_code USING utf8) COLLATE utf8_unicode_ci  =b.sku_code JOIN (SELECT ROUND(RAND() * ((SELECT MAX(id) FROM prod_product)-(SELECT MIN(id) FROM prod_product))+(SELECT MIN(id) FROM prod_product)) AS id) AS t2 where a.`status`=1 and b.`status`=1 and b.sku_type=1  and b.sale_channel->'$[0]'='ALL' and  c.inventory_type=1 and c.quantity>100  and a.id >= t2.id limit 2"
+    cur.execute(sql)
+    data = cur.fetchall()
+    for da in data:
+        datalist.append(da[0])
+    print('获取到的skuId的集合是 %s' %datalist)
+    print('-'*20,'数据库获取随机两个skuId结束','-'*20,'\n\n')
+    cur.close()
+    return datalist
 
-skuId = config['skuId'][env + '_skuId']
 
-mysqlhost = config['mysql_'+ env]['host']
-mysqluser = config['mysql_'+ env]['user']
-mysqlpassword = config['mysql_'+ env]['password']
+skuIdlist = []
+inputargvlength = len(sys.argv)
+
+if inputargvlength < 3:
+    print('请输入完整的请求至少包含：需要执行的.py文件 执行环境 用户uid，example：python CreateNewOrder.py qa2 2001844981 \n','需在.py文件目录下执行命令')
+    exit()
+elif inputargvlength >= 3:
+    env = sys.argv[1].lower()
+    if env not in allowedenv:
+        print('输入的环境 %s 有误，仅支持qa2及stage环境！' %env)
+        exit()
+    mysqlhost = config['mysql_'+ env]['host']
+    mysqluser = config['mysql_'+ env]['user']
+    mysqlpassword = config['mysql_'+ env]['password']
+    uid = sys.argv[2]
+    try:
+        uid = int(uid)
+        uid = str(uid)
+    except ValueError as e:
+        print('输入的用户uid：%s 格式错误' %uid)
+        exit()
+    defaultskuId = [config['skuId'][env + '_skuId']]
+    if inputargvlength > 3:
+        for arg in sys.argv[3:]:
+            try:
+                skuIdlist.append(int(arg))
+            except ValueError:
+                print('输入的skuId集合中 %s 格式错误！' %arg)
+                exit()
+    elif inputargvlength == 3:
+        skuIdlist = getskuIdlist()
+    else:
+        skuIdlist = defaultskuId
 
 ShopCart_IP = GetIP.getIp(env,'shop-cart')
 Order_IP = GetIP.getIp(env,'order')
 
-
-def addToCartForSingleProduct():
+def addToCartForSingleProduct(skuId):
     print('-'*20,'开始添加单个商品至购物车','-'*20)
     headers = {"Content-Type":"application/json","uid":uid}
-    param = {"queryBody":{"channel":"PC","checked":1,"quantity":1,"skuId":skuId,"type":1}}
+    param = {"queryBody":{"channel":"PC","checked":1,"quantity":2,"skuId":skuId,"type":1}}
     addproduct_url = ShopCart_IP + '/v1/shopcart/shopcart/addToCartForSingleProduct'
     req = requests.post(addproduct_url,json=param,headers=headers)
     response = json.loads(req.text)
@@ -133,8 +175,9 @@ def forwadOnehour(orderId):
 
 
 def CreateNewOrder():
-    ## 添加单个商品至购物车
-    addToCartForSingleProduct()
+    ## 循环添加单个商品至购物车
+    for sku in skuIdlist:
+        addToCartForSingleProduct(sku)
     ## 购物车第二步
     getShopcartStepTwo()
     ## 修改支付方式
