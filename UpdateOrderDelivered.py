@@ -166,7 +166,7 @@ def UpdateOrderDelivered():
         OrderStatus,orderSysId = get_SalesOrderStatus()
         if OrderStatus == 'PENDING':
             dealPending()
-            time.sleep(15)
+            time.sleep(30)
         elif OrderStatus == 'EXCEPTION':
             dealException(orderSysId)
             time.sleep(15)
