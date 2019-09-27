@@ -14,8 +14,8 @@ config.read('properties.conf')
 allowedenv = config.get('allowedenv','allowedenv')
 allowedenv = allowedenv.split(',')
 
-env = sys.argv[1]
-# env = 'qa2'
+# env = sys.argv[1]
+env = 'stage'
 
 uid = sys.argv[2]
 # uid = '2001844981'
@@ -34,7 +34,7 @@ elif inputargvlength == 4:
     orderId = sys.argv[3]
 
 orderId = str(orderId)
-# orderId = '1149816951901267'
+# orderId = '1149816957256463'
 
 def get_SalesOrderStatus():
     print('-'*20,'开始获取sales_order中订单状态','-'*20)
@@ -104,7 +104,7 @@ def getPurchaseOrder():
     try:
         cur.execute(sql)
         data = cur.fetchall()
-        print('成功获取purchase_order对应订单记录\n\n %s' %data)
+        print('成功获取purchase_order对应订单记录\n\n %s' %str(data))
         return data
     except:
         print('获取purchase_order对应订单记录失败')
@@ -202,11 +202,14 @@ def UpdateOrderDelivered():
         elif OrderStatus == 'WAIT_SEND_SAP' or OrderStatus == 'WAIT_ROUTE_ORDER':
             dealWaitSend(30)
             waitTimes += 1
-        elif OrderStatus == 'WAIT_SAPPROCESS':
+        elif OrderStatus == 'WAIT_SAPPROCESS' or OrderStatus == 'WAIT_SAPPROCESS/WAIT_SAPPROCESS':
             dealflag = False
-        elif OrderStatus == 'SIGNED':
+        elif OrderStatus == 'SIGNED' or OrderStatus == 'SIGNED/SIGNED':
             print('订单已经是已签收状态')
             exit()
+        else:
+            time.sleep(5)
+            waitTimes += 1
         if waitTimes >= 5:
             print('已等待五次还未处理成功')
     # 获取purchase_order对应订单记录
