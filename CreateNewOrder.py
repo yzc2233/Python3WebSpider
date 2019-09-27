@@ -13,11 +13,10 @@ config.read('properties.conf')
 allowedenv = config.get('allowedenv','allowedenv')
 allowedenv = allowedenv.split(',')
 
-# env = 'qa2'
-# env = 'qa2'
+print('仅支持Python3环境')
 
 def getskuIdlist():
-    print('-'*20,'开始数据库获取随机两个skuId，请稍作等待','-'*20)
+    print('-'*20,'开始数据库随机获取两个skuId，请稍作等待','-'*20)
     datalist = []
     conn = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'product')
     cur = conn.cursor()
@@ -36,7 +35,7 @@ skuIdlist = []
 inputargvlength = len(sys.argv)
 
 if inputargvlength < 3:
-    print('请输入完整的请求至少包含：需要执行的.py文件 执行环境 用户uid，example：python CreateNewOrder.py qa2 2001844981 \n','需在.py文件目录下执行命令')
+    print('请输入完整的请求至少包含：需要执行的文件 执行环境 用户uid，example：python CreateNewOrder.py qa2 2001844981 \n','需在文件目录下执行命令')
     exit()
 elif inputargvlength >= 3:
     env = sys.argv[1].lower()
@@ -65,6 +64,9 @@ elif inputargvlength >= 3:
         skuIdlist = getskuIdlist()
     else:
         skuIdlist = defaultskuId
+
+# env = 'qa2'
+# uid = '2001844981'
 
 ShopCart_IP = GetIP.getIp(env,'shop-cart')
 Order_IP = GetIP.getIp(env,'order')
@@ -99,10 +101,11 @@ def getShopcartStepTwo():
 
 def clearShopcartSkuId(skuId):
     print('-'*20,'开始清除购物车指定商品','-'*20)
+    skuId = str(skuId)
     headers = {"Content-Type":"application/json","uid":uid}
-    param = {"head":{"token":"string","userId":"string"},"queryBody":[{"skuId":skuId,"type":1}]}
-    clearShopcartSkuId_url = ShopCart_IP + '/v1/shopcart/shopcart/sku?operator='+ uid
-    req = requests.delete(clearShopcartSkuId_url,json=param,headers=headers)
+    param = {"head":{"token":"string","userId":"string"},"queryBody":[{"skuId":skuId,"type":1,"userId":uid}]}
+    clearShopcartSkuId_url = ShopCart_IP + '/v1/shopcart/shopcart/removeFromCart'
+    req = requests.post(clearShopcartSkuId_url,json=param,headers=headers)
     response = json.loads(req.text)
     if response['errorCode'] is not None:
         print('清除购物车指定商品%s失败 %s'%(skuId,response))
@@ -136,7 +139,9 @@ def addOrders():
         print('提交订单失败',response)
         #清除添加的商品
         for skuId in skuIdlist:
+            time.sleep(1)
             clearShopcartSkuId(skuId)
+            print('\n创建订单失败')
         exit()
     else:
         orderId = response['results']['orderId']
@@ -213,6 +218,5 @@ def CreateNewOrder():
 
 if __name__ == '__main__':
     CreateNewOrder()
-
 
 
