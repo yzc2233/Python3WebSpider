@@ -1,3 +1,4 @@
+#coding=utf-8
 import requests
 import pymysql
 import sys
@@ -16,7 +17,7 @@ allowedenv = allowedenv.split(',')
 # env = 'qa2'
 
 def getskuIdlist():
-    print('-'*20,'开始数据库获取随机两个skuId','-'*20)
+    print('-'*20,'开始数据库获取随机两个skuId，请稍作等待','-'*20)
     datalist = []
     conn = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'product')
     cur = conn.cursor()
@@ -76,10 +77,10 @@ def addToCartForSingleProduct(skuId):
     req = requests.post(addproduct_url,json=param,headers=headers)
     response = json.loads(req.text)
     if response['errorCode'] is not None or response['results'] <=0:
-        print('开始添加单个商品至购物车失败',response)
+        print('添加单个商品%s至购物车失败：%s' %(skuId,response))
         exit()
     else:
-        print('开始添加单个商品至购物车成功')
+        print('添加单个商品%s至购物车成功' %skuId)
     print('-'*20,'添加单个商品至购物车结束','-'*20 ,'\n\n')
 
 def getShopcartStepTwo():
@@ -90,11 +91,25 @@ def getShopcartStepTwo():
     req = requests.post(ShopcartStepTwo_url,json=param,headers=headers)
     response = json.loads(req.text)
     if response['errorCode'] is not None:
-        print('开始购物车第二步失败',response)
+        print('购物车第二步失败',response)
         exit()
     else:
-        print('开始购物车第二步成功')
+        print('购物车第二步成功')
     print('-'*20,'开始购物车第二步结束','-'*20 ,'\n\n')
+
+def clearShopcartSkuId(skuId):
+    print('-'*20,'开始清除购物车指定商品','-'*20)
+    headers = {"Content-Type":"application/json","uid":uid}
+    param = {"head":{"token":"string","userId":"string"},"queryBody":[{"skuId":skuId,"type":1}]}
+    clearShopcartSkuId_url = ShopCart_IP + '/v1/shopcart/shopcart/sku?operator='+ uid
+    req = requests.delete(clearShopcartSkuId_url,json=param,headers=headers)
+    response = json.loads(req.text)
+    if response['errorCode'] is not None:
+        print('清除购物车指定商品%s失败 %s'%(skuId,response))
+        exit()
+    else:
+        print('清除购物车指定商品%s成功' %skuId)
+    print('-'*20,'清除购物车指定商品结束','-'*20 ,'\n\n')
 
 def changePayment():
     print('-'*20,'开始修改支付方式','-'*20)
@@ -119,6 +134,9 @@ def addOrders():
     response = json.loads(req.text)
     if response['errorCode'] is not None or response['results']['resultStatus'] != 'SUCCESS':
         print('提交订单失败',response)
+        #清除添加的商品
+        for skuId in skuIdlist:
+            clearShopcartSkuId(skuId)
         exit()
     else:
         orderId = response['results']['orderId']
@@ -137,6 +155,7 @@ def orderSync(orderId):
         exit()
     else:
         print('推送订单至OMS并索引至elasticSearch成功')
+        time.sleep(3)
     print('-'*20,'推送订单至OMS并索引至elasticSearch结束','-'*20 ,'\n\n')
 
 def forwadOnehour(orderId):

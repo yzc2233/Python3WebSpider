@@ -1,3 +1,4 @@
+#coding=utf-8
 import time
 import CreateNewOrder
 import sys
@@ -32,20 +33,21 @@ if inputargvlength == 3:
 elif inputargvlength == 4:
     orderId = sys.argv[3]
 
+orderId = str(orderId)
 # orderId = '1149816951901267'
 
 def get_SalesOrderStatus():
     print('-'*20,'开始获取sales_order中订单状态','-'*20)
     conn = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'oms')
     cur = conn.cursor()
-    sql = "select a.ORDER_INTERNAL_STATUS,a.TYPE,a.SALES_ORDER_SYS_ID from sales_order a where a.SALES_ORDER_NUMBER="+"'"+orderId +"'"
+    sql = "select a.ORDER_INTERNAL_STATUS,a.TYPE,a.SALES_ORDER_SYS_ID from sales_order a where a.SALES_ORDER_NUMBER="+ "'" + orderId + "';"
     print(sql)
     try:
         cur.execute(sql)
         data = cur.fetchone()
         ORDER_INTERNAL_STATUS = data[0]
         SALES_ORDER_SYS_ID = data[2]
-        print('成功获取sales_order中订单状态 %s,orderSysId=' %ORDER_INTERNAL_STATUS,SALES_ORDER_SYS_ID)
+        print('成功获取sales_order中订单状态 %s,orderSysId= %s' %(ORDER_INTERNAL_STATUS,SALES_ORDER_SYS_ID))
         return ORDER_INTERNAL_STATUS,SALES_ORDER_SYS_ID
     except:
         print('获取sales_order中订单状态失败')
@@ -64,6 +66,9 @@ def dealPending():
         print('处理Pending状态订单失败:',response)
         exit()
     else:
+        for step in range(0,45,3):
+            print('等待3s')
+            time.sleep(3)
         print('处理Pending状态订单成功')
     print('-'*20,'处理Pending状态订单结束','-'*20 ,'\n\n')
 
@@ -76,13 +81,18 @@ def dealException(orderSysId):
         print('处理Exception状态订单失败:',response)
         exit()
     else:
+        for step in range(0,24,3):
+            print('等待3s')
+            time.sleep(3)
         print('处理Exception状态订单成功')
+
     print('-'*20,'处理Exception状态订单结束','-'*20 ,'\n\n')
 
 def dealWaitSend(sec):
     print('-'*20,'开始处理WAIT_SEND_SAP状态订单','-'*20)
-    time.sleep(sec)
-    print('sleep 10s')
+    for step in range(0,sec,3):
+        print('等待3s')
+        time.sleep(3)
     print('-'*20,'处理Exception状态订单结束','-'*20 ,'\n\n')
 
 def getPurchaseOrder():
@@ -181,25 +191,24 @@ def UpdateOrderDelivered():
     # 处理订单状态至WAIT_SAPPROCESS
     dealflag = True
     waitTimes = 0
-    while dealflag and waitTimes < 3:
+    while dealflag and waitTimes < 5:
         # 获取sales_order中订单状态
         OrderStatus,orderSysId = get_SalesOrderStatus()
         if OrderStatus == 'PENDING':
             dealPending()
-            time.sleep(45)
+            waitTimes += 1
         elif OrderStatus == 'EXCEPTION':
             dealException(orderSysId)
-            time.sleep(15)
         elif OrderStatus == 'WAIT_SEND_SAP' or OrderStatus == 'WAIT_ROUTE_ORDER':
             dealWaitSend(30)
+            waitTimes += 1
         elif OrderStatus == 'WAIT_SAPPROCESS':
             dealflag = False
         elif OrderStatus == 'SIGNED':
             print('订单已经是已签收状态')
             exit()
-        waitTimes += 1
-        if waitTimes >= 3:
-            print('已等待三次还未处理成功')
+        if waitTimes >= 5:
+            print('已等待五次还未处理成功')
     # 获取purchase_order对应订单记录
     data = getPurchaseOrder()
     #判断是否拆单
@@ -212,6 +221,7 @@ def UpdateOrderDelivered():
         updateOrder_NotSpilt(data)
     #修改订单状态
     orderStatusSync()
+    print('%s环境已生成已签收订单：%s' % (env,orderId))
 
 if __name__ == '__main__':
     UpdateOrderDelivered()
