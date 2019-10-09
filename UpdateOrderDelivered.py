@@ -199,6 +199,10 @@ def UpdateOrderDelivered():
             waitTimes += 1
         elif OrderStatus == 'EXCEPTION':
             dealException(orderSysId)
+        elif OrderStatus == 'PENDING_MIDDLE':
+            time.sleep(3)
+            print('等待3s')
+            waitTimes += 1
         elif OrderStatus == 'WAIT_SEND_SAP' or OrderStatus == 'WAIT_ROUTE_ORDER':
             dealWaitSend(30)
             waitTimes += 1
@@ -211,7 +215,8 @@ def UpdateOrderDelivered():
             time.sleep(5)
             waitTimes += 1
         if waitTimes >= 5:
-            print('已等待五次还未处理成功')
+            print('已等待五次还未处理成功，目前订单%s 状态是%s' %(orderId,OrderStatus))
+            exit()
     # 获取purchase_order对应订单记录
     data = getPurchaseOrder()
     #判断是否拆单
