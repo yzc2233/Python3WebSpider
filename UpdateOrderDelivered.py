@@ -14,11 +14,11 @@ config.read('properties.conf')
 allowedenv = config.get('allowedenv','allowedenv')
 allowedenv = allowedenv.split(',')
 
-# env = sys.argv[1]
-env = 'stage'
+env = sys.argv[1]
+# env = 'qa2'
 
 uid = sys.argv[2]
-# uid = '2001844981'
+# uid = '2000000070'
 
 OMS_IP = GetIP.getIp(env,'oms')
 Order_IP = GetIP.getIp(env,'order')
@@ -34,7 +34,7 @@ elif inputargvlength == 4:
     orderId = sys.argv[3]
 
 orderId = str(orderId)
-# orderId = '1149816957256463'
+# orderId = '1100707060115573'
 
 def get_SalesOrderStatus():
     print('-'*20,'开始获取sales_order中订单状态','-'*20)
