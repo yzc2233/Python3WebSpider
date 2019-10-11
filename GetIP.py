@@ -1,6 +1,20 @@
-import requests
-from bs4 import BeautifulSoup
 import sys
+import os
+
+try:
+    import requests
+except:
+    print('requests模块未安装，现在开始安装')
+    os.system('pip install requests')
+    import requests
+
+try:
+    from bs4 import BeautifulSoup
+except:
+    print('bs4模块未安装，现在开始安装')
+    os.system('pip install bs4')
+    from bs4 import BeautifulSoup
+
 
 def getIp(env='stage',service=''):
     service = service.lower()

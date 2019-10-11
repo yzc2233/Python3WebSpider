@@ -1,11 +1,30 @@
 #coding=utf-8
+import os
 import requests
-import pymysql
 import sys
-import json
-import configparser
 import GetIP
 import time
+
+try:
+    import pymysql
+except:
+    print('pymysql模块未安装，现在开始安装')
+    os.system('pip install pymysql')
+    import pymysql
+
+try:
+    import json
+except:
+    print('json模块未安装，现在开始安装')
+    os.system('pip install json')
+    import json
+
+try:
+    import configparser
+except:
+    print('configparser模块未安装，现在开始安装')
+    os.system('pip install configparser')
+    import configparser
 
 config =configparser.ConfigParser()
 config.read('properties.conf')
