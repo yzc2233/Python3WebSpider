@@ -4,6 +4,7 @@ import requests
 import sys
 import GetIP
 import time
+import json
 
 try:
     import pymysql
@@ -12,12 +13,6 @@ except:
     os.system('pip install pymysql')
     import pymysql
 
-try:
-    import json
-except:
-    print('json模块未安装，现在开始安装')
-    os.system('pip install json')
-    import json
 
 try:
     import configparser
