@@ -49,6 +49,107 @@
 #         print(Geese.wing)
 #         print(Geese.leg)
 # geese = Geese()
+#
+# class Cellphone:
+#     def __init__(self):
+#         self.__language = '手机默认语言为：英文'
+#     @property
+#     def cellphoelanguange(self):
+#         return self.__language
+#     @cellphoelanguange.setter
+#     def cellphoelanguange(self,defaultlanguage):
+#         self.__language = '将手机默认语言设置为' + defaultlanguage
+#
+# aa = Cellphone()
+# print(aa.cellphoelanguange)
+# aa.cellphoelanguange = 'fff'
+# print(aa.cellphoelanguange)
+#
+# import random
+# def checkCode():
+#     checkcode = ''
+#     for i  in range(0,4):
+#         index = random.randrange(0,4)
+#         if index != i and index + 1 != i:
+#             checkcode += chr(random.randint(97,122)) #a~z小写字母
+#         elif index + 1 == i:
+#             checkcode += chr(random.randint(65,90))#A~Z大写字母
+#         else:
+#             checkcode += str(random.randint(1,9)) # 1-9数字
+#     return checkcode
+# a = checkCode()
+# print('验证码',a)
+
+# help('modules')
+#
+# #大乐透
+# import random
+# def getcode():
+#     precode = ''
+#     backcode = ''
+#     code = ''
+#     for i in range(0,5):
+#         precode += '{:0>2d}'.format(random.randint(1,35))+' '
+#     for i in range(0,2):
+#         backcode += '{:0>2d}'.format(random.randint(1,12))+' '
+#     code = precode + ' '*5 + backcode
+#     print(code)
+#
+# def bighappy():
+#     print('大乐透号码生成器')
+#     count = int(input('请输入要生成的大乐透号码注数：'))
+#     for i in range(0,count):
+#         getcode()
+#
+#
+# if __name__ == '__main__':
+#     bighappy()
+#
+# #9.2.4
+# #分苹果（每个人至少分到一个苹果）
+# def division():
+#     appcount = int(input('请输入苹果个数：'))
+#     usercount = int(input('请输入小朋友人数：'))
+#     #assert appcount > usercount,'苹果太少了，不够分~'
+#     if appcount < usercount:
+#         raise ValueError('苹果太少了，不够分~')
+#     getcount = appcount // usercount
+#     remaincount = appcount - getcount * usercount
+#     if remaincount > 0:
+#         print('每个小朋友分到%s个苹果，还剩余%s个' %(getcount,remaincount))
+#     else:
+#         print('每个小朋友分到%s个苹果，正好分完' %getcount)
+#
+# if __name__ == '__main__':
+#     try:
+#         division()
+#     except ZeroDivisionError:
+#         print('苹果不能分给0个小朋友哦')
+#     except ValueError as e:
+#         print('出错了，请输入正确的人数和苹果个数',e)
+
+import this
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
