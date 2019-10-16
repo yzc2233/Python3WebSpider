@@ -29,6 +29,30 @@ def getIP(env='stage',service=''):
         print('环境输入有误，请输入qa2、stage或prd')
         exit()
 
+    res = requests.get(SwaggerURL)
+    res.encoding = 'GB2312'
+    soup = BeautifulSoup(res.text,'html.parser')
+    ans = soup.find_all(['a','_blank'])
+
+    ip = ''
+
+    for an in ans:
+        mlist = str(an.string)
+        if mlist.find(service) > 0:
+            ipInfo = mlist.split('-')
+            port = ipInfo[-1].split(':')
+            ip = 'http://' + ipInfo[-2] + ':' + port[-1]
+
+    if ip == '':
+        return '未找到对应Service的IP，请检查入参！'
+        exit()
+    else:
+        return ip
+
+
+
+
+
 
 
 
