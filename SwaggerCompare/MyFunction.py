@@ -30,8 +30,14 @@ def saveAPIJosn(path,data):
     filetime = time.strftime('%Y%m%d',time.localtime())
     filename = filetime+'.json'
     filepath = os.path.join(path,filename)
-    with open(filepath,'w',encoding='utf8') as file:
-        json.dump(data,file,ensure_ascii=False,indent=4,sort_keys=True)
+    try:
+        with open(filepath,'w',encoding='utf8') as file:
+            json.dump(data,file,ensure_ascii=False,indent=4,sort_keys=True)
+    except FileExistsError:
+        filename = filetime+'_new'+'.json'
+        filepath = os.path.join(path,filename)
+        with open(filepath,'w',encoding='utf8') as file:
+            json.dump(data,file,ensure_ascii=False,indent=4,sort_keys=True)
     return filepath
 
 #获取最近两个Swagger接口信息文件路径
