@@ -38,7 +38,7 @@ def getIP(env='stage',service=''):
 
     for an in ans:
         mlist = str(an.string)
-        if mlist.find(service) > 0:
+        if mlist.find(service) >= 0:
             ipInfo = mlist.split('-')
             port = ipInfo[-1].split(':')
             ip = 'http://' + ipInfo[-2] + ':' + port[-1]
@@ -49,18 +49,6 @@ def getIP(env='stage',service=''):
     else:
         return ip
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if __name__ == '__main__':
+    ip = getIP(env='stage',service='OMNI-CRMHUB-SERVICE')
+    print(ip)

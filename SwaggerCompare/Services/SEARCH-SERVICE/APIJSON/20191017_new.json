@@ -1,0 +1,2870 @@
+{
+    "basePath": "/",
+    "definitions": {
+        "AutoSuggestDto": {
+            "properties": {
+                "suggestCategoryDtoList": {
+                    "items": {
+                        "$ref": "#/definitions/SuggestCategoryDto"
+                    },
+                    "type": "array"
+                },
+                "suggestList": {
+                    "items": {
+                        "$ref": "#/definitions/SuggestKeyWordDto"
+                    },
+                    "type": "array"
+                },
+                "topProductList": {
+                    "items": {
+                        "$ref": "#/definitions/SuggestProductDto"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«AutoSuggestDto»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "$ref": "#/definitions/AutoSuggestDto",
+                    "description": "返回结果"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "CommonResponse«List«FacetBrandDto»»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "description": "返回结果",
+                    "items": {
+                        "$ref": "#/definitions/FacetBrandDto"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "CommonResponse«PageProductList»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "$ref": "#/definitions/PageProductList",
+                    "description": "返回结果"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "CommonResponse«SearchPageProductDto»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "$ref": "#/definitions/SearchPageProductDto",
+                    "description": "返回结果"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "CommonResponse«SuggestDto»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "$ref": "#/definitions/SuggestDto",
+                    "description": "返回结果"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "CommonResponse«long»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "description": "返回结果",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "FacetAttrDto": {
+            "properties": {
+                "identifier": {
+                    "type": "string"
+                },
+                "items": {
+                    "items": {
+                        "$ref": "#/definitions/FacetAttrItemDto"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "seoIdentifier": {
+                    "type": "string"
+                },
+                "sequence": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FacetAttrItemDto": {
+            "properties": {
+                "attrValueId": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "brandId": {
+                    "type": "string"
+                },
+                "brandLogoPath": {
+                    "type": "string"
+                },
+                "brandNameCN": {
+                    "type": "string"
+                },
+                "brandNameEN": {
+                    "type": "string"
+                },
+                "categoryId": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "checked": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "colorPath": {
+                    "type": "string"
+                },
+                "count": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "identifier": {
+                    "type": "string"
+                },
+                "pinYinValue": {
+                    "type": "string"
+                },
+                "seoIdentifier": {
+                    "type": "string"
+                },
+                "sequence": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "valueName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FacetBrandDto": {
+            "properties": {
+                "brandId": {
+                    "type": "string"
+                },
+                "brandLogoPath": {
+                    "type": "string"
+                },
+                "brandNameCN": {
+                    "type": "string"
+                },
+                "brandNameEN": {
+                    "type": "string"
+                },
+                "brandTitle": {
+                    "type": "string"
+                },
+                "checked": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "count": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "hasBrandStory": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "longDescription": {
+                    "type": "string"
+                },
+                "seoIdentifier": {
+                    "type": "string"
+                },
+                "sequence": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "simpleBrandNameEN": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FacetCategoryDto": {
+            "properties": {
+                "categoryId": {
+                    "type": "string"
+                },
+                "categoryLogoPath": {
+                    "type": "string"
+                },
+                "categoryName": {
+                    "type": "string"
+                },
+                "childFacetCategoriesMap": {
+                    "additionalProperties": {
+                        "$ref": "#/definitions/FacetCategoryDto"
+                    },
+                    "type": "object"
+                },
+                "count": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "sequence": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "FacetCategoryEntry": {
+            "properties": {
+                "categoryId": {
+                    "type": "string"
+                },
+                "categoryLogoPath": {
+                    "type": "string"
+                },
+                "categoryName": {
+                    "type": "string"
+                },
+                "checked": {
+                    "type": "boolean"
+                },
+                "childFacetCategories": {
+                    "items": {
+                        "$ref": "#/definitions/FacetCategoryEntry"
+                    },
+                    "type": "array"
+                },
+                "count": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "sequence": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "PageProductList": {
+            "properties": {
+                "attrWords": {
+                    "type": "string"
+                },
+                "brandStoryUrl": {
+                    "type": "string"
+                },
+                "brandStoryUrlForMobile": {
+                    "type": "string"
+                },
+                "categoryId": {
+                    "type": "string"
+                },
+                "categoryIds": {
+                    "type": "string"
+                },
+                "categoryTree": {
+                    "items": {
+                        "$ref": "#/definitions/FacetCategoryEntry"
+                    },
+                    "type": "array"
+                },
+                "categoryTreeMap": {
+                    "additionalProperties": {
+                        "$ref": "#/definitions/FacetCategoryDto"
+                    },
+                    "type": "object"
+                },
+                "content": {
+                    "items": {
+                        "$ref": "#/definitions/ProductListDto"
+                    },
+                    "type": "array"
+                },
+                "currentBrand": {
+                    "$ref": "#/definitions/FacetBrandDto"
+                },
+                "currentPage": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "facetAttrs": {
+                    "items": {
+                        "$ref": "#/definitions/FacetAttrDto"
+                    },
+                    "type": "array"
+                },
+                "facetBrands": {
+                    "items": {
+                        "$ref": "#/definitions/FacetBrandDto"
+                    },
+                    "type": "array"
+                },
+                "facetBrandsWithSorted": {
+                    "items": {
+                        "$ref": "#/definitions/FacetBrandDto"
+                    },
+                    "type": "array"
+                },
+                "facetCategories": {
+                    "items": {
+                        "$ref": "#/definitions/FacetCategoryDto"
+                    },
+                    "type": "array"
+                },
+                "filters": {
+                    "type": "string"
+                },
+                "funWords": {
+                    "type": "string"
+                },
+                "hasInventory": {
+                    "type": "string"
+                },
+                "hasNext": {
+                    "type": "boolean"
+                },
+                "hotWords": {
+                    "type": "string"
+                },
+                "keyWords": {
+                    "type": "string"
+                },
+                "notFoundKeyWord": {
+                    "type": "string"
+                },
+                "numberOfContent": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "rootCategoryId": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "rootCategoryName": {
+                    "type": "string"
+                },
+                "rootNickName": {
+                    "type": "string"
+                },
+                "searchType": {
+                    "type": "string"
+                },
+                "secondCategoryId": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "secondCategoryName": {
+                    "type": "string"
+                },
+                "secondNickName": {
+                    "type": "string"
+                },
+                "sortField": {
+                    "type": "string"
+                },
+                "sortMode": {
+                    "type": "string"
+                },
+                "swapWords": {
+                    "items": {
+                        "$ref": "#/definitions/SwapDetail"
+                    },
+                    "type": "array"
+                },
+                "thirdCategoryId": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "thirdCategoryName": {
+                    "type": "string"
+                },
+                "thirdNickName": {
+                    "type": "string"
+                },
+                "totalPages": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "totalRecord": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "ProductAdvertisementDto": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "imagePath": {
+                    "type": "string"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "sequance": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "ProductListDto": {
+            "properties": {
+                "brandCN": {
+                    "type": "string"
+                },
+                "brandEN": {
+                    "type": "string"
+                },
+                "hasInventory": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "hasNew": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "imagePath": {
+                    "type": "string"
+                },
+                "maxDiscountPrice": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "maxDisplayPrice": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "minDiscountPrice": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "minDisplayPrice": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "productCN": {
+                    "type": "string"
+                },
+                "productDetailUrl": {
+                    "type": "string"
+                },
+                "productEN": {
+                    "type": "string"
+                },
+                "productId": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "salesAmount": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "tagsList": {
+                    "items": {
+                        "$ref": "#/definitions/TagsDto"
+                    },
+                    "type": "array"
+                },
+                "weight": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "weightB": {
+                    "format": "double",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "SearchPageProductDto": {
+            "properties": {
+                "attrWords": {
+                    "type": "string"
+                },
+                "brandStoryUrl": {
+                    "type": "string"
+                },
+                "brandStoryUrlForMobile": {
+                    "type": "string"
+                },
+                "categoryId": {
+                    "type": "string"
+                },
+                "categoryIds": {
+                    "type": "string"
+                },
+                "categoryTree": {
+                    "items": {
+                        "$ref": "#/definitions/FacetCategoryEntry"
+                    },
+                    "type": "array"
+                },
+                "categoryTreeMap": {
+                    "additionalProperties": {
+                        "$ref": "#/definitions/FacetCategoryDto"
+                    },
+                    "type": "object"
+                },
+                "content": {
+                    "items": {
+                        "$ref": "#/definitions/Sections"
+                    },
+                    "type": "array"
+                },
+                "currentBrand": {
+                    "$ref": "#/definitions/FacetBrandDto"
+                },
+                "currentPage": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "facetAttrs": {
+                    "items": {
+                        "$ref": "#/definitions/FacetAttrDto"
+                    },
+                    "type": "array"
+                },
+                "facetBrands": {
+                    "items": {
+                        "$ref": "#/definitions/FacetBrandDto"
+                    },
+                    "type": "array"
+                },
+                "facetBrandsWithSorted": {
+                    "items": {
+                        "$ref": "#/definitions/FacetBrandDto"
+                    },
+                    "type": "array"
+                },
+                "facetCategories": {
+                    "items": {
+                        "$ref": "#/definitions/FacetCategoryDto"
+                    },
+                    "type": "array"
+                },
+                "filters": {
+                    "type": "string"
+                },
+                "funWords": {
+                    "type": "string"
+                },
+                "hasInventory": {
+                    "type": "string"
+                },
+                "hasNext": {
+                    "type": "boolean"
+                },
+                "hotWords": {
+                    "type": "string"
+                },
+                "keyWords": {
+                    "type": "string"
+                },
+                "notFoundKeyWord": {
+                    "type": "string"
+                },
+                "numberOfContent": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "rootCategoryId": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "rootCategoryName": {
+                    "type": "string"
+                },
+                "rootNickName": {
+                    "type": "string"
+                },
+                "searchType": {
+                    "type": "string"
+                },
+                "secondCategoryId": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "secondCategoryName": {
+                    "type": "string"
+                },
+                "secondNickName": {
+                    "type": "string"
+                },
+                "sortField": {
+                    "type": "string"
+                },
+                "sortMode": {
+                    "type": "string"
+                },
+                "swapWords": {
+                    "items": {
+                        "$ref": "#/definitions/SwapDetail"
+                    },
+                    "type": "array"
+                },
+                "thirdCategoryId": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "thirdCategoryName": {
+                    "type": "string"
+                },
+                "thirdNickName": {
+                    "type": "string"
+                },
+                "totalPages": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "totalRecord": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "Sections": {
+            "properties": {
+                "productAdvertisementDtos": {
+                    "items": {
+                        "$ref": "#/definitions/ProductAdvertisementDto"
+                    },
+                    "type": "array"
+                },
+                "productListDtos": {
+                    "items": {
+                        "$ref": "#/definitions/ProductListDto"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SimpleProductDto": {
+            "properties": {
+                "brandEN": {
+                    "type": "string"
+                },
+                "imagePath": {
+                    "type": "string"
+                },
+                "maxPrice": {
+                    "type": "number"
+                },
+                "minPrice": {
+                    "type": "number"
+                },
+                "productCN": {
+                    "type": "string"
+                },
+                "productDetailUrl": {
+                    "type": "string"
+                },
+                "productId": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "SuggestBrandDto": {
+            "properties": {
+                "suggestBrandCn": {
+                    "type": "string"
+                },
+                "suggestBrandCount": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "suggestBrandEn": {
+                    "type": "string"
+                },
+                "suggestBrandId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SuggestCategoryDto": {
+            "properties": {
+                "suggestCategoryCount": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "suggestCategoryId": {
+                    "type": "string"
+                },
+                "suggestCategoryName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SuggestDto": {
+            "properties": {
+                "suggestBrandDtoList": {
+                    "items": {
+                        "$ref": "#/definitions/SuggestBrandDto"
+                    },
+                    "type": "array"
+                },
+                "suggestList": {
+                    "items": {
+                        "$ref": "#/definitions/SuggestKeyWordDto"
+                    },
+                    "type": "array"
+                },
+                "suggestProductList": {
+                    "items": {
+                        "$ref": "#/definitions/SimpleProductDto"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SuggestKeyWordDto": {
+            "properties": {
+                "suggestKeyWord": {
+                    "type": "string"
+                },
+                "suggestKeyWordCount": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "SuggestProductDto": {
+            "properties": {
+                "salesQuantity": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "suggestCatentryId": {
+                    "type": "string"
+                },
+                "suggestProductName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SwapDetail": {
+            "properties": {
+                "appUri": {
+                    "type": "string"
+                },
+                "brandId": {
+                    "type": "string"
+                },
+                "brandName": {
+                    "type": "string"
+                },
+                "categoryId": {
+                    "type": "string"
+                },
+                "categoryName": {
+                    "type": "string"
+                },
+                "webUrl": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TagsDto": {
+            "properties": {
+                "tagKey": {
+                    "type": "string"
+                },
+                "tagValue": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "host": "10.157.24.140:10025",
+    "info": {
+        "contact": {},
+        "description": "服务接口文档",
+        "license": {},
+        "termsOfService": "https://www.sephora.cn",
+        "title": "丝芙兰产品List API文档",
+        "version": "2.0"
+    },
+    "paths": {
+        "/v1/search-service/brand/keyword": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "(品牌、分类、独家发售、功效、礼物套装、热搜、搜索)产品列表品牌过滤",
+                "operationId": "queryListFilterBrandsUsingGET",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "categoryId",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "keyWord",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "hotWords",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "attrWords",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "searchType",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "hasInventory",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "filters",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "searchBrandKeyWord",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "funWords",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "categoryIds",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "store",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "source",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "userId",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«FacetBrandDto»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "summary": "(品牌、分类、独家发售、功效、礼物套装、热搜、搜索)产品列表品牌过滤",
+                "tags": [
+                    "brand-search-controller"
+                ]
+            }
+        },
+        "/v1/search-service/cache/clear/attr": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "清除属性缓存",
+                "operationId": "clearAttrCacheUsingDELETE",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "summary": "清除属性缓存",
+                "tags": [
+                    "cache-management-controller"
+                ]
+            }
+        },
+        "/v1/search-service/cache/clear/attr-value": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "清除属性值缓存",
+                "operationId": "clearAttrValueCacheUsingDELETE",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "summary": "清除属性值缓存",
+                "tags": [
+                    "cache-management-controller"
+                ]
+            }
+        },
+        "/v1/search-service/cache/clear/brand": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "清除品牌相关缓存",
+                "operationId": "clearBrandCacheUsingDELETE",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "summary": "清除品牌相关缓存",
+                "tags": [
+                    "cache-management-controller"
+                ]
+            }
+        },
+        "/v1/search-service/cache/clear/brand-category-tree": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "清除品牌页分类树缓存",
+                "operationId": "removeBrandCategoryTreeCacheUsingDELETE",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "summary": "清除品牌页分类树缓存",
+                "tags": [
+                    "cache-management-controller"
+                ]
+            }
+        },
+        "/v1/search-service/cache/clear/brand/category-image": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "清除品牌页分类图片缓存",
+                "operationId": "clearCategoryImageForBrandCacheUsingDELETE",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "summary": "清除品牌页分类图片缓存",
+                "tags": [
+                    "cache-management-controller"
+                ]
+            }
+        },
+        "/v1/search-service/cache/clear/category": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "清除分类相关缓存",
+                "operationId": "clearCategoryCacheUsingDELETE",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "summary": "清除分类相关缓存",
+                "tags": [
+                    "cache-management-controller"
+                ]
+            }
+        },
+        "/v1/search-service/cache/clear/list": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "清除(品牌、分类、独家发售、功效、礼物套装、热搜)产品列表结果集缓存",
+                "operationId": "clearListCacheUsingDELETE",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "summary": "清除(品牌、分类、独家发售、功效、礼物套装、热搜)产品列表结果集缓存",
+                "tags": [
+                    "cache-management-controller"
+                ]
+            }
+        },
+        "/v1/search-service/cache/clear/product-nickname": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "清除产品昵称缓存",
+                "operationId": "clearProductNickNameCacheUsingDELETE",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "summary": "清除产品昵称缓存",
+                "tags": [
+                    "cache-management-controller"
+                ]
+            }
+        },
+        "/v1/search-service/cache/clear/product_search_list": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "清除搜索产品列表页缓存数据",
+                "operationId": "removeProductSearchListCacheUsingDELETE",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "summary": "清除搜索产品查询数据集(搜索产品列表)缓存",
+                "tags": [
+                    "cache-management-controller"
+                ]
+            }
+        },
+        "/v1/search-service/cache/clear/search-config": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "更新搜索逻辑相关参数缓存",
+                "operationId": "clearSearchConfigCacheUsingDELETE",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "summary": "更新搜索逻辑相关参数缓存",
+                "tags": [
+                    "cache-management-controller"
+                ]
+            }
+        },
+        "/v1/search-service/cache/clear/suggest": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "清除搜索联想缓存",
+                "operationId": "clearSuggestCacheUsingDELETE",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "summary": "清除搜索联想缓存",
+                "tags": [
+                    "cache-management-controller"
+                ]
+            }
+        },
+        "/v1/search-service/cache/clear/synonym": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "清除同义词缓存",
+                "operationId": "clearSynonymCacheUsingDELETE",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "summary": "清除同义词缓存",
+                "tags": [
+                    "cache-management-controller"
+                ]
+            }
+        },
+        "/v1/search-service/product/auto-suggest": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "搜索联想",
+                "operationId": "autoSuggestUsingGET",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "keyWord",
+                        "in": "query",
+                        "name": "keyWord",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«AutoSuggestDto»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "summary": "搜索联想",
+                "tags": [
+                    "auto-sugggest-controller"
+                ]
+            }
+        },
+        "/v1/search-service/product/list/brand": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "品牌商品搜索",
+                "operationId": "getProductByBrandUsingGET",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "页数",
+                        "in": "query",
+                        "name": "pageNum",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "每页条目数",
+                        "in": "query",
+                        "name": "pageSize",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序字段",
+                        "in": "query",
+                        "name": "sortField",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序方式",
+                        "in": "query",
+                        "name": "sortMode",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "仅看有货",
+                        "in": "query",
+                        "name": "hasInventory",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "筛选条件",
+                        "in": "query",
+                        "name": "filters",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商店",
+                        "in": "query",
+                        "name": "store",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商品类型",
+                        "in": "query",
+                        "name": "type",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品筛选属性显示排序方式",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "facetAttrSortMode",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "品牌ID",
+                        "in": "query",
+                        "name": "brandId",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "分类ID",
+                        "in": "query",
+                        "name": "brandCategoryId",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«PageProductList»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "summary": "品牌商品搜索",
+                "tags": [
+                    "product-list-controller"
+                ]
+            }
+        },
+        "/v1/search-service/product/list/category": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "分类商品搜索",
+                "operationId": "getProductByCategoryUsingGET",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "页数",
+                        "in": "query",
+                        "name": "pageNum",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "每页条目数",
+                        "in": "query",
+                        "name": "pageSize",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序字段",
+                        "in": "query",
+                        "name": "sortField",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序方式",
+                        "in": "query",
+                        "name": "sortMode",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "仅看有货",
+                        "in": "query",
+                        "name": "hasInventory",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "筛选条件",
+                        "in": "query",
+                        "name": "filters",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商店",
+                        "in": "query",
+                        "name": "store",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商品类型",
+                        "in": "query",
+                        "name": "type",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品筛选属性显示排序方式",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "facetAttrSortMode",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "分类ID",
+                        "in": "query",
+                        "name": "categoryId",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«PageProductList»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "summary": "分类商品搜索",
+                "tags": [
+                    "product-list-controller"
+                ]
+            }
+        },
+        "/v1/search-service/product/list/count": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "获取产品总数",
+                "operationId": "getProductCountUsingGET",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "categoryId",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "keyWords",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "hotWords",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "brandId",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "brandCategoryId",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "searchType",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "filters",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "hasInventory",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "verion",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "indexName",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "store",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«long»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "summary": "获取产品总数",
+                "tags": [
+                    "product-count-controller"
+                ]
+            }
+        },
+        "/v1/search-service/product/list/exclusive": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "独家商品搜索",
+                "operationId": "getProductByExclusiveUsingGET",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "页数",
+                        "in": "query",
+                        "name": "pageNum",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "每页条目数",
+                        "in": "query",
+                        "name": "pageSize",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序字段",
+                        "in": "query",
+                        "name": "sortField",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序方式",
+                        "in": "query",
+                        "name": "sortMode",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "仅看有货",
+                        "in": "query",
+                        "name": "hasInventory",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "筛选条件",
+                        "in": "query",
+                        "name": "filters",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商店",
+                        "in": "query",
+                        "name": "store",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商品类型",
+                        "in": "query",
+                        "name": "type",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品筛选属性显示排序方式",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "facetAttrSortMode",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«PageProductList»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "summary": "独家商品搜索",
+                "tags": [
+                    "product-list-controller"
+                ]
+            }
+        },
+        "/v1/search-service/product/list/function": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "功效商品搜索",
+                "operationId": "getProductByFunWordsUsingGET",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "页数",
+                        "in": "query",
+                        "name": "pageNum",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "每页条目数",
+                        "in": "query",
+                        "name": "pageSize",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序字段",
+                        "in": "query",
+                        "name": "sortField",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序方式",
+                        "in": "query",
+                        "name": "sortMode",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "仅看有货",
+                        "in": "query",
+                        "name": "hasInventory",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "筛选条件",
+                        "in": "query",
+                        "name": "filters",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商店",
+                        "in": "query",
+                        "name": "store",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商品类型",
+                        "in": "query",
+                        "name": "type",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品筛选属性显示排序方式",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "facetAttrSortMode",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "功效名称",
+                        "in": "query",
+                        "name": "funWords",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "分类ID组",
+                        "in": "query",
+                        "name": "categoryIds",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "属性名称",
+                        "in": "query",
+                        "name": "attrWords",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«PageProductList»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "summary": "功效商品搜索",
+                "tags": [
+                    "product-list-controller"
+                ]
+            }
+        },
+        "/v1/search-service/product/list/giftset": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "套装商品搜索",
+                "operationId": "getProductByGiftSetUsingGET",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "页数",
+                        "in": "query",
+                        "name": "pageNum",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "每页条目数",
+                        "in": "query",
+                        "name": "pageSize",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序字段",
+                        "in": "query",
+                        "name": "sortField",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序方式",
+                        "in": "query",
+                        "name": "sortMode",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "仅看有货",
+                        "in": "query",
+                        "name": "hasInventory",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "筛选条件",
+                        "in": "query",
+                        "name": "filters",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商店",
+                        "in": "query",
+                        "name": "store",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商品类型",
+                        "in": "query",
+                        "name": "type",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品筛选属性显示排序方式",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "facetAttrSortMode",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«PageProductList»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "summary": "套装商品搜索",
+                "tags": [
+                    "product-list-controller"
+                ]
+            }
+        },
+        "/v1/search-service/product/list/homepage/search-keywords": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "http://sephora06.chinacloudapp.cn:7223/pages/viewpage.action?pageId=7196911",
+                "operationId": "getProductByKeyWordsUsingGET",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "页数",
+                        "in": "query",
+                        "name": "pageNum",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "每页条目数",
+                        "in": "query",
+                        "name": "pageSize",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序字段",
+                        "in": "query",
+                        "name": "sortField",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序方式",
+                        "in": "query",
+                        "name": "sortMode",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "仅看有货",
+                        "in": "query",
+                        "name": "hasInventory",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "筛选条件",
+                        "in": "query",
+                        "name": "filters",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商店",
+                        "in": "query",
+                        "name": "store",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商品类型",
+                        "in": "query",
+                        "name": "type",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品筛选属性显示排序方式",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "facetAttrSortMode",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "搜索关键词",
+                        "in": "query",
+                        "name": "keyWords",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品ID",
+                        "in": "query",
+                        "name": "productId",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«SearchPageProductDto»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "summary": "获取搜索到的产品的基本信息和广告位",
+                "tags": [
+                    "product-search-list-controller"
+                ]
+            }
+        },
+        "/v1/search-service/product/list/hotwords": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "热搜词商品搜索",
+                "operationId": "getProductByHotWordsUsingGET",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "页数",
+                        "in": "query",
+                        "name": "pageNum",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "每页条目数",
+                        "in": "query",
+                        "name": "pageSize",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序字段",
+                        "in": "query",
+                        "name": "sortField",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序方式",
+                        "in": "query",
+                        "name": "sortMode",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "仅看有货",
+                        "in": "query",
+                        "name": "hasInventory",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "筛选条件",
+                        "in": "query",
+                        "name": "filters",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商店",
+                        "in": "query",
+                        "name": "store",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商品类型",
+                        "in": "query",
+                        "name": "type",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品筛选属性显示排序方式",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "facetAttrSortMode",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "热搜词",
+                        "in": "query",
+                        "name": "hotWords",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«PageProductList»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "summary": "热搜词商品搜索",
+                "tags": [
+                    "product-list-controller"
+                ]
+            }
+        },
+        "/v1/search-service/product/list/keyword": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "产品搜索",
+                "operationId": "getProductByKeyWordUsingGET",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "页数",
+                        "in": "query",
+                        "name": "pageNum",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "每页条目数",
+                        "in": "query",
+                        "name": "pageSize",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序字段",
+                        "in": "query",
+                        "name": "sortField",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序方式",
+                        "in": "query",
+                        "name": "sortMode",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "仅看有货",
+                        "in": "query",
+                        "name": "hasInventory",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "筛选条件",
+                        "in": "query",
+                        "name": "filters",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商店",
+                        "in": "query",
+                        "name": "store",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商品类型",
+                        "in": "query",
+                        "name": "type",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品筛选属性显示排序方式",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "facetAttrSortMode",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "搜索关键词",
+                        "in": "query",
+                        "name": "keyWords",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品ID",
+                        "in": "query",
+                        "name": "productId",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«PageProductList»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "summary": "产品搜索",
+                "tags": [
+                    "product-search-list-controller"
+                ]
+            }
+        },
+        "/v1/search-service/product/list/keyword-b": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "产品搜索 Bplan",
+                "operationId": "getProductByKeyWordsBplanUsingGET",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "页数",
+                        "in": "query",
+                        "name": "pageNum",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "每页条目数",
+                        "in": "query",
+                        "name": "pageSize",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序字段",
+                        "in": "query",
+                        "name": "sortField",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序方式",
+                        "in": "query",
+                        "name": "sortMode",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "仅看有货",
+                        "in": "query",
+                        "name": "hasInventory",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "筛选条件",
+                        "in": "query",
+                        "name": "filters",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商店",
+                        "in": "query",
+                        "name": "store",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商品类型",
+                        "in": "query",
+                        "name": "type",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品筛选属性显示排序方式",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "facetAttrSortMode",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "搜索关键词",
+                        "in": "query",
+                        "name": "keyWords",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品ID",
+                        "in": "query",
+                        "name": "productId",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«PageProductList»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "summary": "产品搜索 Bplan",
+                "tags": [
+                    "product-search-list-controller"
+                ]
+            }
+        },
+        "/v1/search-service/product/suggest": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "搜索联想",
+                "operationId": "suggestUsingGET",
+                "parameters": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "keyWord",
+                        "in": "query",
+                        "name": "keyWord",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«SuggestDto»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "summary": "搜索联想",
+                "tags": [
+                    "auto-sugggest-controller"
+                ]
+            }
+        }
+    },
+    "swagger": "2.0",
+    "tags": [
+        {
+            "description": "Brand Search Controller",
+            "name": "brand-search-controller"
+        },
+        {
+            "description": "Product Search List Controller",
+            "name": "product-search-list-controller"
+        },
+        {
+            "description": "Product Count Controller",
+            "name": "product-count-controller"
+        },
+        {
+            "description": "Auto Sugggest Controller",
+            "name": "auto-sugggest-controller"
+        },
+        {
+            "description": "Product List Controller",
+            "name": "product-list-controller"
+        },
+        {
+            "description": "Cache Management Controller",
+            "name": "cache-management-controller"
+        }
+    ]
+}
