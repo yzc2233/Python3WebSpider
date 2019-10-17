@@ -1,12 +1,12 @@
-# import os
-# import sys
+import os
+import sys
 #
-# try :
-#     import pygame
-# except ImportError:
-#     print('pygame未安装，现在开始安装')
-#     os.system('activate mypython36&&pip install pygame')
-#     import pygame
+try :
+    import pygame
+except ImportError:
+    print('pygame未安装，现在开始安装')
+    os.system('activate mypython36&&pip install pygame')
+    import pygame
 
 # import pygame
 # #初始化pygame
@@ -144,11 +144,13 @@ def checkdead():
     #下方管子的矩形位置
     downRect = pygame.Rect(Pipeline.wallx,500,Pipeline.pineDown.get_width()-10,Pipeline.pineDown.get_height())
 
-    if upRect.colliderect(Bird.birdRect) or downRect.colliderect(Bird.birdRect):
+    if upRect.colliderect(Bird.birdRect) or downRect.colliderect(Bird.birdRect) or Bird.birdY < 0 or Bird.birdY > 650:
         Bird.dead = True
         return  True
     else:
         return False
+
+
 
 def getResult():
     final_text1 = 'Game Over'
