@@ -32,7 +32,8 @@ def saveAPIJosn(path,data):
     filetime = time.strftime('%Y%m%d',time.localtime())
     filename = filetime+'.json'
     filepath = os.path.join(path,filename)
-    if os.listdir(path) == 1:
+    print(os.listdir(path))
+    if len(os.listdir(path)) == 1:
         filename = filetime+'_new'+'.json'
         filepath = os.path.join(path,filename)
     with open(filepath,'w',encoding='utf8') as file:
