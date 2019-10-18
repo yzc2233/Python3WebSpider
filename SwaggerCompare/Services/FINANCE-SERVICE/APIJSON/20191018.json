@@ -1518,6 +1518,15 @@
                 ],
                 "description": "调用对账",
                 "operationId": "reconciliationUsingGET",
+                "parameters": [
+                    {
+                        "description": "salesOrderNumber",
+                        "in": "query",
+                        "name": "salesOrderNumber",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
                 "produces": [
                     "*/*"
                 ],

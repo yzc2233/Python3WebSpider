@@ -37,7 +37,10 @@ def main(realservicelist):
         c.CompareTwoFileAndSave(oldFilePath,newFilePath,APICompare_Dir)
 
 if __name__ == '__main__':
-    serviceIndex = int(input('请输入service序号：'))
+    if len(sys.argv) == 1:
+        serviceIndex = int(input('请输入service序号：'))
+    else:
+        serviceIndex = int(sys.argv[1])
     # serviceIndex = 23
     realservicelist = []
     if serviceIndex != 0:
