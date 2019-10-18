@@ -8,19 +8,11 @@
         "删除接口详情": [],
         "新增接口详情": [
             [
-                "DELETE",
-                "/v1/management/switch/dashboard"
-            ],
-            [
                 "POST",
                 "/v1/management/switch/dashboard"
             ],
             [
-                "PATCH",
-                "/v1/management/switch/dashboard"
-            ],
-            [
-                "HEAD",
+                "DELETE",
                 "/v1/management/switch/dashboard"
             ],
             [
@@ -28,11 +20,19 @@
                 "/v1/management/switch/dashboard"
             ],
             [
+                "GET",
+                "/v1/management/switch/dashboard"
+            ],
+            [
+                "HEAD",
+                "/v1/management/switch/dashboard"
+            ],
+            [
                 "OPTIONS",
                 "/v1/management/switch/dashboard"
             ],
             [
-                "GET",
+                "PATCH",
                 "/v1/management/switch/dashboard"
             ]
         ],

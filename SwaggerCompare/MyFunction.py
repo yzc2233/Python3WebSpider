@@ -3,6 +3,7 @@ import json
 import time
 import requests
 import getIP
+import cmdprintcolor
 
 #检查service文件夹是否存在，不存在则创建
 def createServiceDir(service):
@@ -112,18 +113,31 @@ def savecompareresult(oldFilePath,newFilePath,APICompare_Dir,checkresult):
         json.dump(checkresult,file,ensure_ascii=False,indent=4,sort_keys=True)
     return difFilepath
 
+#判断是否高亮输出
+def lightoutprint(count,highlight=0):
+    if highlight != 0 or count > 0:
+        cmdprintcolor.printYellowRed(str(count)+'\n')
+        cmdprintcolor.resetColor()
+        # print("\033[1;31;40m%s\033[0m" %count)
+    else:
+        print(count)
+
 #显示对比结果
 def showCompareResults(difFilepath,checkresult):
-    print("""
-    对比结果保存路径：%s
-    1、上一版本接口个数：%s
-    2、当前接口个数：%s
-    3、新增接口数：%s
-    4、删除接口数：%s
-    5、修改接口数：%s
-    6、检查结果：
-    """ %(difFilepath,checkresult['1、上一版本接口个数'],checkresult['2、当前接口个数'],
-          checkresult['3、新增接口数'],checkresult['4、删除接口数'],checkresult['5、修改接口数']),end='')
+    addcount = checkresult['3、新增接口数']
+    deltecount = checkresult['4、删除接口数']
+    modifycount = checkresult['5、修改接口数']
+    print("""对比结果保存路径：%s
+1、上一版本接口个数：%s
+2、当前接口个数：%s
+""" %(difFilepath,checkresult['1、上一版本接口个数'],checkresult['2、当前接口个数']),end='')
+    print("3、新增接口数：",end='')
+    lightoutprint(addcount)
+    print('4、删除接口数：',end='')
+    lightoutprint(deltecount)
+    print('5、修改接口数：',end='')
+    lightoutprint(modifycount)
+    print("6、检查结果：")
     print('\t新增接口详情：')
     if len(checkresult['6、检查结果']['新增接口详情']):
         for i in checkresult['6、检查结果']['新增接口详情']:
@@ -147,6 +161,7 @@ def showCompareResults(difFilepath,checkresult):
             seq += 1
     else:
         print('\t\t无')
+    print('\n\n')
 
 
 

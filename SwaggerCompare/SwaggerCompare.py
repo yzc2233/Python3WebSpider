@@ -41,7 +41,7 @@ if __name__ == '__main__':
         serviceIndex = int(input('请输入service序号：'))
     else:
         serviceIndex = int(sys.argv[1])
-    # serviceIndex = 23
+    # serviceIndex = 19
     realservicelist = []
     if serviceIndex != 0:
         realservicelist.append(serviceList[serviceIndex])
