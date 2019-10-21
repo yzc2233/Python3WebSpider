@@ -8,6 +8,8 @@ import pymysql
 import GetIP
 import requests
 
+signTime = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime())
+
 config = configparser.ConfigParser()
 config.read('properties.conf')
 
@@ -126,7 +128,8 @@ def updateOrder_NotSpilt(data):
     print('-'*20,'开始非拆单情况下更新订单数据','-'*20)
     conn = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'oms')
     cur = conn.cursor()
-    sql = "update purchase_order set ORDER_INTERNAL_STATUS ='SIGNED',SIGN_TIME='2019-09-20 09:47:39' where PURCHASE_ORDER_NUMBER="+"'"+data[0][0]+"';"
+    # sql = "update purchase_order set ORDER_INTERNAL_STATUS ='SIGNED',SIGN_TIME='2019-09-20 09:47:39' where PURCHASE_ORDER_NUMBER="+"'"+data[0][0]+"';"
+    sql = ("update purchase_order set ORDER_INTERNAL_STATUS ='SIGNED',SIGN_TIME='%s' where PURCHASE_ORDER_NUMBER='%s';" %(signTime,data[0][0]))
     sql2  = "update sales_order set ORDER_INTERNAL_STATUS='SIGNED' where  SALES_ORDER_NUMBER="+"'"+orderId+"';"
     try:
         cur.execute(sql)
@@ -149,7 +152,8 @@ def updateOrder_IsSpilt(data):
     length = len(data)
     conn = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'oms')
     cur = conn.cursor()
-    sql = "update purchase_order set ORDER_INTERNAL_STATUS ='SIGNED/SIGNED',SIGN_TIME='2019-09-20 09:47:39' where PURCHASE_ORDER_NUMBER="+"'"+data[0][0]+"';"
+    # sql = "update purchase_order set ORDER_INTERNAL_STATUS ='SIGNED/SIGNED',SIGN_TIME='2019-09-20 09:47:39' where PURCHASE_ORDER_NUMBER="+"'"+data[0][0]+"';"
+    sql = ("update purchase_order set ORDER_INTERNAL_STATUS ='SIGNED/SIGNED',SIGN_TIME='%s' where PURCHASE_ORDER_NUMBER='%s';" %(signTime,data[0][0]))
     sql2  = "update sales_order set ORDER_INTERNAL_STATUS='SIGNED/SIGNED' where  SALES_ORDER_NUMBER="+"'"+orderId+"';"
     try:
         for i in range(1,length):
@@ -232,4 +236,5 @@ def UpdateOrderDelivered():
     print('%s环境已生成已签收订单：%s' % (env,orderId))
 
 if __name__ == '__main__':
+    # pass
     UpdateOrderDelivered()
