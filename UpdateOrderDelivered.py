@@ -157,7 +157,8 @@ def updateOrder_IsSpilt(data):
     sql2  = "update sales_order set ORDER_INTERNAL_STATUS='SIGNED/SIGNED' where  SALES_ORDER_NUMBER="+"'"+orderId+"';"
     try:
         for i in range(1,length):
-            sql3 = updatepurchase_sql3 = "update purchase_order set ORDER_INTERNAL_STATUS ='SIGNED',SIGN_TIME='2019-09-20 09:47:39' where PURCHASE_ORDER_NUMBER="+"'"+data[i][0]+"';"
+            # sql3 = updatepurchase_sql3 = "update purchase_order set ORDER_INTERNAL_STATUS ='SIGNED',SIGN_TIME='2019-09-20 09:47:39' where PURCHASE_ORDER_NUMBER="+"'"+data[i][0]+"';"
+            sql3 =  ("update purchase_order set ORDER_INTERNAL_STATUS ='SIGNED',SIGN_TIME='%s' where PURCHASE_ORDER_NUMBER='%s';"  %(signTime,data[i][0]))
             cur.execute(sql3)
             print(sql3)
         cur.execute(sql)
