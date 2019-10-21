@@ -156,8 +156,8 @@ def showCompareResults(difFilepath,checkresult):
         for i in checkresult['6、检查结果']['编辑接口详情']:
             print('\t\t编辑接口：',seq)
             print('\t\t\t(1)路径：',i['(1)路径'])
-            print('\t\t\t(2)上一版本入参：',i['(2)上一版本入参'])
-            print('\t\t\t(3)当前版本入参：',i['(3)当前版本入参'],'\n')
+            print('\t\t\t(2)上一版本入参：',i['(2)上一版本入参'],'\n')
+            print('\t\t\t(3)当前版本入参：',i['(3)当前版本入参'],'\n\n')
             seq += 1
     else:
         print('\t\t无')
