@@ -1,13 +1,15 @@
 import os
 import json
 import sys
-import MyFunction as f
-import CompareTwoFileAndSave as c
+from myFunction import *
+from compareTwoFileAndSave import *
 
 serviceList = ['ALL service','COMMUNITY-CORE-SERVICE','CRM-SERVICE','FINANCE-SERVICE','INV-SERVICE',
                'KOL-SERVICE','MARKETING-ACTIVITY-SERVICE','MESSAGES-SERVICE','MP-CMS-SERVICE',
                'MYACCOUNT-PORTAL-SERVICE','MYACCOUNT-SERVICE','OFFLINE-SHOP-SERVICE','OMNI-CRMHUB-SERVICE',
-               'ORDER-SERVICE','PIM-BACKEND','PRODUCT-SERVICE','PROMOTION-SERVICE','SEARCH-SERVICE',
+              # 'OMNI-MEMBER-MSG-SERVICE','OMNI-ORDERCENTER-SERVICE',
+               'ORDER-SERVICE','PIM-BACKEND',
+               'PRODUCT-SERVICE','PROMOTION-SERVICE','SEARCH-SERVICE',
                'SHOP-CART-SERVICE','SOA-MANAGEMENT','OMS-SERVICE','WCS-SERVICE','WECHATCENTER-SERVICE']
 print('命令示例：python SwaggerCompare.py 1')
 print('示例中的1是service序号，以下为各service序号(0代表以下所有services)')
@@ -22,19 +24,19 @@ def main(realservicelist):
 
         ##拉取最新的Swagger接口信息并保存
         if service_isExist:
-            APIJson = f.getAPIJosn(service)
-            f.saveAPIJosn(APIJson_Dir,APIJson)
+            APIJson = getAPIJosn(service)
+            saveAPIJosn(APIJson_Dir,APIJson)
         else:
-            APIJson1 = f.getAPIJosn(service)
-            f.saveAPIJosn(APIJson_Dir,APIJson1)
-            APIJson2 = f.getAPIJosn(service)
-            f.saveAPIJosn(APIJson_Dir,APIJson2)
+            APIJson1 = getAPIJosn(service)
+            saveAPIJosn(APIJson_Dir,APIJson1)
+            APIJson2 = getAPIJosn(service)
+            saveAPIJosn(APIJson_Dir,APIJson2)
 
         #获取当前service最新的Json文件和上一文件
-        oldFilePath,newFilePath = f.getOldAndNewFilePath(APIJson_Dir)
+        oldFilePath,newFilePath = getOldAndNewFilePath(APIJson_Dir)
 
         #对比两个文件保存结果并展示
-        c.CompareTwoFileAndSave(oldFilePath,newFilePath,APICompare_Dir)
+        CompareTwoFileAndSave(oldFilePath,newFilePath,APICompare_Dir)
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
@@ -48,3 +50,4 @@ if __name__ == '__main__':
     else:
         realservicelist = serviceList[1:]
     main(realservicelist)
+

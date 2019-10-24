@@ -1,6 +1,6 @@
 import os
 import sys
-import MyFunction as f
+import myFunction as f
 
 def CompareTwoFileAndSave(oldFilePath,newFilePath,APICompare_Dir):
     #获取两个文件的数据

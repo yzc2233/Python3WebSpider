@@ -84,6 +84,51 @@ def getAddAndDeleteCount(oldAPIList,newAPIList):
             addCount += 1
     return addCount,addList,deleteCount,deleteList
 
+#字典对比
+def compareDic(dic_old,dic2_new):
+    """对比两个字典的区别，以dic_old为主体进行对比，dic2_new新增key、删除key、value变更"""
+    # dic_old = dict(dic_old)
+    # dic2_new = dict(dic2_new)
+    dict1 = {'a':2,'b':2,'c':3,'d':4}
+    dict2 = {'a':1,'b':2,'c':5,'e':6,'g':4}
+    #新增的key
+    addDictList = []
+    addkey = list(dict2.keys()-dict1.keys())
+    for key in addkey:
+        addDict = {key:dict2[key]}
+        addDictList.append(addDict)
+    print(addDictList)
+    #删除的key
+    delDictList = []
+    delkey = list(dict1.keys()-dict2.keys())
+    for key in delkey:
+        delDict = {key:dict1[key]}
+        delDictList.append(delDict)
+    # 字典值不同
+    allkey = dict1.keys() & dict2.keys()
+    modifyDictList = [({'Key':k, '原值':dict1[k], '当前值':dict2[k]}) for k in allkey if dict1[k] != dict2[k]]
+    diffResult = {'新增key列表':addDictList,'删除key列表':delDictList,'编辑key列表':modifyDictList}
+    return diffResult
+
+#对比接口入参列表
+def compareParametersList(list_old,list_new):
+    list_old =  list(list_old)
+    list_new = list(list_new)
+    oldParameter = []
+    for i in list_old:
+        x = {i['in']:i['name']}
+        oldParameter.append(x)
+    print(oldParameter)
+    newParameter = []
+    for i in list_new:
+        x = {i['in']:i['name']}
+        newParameter.append(x)
+    print(newParameter)
+    addParameList = list(x for x in newParameter if x not in oldParameter)
+    delParameList = list(x for x in oldParameter if x not in newParameter)
+    difflist = {'新增参数':addParameList,'删除参数':delParameList}
+    return difflist
+
 #获取接口编辑对比结果
 def getmodifyresult(oldAPIList,newAPIList,oldFileData,newFileData):
     modifyCount = 0 #修改接口数
@@ -98,11 +143,17 @@ def getmodifyresult(oldAPIList,newAPIList,oldFileData,newFileData):
                 if oldapiparameters == newapiparameters:
                     pass
                 else:
-                    modifyContent['(1)路径'] = api[0] + api[1]
-                    modifyContent['(2)上一版本入参'] = oldapiparameters
-                    modifyContent['(3)当前版本入参'] = newapiparameters
-                    modifyList.append(modifyContent)
-                    modifyCount += 1
+                    print('修改后')
+                    for apiparameter in oldapiparameters:
+                        pass
+
+
+
+                    # modifyContent['(1)路径'] = api[0] + api[1]
+                    # modifyContent['(2)上一版本入参'] = oldapiparameters
+                    # modifyContent['(3)当前版本入参'] = newapiparameters
+                    # modifyList.append(modifyContent)
+                    # modifyCount += 1
     return modifyCount,modifyList
 
 def savecompareresult(oldFilePath,newFilePath,APICompare_Dir,checkresult):
