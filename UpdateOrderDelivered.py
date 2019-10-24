@@ -57,7 +57,7 @@ def get_SalesOrderStatus():
         exit()
     finally:
         cur.close()
-        print('-'*20,'获取sales_order中订单状态结束','-'*20 ,'\n\n')
+    print('-'*20,'获取sales_order中订单状态结束','-'*20 ,'\n\n')
 
 def dealPending():
     print('-'*20,'开始处理Pending状态订单','-'*20)
@@ -87,7 +87,6 @@ def dealException(orderSysId):
             print('等待3s')
             time.sleep(3)
         print('处理Exception状态订单成功')
-
     print('-'*20,'处理Exception状态订单结束','-'*20 ,'\n\n')
 
 def dealWaitSend(sec):
@@ -103,18 +102,17 @@ def getPurchaseOrder():
     cur = conn.cursor()
     sql = "select a.PURCHASE_ORDER_NUMBER,a.SIGN_TIME,a.ORDER_INTERNAL_STATUS  from purchase_order a where a.SALES_ORDER_NUMBER=" + "'" + orderId + "';"
     print(sql)
-    try:
-        cur.execute(sql)
-        data = cur.fetchall()
-        print('成功获取purchase_order对应订单记录\n\n %s' %str(data))
+    cur.execute(sql)
+    data = cur.fetchall()
+    if len(data):
+        print('成功获取purchase_order对应订单记录\n %s' %str(data))
         return data
-    except:
-        print('获取purchase_order对应订单记录失败')
+    else:
+        print('获取purchase_order对应订单记录失败，未获取到相应记录')
         cur.close()
         exit()
-    finally:
-        cur.close()
-        print('-'*20,'获取purchase_order对应订单记录结束','-'*20 ,'\n\n')
+    cur.close()
+    print('-'*20,'获取purchase_order对应订单记录结束','-'*20 ,'\n\n')
 
 
 def IsSplit(data):
@@ -145,7 +143,7 @@ def updateOrder_NotSpilt(data):
         exit()
     finally:
         cur.close()
-        print('-'*20,'非拆单情况下更新订单数据结束','-'*20 ,'\n\n')
+    print('-'*20,'非拆单情况下更新订单数据结束','-'*20 ,'\n\n')
 
 def updateOrder_IsSpilt(data):
     print('-'*20,'开始拆单情况下更新订单数据','-'*20)
@@ -174,7 +172,7 @@ def updateOrder_IsSpilt(data):
         exit()
     finally:
         cur.close()
-        print('-'*20,'拆单情况下更新订单数据结束','-'*20 ,'\n\n')
+    print('-'*20,'拆单情况下更新订单数据结束','-'*20 ,'\n\n')
 
 def orderStatusSync():
     print('-'*20,'开始修改订单状态','-'*20)

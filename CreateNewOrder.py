@@ -189,7 +189,7 @@ def forwadOnehour(orderId):
     print(sql)
     cursor.execute(sql)
     data = cursor.fetchone()
-    if not data == 0:
+    if not data:
         print('未找到订单号为 %s 的记录' %orderId)
         exit()
     print('数据库开始将订单号为 %s 的订单记录创建时间提前一小时' %orderId)
