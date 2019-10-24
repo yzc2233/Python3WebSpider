@@ -174,7 +174,6 @@ def orderSync(orderId):
         exit()
     else:
         print('推送订单至OMS并索引至elasticSearch成功')
-        time.sleep(3)
     print('-'*20,'推送订单至OMS并索引至elasticSearch结束','-'*20 ,'\n\n')
 
 def forwadOnehour(orderId):
@@ -222,11 +221,12 @@ def CreateNewOrder():
     changePayment()
     ## 提交订单
     orderId = addOrders()
-    time.sleep(5)
+    time.sleep(3)
     ## 将订单提前一小时
     forwadOnehour(orderId)
     ## 推送订单至OMS并索引至elasticSearch
     orderSync(orderId)
+    print('%s环境创建处理中订单成功，订单号：%s\n' %(env,orderId))
     return orderId
 
 
