@@ -1040,7 +1040,6 @@ soup = BeautifulSoup(html,'lxml')
 #     print('String',li.string)
 #
 
-
 print( 'a' in 'a')
 
 
