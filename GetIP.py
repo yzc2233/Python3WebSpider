@@ -36,7 +36,7 @@ def getIp(env='stage',service=''):
     ip = ''
     for an in ans:
         mlist = str(an.string)
-        if mlist.find(service) > 0:
+        if mlist.find(service) >= 0:
             ipInfo = mlist.split('-')
             port = ipInfo[-1].split(':')
             ip = 'http://' + ipInfo[-2] +':' + port[-1]

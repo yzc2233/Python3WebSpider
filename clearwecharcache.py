@@ -64,8 +64,8 @@ def clearCurrentBindActiveMobileCached():
 #清除CRMHUB手机号对应默认卡缓存
 def clearcachemobiledefaultcard():
     print('*'*10,'清除CRMHUB手机号对应默认卡缓存','--开始','*'*10)
-    clearCurrentBindActiveMobileCached_url = crmhub_ip+'/v1/omni/crm/hub/cache/mobile/default/card?mobile='+mobile
-    req = requests.get(clearCurrentBindActiveMobileCached_url)
+    clearcachemobiledefaultcard_url = crmhub_ip+'/v1/omni/crm/hub/cache/mobile/default/card?mobile='+mobile
+    req = requests.delete(clearcachemobiledefaultcard_url)
     reqstatus = req.status_code
     if reqstatus != 200:
         print('清除CRMHUB手机号对应默认卡缓存,接口status：',reqstatus)
