@@ -1,0 +1,1724 @@
+{
+    "basePath": "/",
+    "definitions": {
+        "AppBroadcastRequest": {
+            "properties": {
+                "appCode": {
+                    "type": "string"
+                },
+                "custom": {
+                    "type": "string"
+                },
+                "displayType": {
+                    "type": "string"
+                },
+                "productionMode": {
+                    "type": "boolean"
+                },
+                "subtitle": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AppMultiPushRequest": {
+            "properties": {
+                "appCode": {
+                    "type": "string"
+                },
+                "cid": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "custom": {
+                    "type": "string"
+                },
+                "displayType": {
+                    "type": "string"
+                },
+                "productionMode": {
+                    "type": "boolean"
+                },
+                "subtitle": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AppSinglePushRequest": {
+            "properties": {
+                "appCode": {
+                    "type": "string"
+                },
+                "cid": {
+                    "type": "string"
+                },
+                "custom": {
+                    "type": "string"
+                },
+                "displayType": {
+                    "type": "string"
+                },
+                "productionMode": {
+                    "type": "boolean"
+                },
+                "subtitle": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Collection«object»": {
+            "type": "object"
+        },
+        "CommonResponse«string»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "description": "返回结果",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "Data": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "EdmSendRequest": {
+            "properties": {
+                "args": {
+                    "type": "string"
+                },
+                "channel": {
+                    "type": "string"
+                },
+                "templId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "HashMap«string,string»": {
+            "additionalProperties": {
+                "type": "string"
+            },
+            "type": "object"
+        },
+        "MailTemplateDto": {
+            "properties": {
+                "templId": {
+                    "type": "string"
+                },
+                "template": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "MpTemplateMsgDto": {
+            "properties": {
+                "appid": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "object"
+                },
+                "miniprogram": {
+                    "$ref": "#/definitions/MpTemplateMsgMiniProgramDto"
+                },
+                "template_id": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "MpTemplateMsgMiniProgramDto": {
+            "properties": {
+                "appid": {
+                    "type": "string"
+                },
+                "pagepath": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PersistentFormIdRequest": {
+            "properties": {
+                "args": {
+                    "type": "string"
+                },
+                "formId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "QueryApiHistoryResponseWraper": {
+            "properties": {
+                "code": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "list": {
+                    "$ref": "#/definitions/Collection«object»"
+                },
+                "total": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "SendData": {
+            "properties": {
+                "data": {
+                    "items": {
+                        "$ref": "#/definitions/Data"
+                    },
+                    "type": "array"
+                },
+                "openId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SendDataV2": {
+            "properties": {
+                "data": {
+                    "items": {
+                        "$ref": "#/definitions/Data"
+                    },
+                    "type": "array"
+                },
+                "miniprogramParam": {
+                    "type": "object"
+                },
+                "openId": {
+                    "type": "string"
+                },
+                "urlParam": {
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "SendTemplateMessageRequest": {
+            "properties": {
+                "data": {
+                    "type": "object"
+                },
+                "emphasis_keyword": {
+                    "type": "string"
+                },
+                "form_id": {
+                    "type": "string"
+                },
+                "page": {
+                    "type": "string"
+                },
+                "template_id": {
+                    "type": "string"
+                },
+                "touser": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SendTemplateMessageUseLocalFormIdRequest": {
+            "properties": {
+                "args": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "object"
+                },
+                "emphasis_keyword": {
+                    "type": "string"
+                },
+                "page": {
+                    "type": "string"
+                },
+                "template_id": {
+                    "type": "string"
+                },
+                "touser": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SendUniformMessageRequestDto": {
+            "properties": {
+                "mp_template_msg": {
+                    "$ref": "#/definitions/MpTemplateMsgDto"
+                },
+                "touser": {
+                    "type": "string"
+                },
+                "weapp_template_msg": {
+                    "$ref": "#/definitions/WeAppTemplateMsgDto"
+                }
+            },
+            "type": "object"
+        },
+        "SmsCallbackRequest": {
+            "properties": {
+                "channel": {
+                    "type": "string"
+                },
+                "extend": {
+                    "type": "string"
+                },
+                "mobile": {
+                    "type": "string"
+                },
+                "nationcode": {
+                    "type": "string"
+                },
+                "sign": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "time": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "SmsCallbackResponse": {
+            "properties": {
+                "errmsg": {
+                    "type": "string"
+                },
+                "result": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "SmsMultiSendV1Request": {
+            "properties": {
+                "channel": {
+                    "type": "string"
+                },
+                "nationCode": {
+                    "type": "string"
+                },
+                "params": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "phoneNumbers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "sign": {
+                    "type": "string"
+                },
+                "templId": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "SmsMultiSendV2Request": {
+            "properties": {
+                "channel": {
+                    "type": "string"
+                },
+                "nationCode": {
+                    "type": "string"
+                },
+                "params": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "paramsMap": {
+                    "items": {
+                        "$ref": "#/definitions/HashMap«string,string»"
+                    },
+                    "type": "array"
+                },
+                "phoneNumbers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "sign": {
+                    "type": "string"
+                },
+                "templCode": {
+                    "type": "string"
+                },
+                "templId": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "SmsSingleSendV1Request": {
+            "properties": {
+                "channel": {
+                    "type": "string"
+                },
+                "nationCode": {
+                    "type": "string"
+                },
+                "params": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "phoneNumber": {
+                    "type": "string"
+                },
+                "sign": {
+                    "type": "string"
+                },
+                "templId": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "SmsSingleSendV2Request": {
+            "properties": {
+                "channel": {
+                    "type": "string"
+                },
+                "nationCode": {
+                    "type": "string"
+                },
+                "paramMap": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object"
+                },
+                "params": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "phoneNumber": {
+                    "type": "string"
+                },
+                "sign": {
+                    "type": "string"
+                },
+                "templCode": {
+                    "type": "string"
+                },
+                "templId": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "TextContent": {
+            "properties": {
+                "content": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "WeAppTemplateMsgDto": {
+            "properties": {
+                "data": {
+                    "type": "object"
+                },
+                "emphasis_keyword": {
+                    "type": "string"
+                },
+                "form_id": {
+                    "type": "string"
+                },
+                "page": {
+                    "type": "string"
+                },
+                "template_id": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "WechatTemplatePushRequest": {
+            "properties": {
+                "channel": {
+                    "type": "string"
+                },
+                "localId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "sendData": {
+                    "items": {
+                        "$ref": "#/definitions/SendData"
+                    },
+                    "type": "array"
+                },
+                "sendType": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "wxId": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "WechatTemplatePushV2Request": {
+            "properties": {
+                "localId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "sendData": {
+                    "items": {
+                        "$ref": "#/definitions/SendDataV2"
+                    },
+                    "type": "array"
+                },
+                "sendType": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "wxId": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "WechatTextPushRequest": {
+            "properties": {
+                "channel": {
+                    "type": "string"
+                },
+                "text": {
+                    "$ref": "#/definitions/TextContent"
+                },
+                "touser": {
+                    "type": "string"
+                },
+                "wxCode": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "host": "10.157.24.133:10014",
+    "info": {
+        "description": "API Doc for messages service.",
+        "license": {
+            "name": "Sephora Home",
+            "url": "http://www.sephora.cn"
+        },
+        "termsOfService": "http://www.sephora.cn",
+        "title": "messages service API Doc",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/v1/messages/app/broadcast": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "broadcastUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AppBroadcastRequest"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "App Broadcast Push.",
+                "tags": [
+                    "app-push-messages-controller"
+                ]
+            }
+        },
+        "/v1/messages/app/multi/push": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "multiPushUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AppMultiPushRequest"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "App Multi Push.",
+                "tags": [
+                    "app-push-messages-controller"
+                ]
+            }
+        },
+        "/v1/messages/app/single/push": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "singlePushUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AppSinglePushRequest"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "App Single Push.",
+                "tags": [
+                    "app-push-messages-controller"
+                ]
+            }
+        },
+        "/v1/messages/edm/send": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "singleSendUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "edmDto",
+                        "in": "body",
+                        "name": "edmDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/EdmSendRequest"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "Send EDM.",
+                "tags": [
+                    "edm-messages-controller"
+                ]
+            }
+        },
+        "/v1/messages/edm/template": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "createTemplateUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "mailTemplateDto",
+                        "in": "body",
+                        "name": "mailTemplateDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/MailTemplateDto"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "Create mail template.",
+                "tags": [
+                    "edm-messages-controller"
+                ]
+            },
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "updateTemplateUsingPUT",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "mailTemplateDto",
+                        "in": "body",
+                        "name": "mailTemplateDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/MailTemplateDto"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "Update mail template.",
+                "tags": [
+                    "edm-messages-controller"
+                ]
+            }
+        },
+        "/v1/messages/edm/template/cache/{templId}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "checkTemplateCacheUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "templId",
+                        "in": "path",
+                        "name": "templId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/MailTemplateDto"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "Check mail template cache.",
+                "tags": [
+                    "edm-messages-controller"
+                ]
+            }
+        },
+        "/v1/messages/edm/template/templIds/": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getAllTemplateTemplIdUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "get All TemplId of templates.",
+                "tags": [
+                    "edm-messages-controller"
+                ]
+            }
+        },
+        "/v1/messages/edm/template/{templId}": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "deleteTemplateUsingDELETE",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "templId",
+                        "in": "path",
+                        "name": "templId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "Delete mail template.",
+                "tags": [
+                    "edm-messages-controller"
+                ]
+            },
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getTemplateUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "templId",
+                        "in": "path",
+                        "name": "templId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/MailTemplateDto"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "Get mail template.",
+                "tags": [
+                    "edm-messages-controller"
+                ]
+            }
+        },
+        "/v1/messages/maintenance/api/histories": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "queryApiHistoryWraperUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/QueryApiHistoryRequest"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/QueryApiHistoryResponseWraper"
+                        }
+                    }
+                },
+                "summary": "queryApiHistoryWraper",
+                "tags": [
+                    "maintenance-controller"
+                ]
+            }
+        },
+        "/v1/messages/sms/callback": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "smsCallbackUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "smsCallbackRequest",
+                        "in": "body",
+                        "name": "smsCallbackRequest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SmsCallbackRequest"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/SmsCallbackResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "receive callback SMS.",
+                "tags": [
+                    "sms-messages-v-1-controller"
+                ]
+            }
+        },
+        "/v1/messages/sms/multi/send": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "multiSendUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "smsDto",
+                        "in": "body",
+                        "name": "smsDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SmsMultiSendV1Request"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "Send multi SMS.",
+                "tags": [
+                    "sms-messages-v-1-controller"
+                ]
+            }
+        },
+        "/v1/messages/sms/single/send": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "singleSendUsingPOST_1",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "smsDto",
+                        "in": "body",
+                        "name": "smsDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SmsSingleSendV1Request"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "Send single SMS.",
+                "tags": [
+                    "sms-messages-v-1-controller"
+                ]
+            }
+        },
+        "/v1/messages/sms/test": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "testUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "smsCallbackRequest",
+                        "in": "body",
+                        "name": "smsCallbackRequest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SmsCallbackRequest"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/SmsCallbackResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "receive callback SMS.",
+                "tags": [
+                    "sms-messages-v-1-controller"
+                ]
+            }
+        },
+        "/v1/messages/wechat/miniprogram/persistentFormId": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "persistentFormIdUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PersistentFormIdRequest"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "Persistent wechat Form Id.",
+                "tags": [
+                    "we-chat-mini-program-controller"
+                ]
+            }
+        },
+        "/v1/messages/wechat/miniprogram/sendTemplateMessage": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "sendTemplateMessageUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SendTemplateMessageRequest"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "Invoke Wechat sendTemplateMessage api.",
+                "tags": [
+                    "we-chat-mini-program-controller"
+                ]
+            }
+        },
+        "/v1/messages/wechat/miniprogram/sendTemplateMessageUseLoaclFormId": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "sendTemplateMessageUseLoaclFormIdUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SendTemplateMessageUseLocalFormIdRequest"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "Invoke Wechat sendTemplateMessage api use local args.",
+                "tags": [
+                    "we-chat-mini-program-controller"
+                ]
+            }
+        },
+        "/v1/messages/wechat/miniprogram/sendUniformMessage": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "sendUniformMessageUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SendUniformMessageRequestDto"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "Invoke Wechat sendUniformMessage api.",
+                "tags": [
+                    "we-chat-mini-program-controller"
+                ]
+            }
+        },
+        "/v1/messages/wechat/template/push": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "templatePushUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/WechatTemplatePushRequest"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "Wechat Push by Template.",
+                "tags": [
+                    "we-chat-messages-controller"
+                ]
+            }
+        },
+        "/v1/messages/wechat/text/push": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "textPushUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/WechatTextPushRequest"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "Wechat Push by text.",
+                "tags": [
+                    "we-chat-messages-controller"
+                ]
+            }
+        },
+        "/v2/messages/sms/callback": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "smsCallbackUsingPOST_1",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "smsCallbackRequest",
+                        "in": "body",
+                        "name": "smsCallbackRequest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SmsCallbackRequest"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/SmsCallbackResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "receive callback SMS.",
+                "tags": [
+                    "sms-messages-v-2-controller"
+                ]
+            }
+        },
+        "/v2/messages/sms/multi/send": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "multiSendUsingPOST_1",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "smsDto",
+                        "in": "body",
+                        "name": "smsDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SmsMultiSendV2Request"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "Send multi SMS.",
+                "tags": [
+                    "sms-messages-v-2-controller"
+                ]
+            }
+        },
+        "/v2/messages/sms/single/send": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "singleSendUsingPOST_2",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "smsDto",
+                        "in": "body",
+                        "name": "smsDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SmsSingleSendV2Request"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "Send single SMS.",
+                "tags": [
+                    "sms-messages-v-2-controller"
+                ]
+            }
+        },
+        "/v2/messages/wechat/template/push": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "templatePushUsingPOST_1",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/WechatTemplatePushV2Request"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation successful",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    },
+                    "403": {
+                        "description": "Not Allowed"
+                    }
+                },
+                "summary": "Wechat Push by Template.",
+                "tags": [
+                    "we-chat-messages-v-2-controller"
+                ]
+            }
+        }
+    },
+    "swagger": "2.0",
+    "tags": [
+        {
+            "description": "Maintenance Controller",
+            "name": "maintenance-controller"
+        },
+        {
+            "description": "App Push Messages Controller",
+            "name": "app-push-messages-controller"
+        },
+        {
+            "description": "Edm Messages Controller",
+            "name": "edm-messages-controller"
+        },
+        {
+            "description": "Sms Messages V 2 Controller",
+            "name": "sms-messages-v-2-controller"
+        },
+        {
+            "description": "We Chat Messages V 2 Controller",
+            "name": "we-chat-messages-v-2-controller"
+        },
+        {
+            "description": "We Chat Messages Controller",
+            "name": "we-chat-messages-controller"
+        },
+        {
+            "description": "Sms Messages V 1 Controller",
+            "name": "sms-messages-v-1-controller"
+        },
+        {
+            "description": "We Chat Mini Program Controller",
+            "name": "we-chat-mini-program-controller"
+        }
+    ]
+}

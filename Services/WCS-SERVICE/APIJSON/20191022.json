@@ -1,0 +1,2855 @@
+{
+    "basePath": "/",
+    "definitions": {
+        "BrandAllDto": {
+            "properties": {
+                "brandId": {
+                    "type": "string"
+                },
+                "brandNameCn": {
+                    "type": "string"
+                },
+                "brandNameEn": {
+                    "type": "string"
+                },
+                "imagePath": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CardSearchDto": {
+            "properties": {
+                "cardNo": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "mobile": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CardWcsDto": {
+            "properties": {
+                "accumlatedPoints": {
+                    "type": "string"
+                },
+                "availablePoint": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "cardNo": {
+                    "type": "string"
+                },
+                "cardType": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "firePoints": {
+                    "type": "string"
+                },
+                "jointDate": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "mobile": {
+                    "type": "string"
+                },
+                "purchaseTimes": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "userId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CategoryLevelModel": {
+            "properties": {
+                "categoryLevel1Alias": {
+                    "type": "string"
+                },
+                "categoryLevel1Id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "categoryLevel1Name": {
+                    "type": "string"
+                },
+                "categoryLevel1Sequence": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "categoryLevel2Alias": {
+                    "type": "string"
+                },
+                "categoryLevel2Id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "categoryLevel2Name": {
+                    "type": "string"
+                },
+                "categoryLevel2Sequence": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "categoryLevel3Alias": {
+                    "type": "string"
+                },
+                "categoryLevel3Id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "categoryLevel3Name": {
+                    "type": "string"
+                },
+                "categoryLevel3Sequence": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CategoryModel": {
+            "properties": {
+                "categoryId": {
+                    "type": "string"
+                },
+                "categoryName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CommonRequest«CardSearchDto»": {
+            "properties": {
+                "head": {
+                    "$ref": "#/definitions/RequestHead"
+                },
+                "queryBody": {
+                    "$ref": "#/definitions/CardSearchDto"
+                }
+            },
+            "type": "object"
+        },
+        "CommonRequest«CardWcsDto»": {
+            "properties": {
+                "head": {
+                    "$ref": "#/definitions/RequestHead"
+                },
+                "queryBody": {
+                    "$ref": "#/definitions/CardWcsDto"
+                }
+            },
+            "type": "object"
+        },
+        "CommonRequest«List«string»»": {
+            "properties": {
+                "head": {
+                    "$ref": "#/definitions/RequestHead"
+                },
+                "queryBody": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "CommonRequest«ProductCommentJobParamDto»": {
+            "properties": {
+                "head": {
+                    "$ref": "#/definitions/RequestHead"
+                },
+                "queryBody": {
+                    "$ref": "#/definitions/ProductCommentJobParamDto"
+                }
+            },
+            "type": "object"
+        },
+        "CommonRequest«UserBaseDto»": {
+            "properties": {
+                "head": {
+                    "$ref": "#/definitions/RequestHead"
+                },
+                "queryBody": {
+                    "$ref": "#/definitions/UserBaseDto"
+                }
+            },
+            "type": "object"
+        },
+        "CommonRequest«UserSyncWcsDto»": {
+            "properties": {
+                "head": {
+                    "$ref": "#/definitions/RequestHead"
+                },
+                "queryBody": {
+                    "$ref": "#/definitions/UserSyncWcsDto"
+                }
+            },
+            "type": "object"
+        },
+        "CommonRequest«UserWcsInfoDto»": {
+            "properties": {
+                "head": {
+                    "$ref": "#/definitions/RequestHead"
+                },
+                "queryBody": {
+                    "$ref": "#/definitions/UserWcsInfoDto"
+                }
+            },
+            "type": "object"
+        },
+        "CommonRequest«UserWechatBindDto»": {
+            "properties": {
+                "head": {
+                    "$ref": "#/definitions/RequestHead"
+                },
+                "queryBody": {
+                    "$ref": "#/definitions/UserWechatBindDto"
+                }
+            },
+            "type": "object"
+        },
+        "CommonRequest«int»": {
+            "properties": {
+                "head": {
+                    "$ref": "#/definitions/RequestHead"
+                },
+                "queryBody": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse": {
+            "properties": {
+                "body": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "object"
+                },
+                "errorCode": {
+                    "type": "string"
+                },
+                "msg": {
+                    "type": "string"
+                },
+                "params": {
+                    "type": "object"
+                },
+                "status": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«CardWcsDto»": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "$ref": "#/definitions/CardWcsDto"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«FlashSaleTypeModel»": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "$ref": "#/definitions/FlashSaleTypeModel"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«List«BrandAllDto»»": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "items": {
+                        "$ref": "#/definitions/BrandAllDto"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«List«CardWcsDto»»": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "items": {
+                        "$ref": "#/definitions/CardWcsDto"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«List«CategoryLevelModel»»": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "items": {
+                        "$ref": "#/definitions/CategoryLevelModel"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«List«ProductConsultationDto»»": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "items": {
+                        "$ref": "#/definitions/ProductConsultationDto"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«List«ProductReplacementDto»»": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "items": {
+                        "$ref": "#/definitions/ProductReplacementDto"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«List«UserWechatBindDto»»": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "items": {
+                        "$ref": "#/definitions/UserWechatBindDto"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«List«WcsProductCommentDto»»": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "items": {
+                        "$ref": "#/definitions/WcsProductCommentDto"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«Map«string,CategoryModel»»": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "additionalProperties": {
+                        "$ref": "#/definitions/CategoryModel"
+                    },
+                    "type": "object"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«Map«string,string»»": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«SkuRTPriceModel»": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "$ref": "#/definitions/SkuRTPriceModel"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«User4WcsDto»": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "$ref": "#/definitions/User4WcsDto"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«UserWcsInfoDto»": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "$ref": "#/definitions/UserWcsInfoDto"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«UserWechatBindDto»": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "$ref": "#/definitions/UserWechatBindDto"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«date-time»": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«int»": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«long»": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«string»": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "type": "string"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CurrentMonthWordDto": {
+            "properties": {
+                "catentryId": {
+                    "type": "string"
+                },
+                "picPath": {
+                    "type": "string"
+                },
+                "productName": {
+                    "type": "string"
+                },
+                "reviewContent": {
+                    "type": "string"
+                },
+                "reviewCount": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "reviewLevel": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "ESProductCommentImage": {
+            "properties": {
+                "commentId": {
+                    "type": "string"
+                },
+                "createTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "imagePath": {
+                    "type": "string"
+                },
+                "isDisable": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "sequence": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "updateTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "uuid": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FlashSaleTypeModel": {
+            "properties": {
+                "catentryId": {
+                    "type": "string"
+                },
+                "displayPrice": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "flashSalePriceBeginDateTime": {
+                    "type": "string"
+                },
+                "flashSalePriceEndDateTime": {
+                    "type": "string"
+                },
+                "flashSalePriceStatus": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "flashSaleQuantity": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "flashSaleType": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "offerPrice": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "presellDeliveryDate": {
+                    "type": "string"
+                },
+                "presellDeliveryDateTime": {
+                    "format": "date-time",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Map«string,CategoryModel»": {
+            "additionalProperties": {
+                "$ref": "#/definitions/CategoryModel"
+            },
+            "type": "object"
+        },
+        "Map«string,string»": {
+            "additionalProperties": {
+                "type": "string"
+            },
+            "type": "object"
+        },
+        "Metadata": {
+            "properties": {
+                "config": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "type": "object"
+                },
+                "resultSet": {
+                    "$ref": "#/definitions/ResultSet"
+                }
+            },
+            "type": "object"
+        },
+        "ProductCommentJobParamDto": {
+            "properties": {
+                "endIndex": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "endTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "startIndex": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "startTime": {
+                    "format": "date-time",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProductConsultationDto": {
+            "properties": {
+                "answerContent": {
+                    "type": "string"
+                },
+                "answerTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "createTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "id": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "isAnswer": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "isDelete": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "productId": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "questionContent": {
+                    "type": "string"
+                },
+                "status": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "updateTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProductReplacementDto": {
+            "properties": {
+                "massocType": {
+                    "type": "string"
+                },
+                "productId": {
+                    "type": "string"
+                },
+                "rank": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "replacementProductId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "QueryCurrentMonthWordResponse": {
+            "properties": {
+                "apiMethodName": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "results": {
+                    "items": {
+                        "$ref": "#/definitions/CurrentMonthWordDto"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "RequestHead": {
+            "properties": {
+                "token": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ResultSet": {
+            "properties": {
+                "count": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "limit": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "offset": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "SkuRTPriceModel": {
+            "properties": {
+                "displayPrice": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "offerPrice": {
+                    "format": "double",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "User4WcsDto": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "level": {
+                    "type": "string"
+                },
+                "mobile": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "profile": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UserBaseDto": {
+            "properties": {
+                "groupId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "groupName": {
+                    "type": "string"
+                },
+                "id": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "isFirstTime": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "isSoa": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "loginId": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "salt": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UserSyncWcsDto": {
+            "properties": {
+                "gender": {
+                    "type": "string"
+                },
+                "groupId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "groupName": {
+                    "type": "string"
+                },
+                "id": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "isFirstTime": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "isSoa": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "loginId": {
+                    "type": "string"
+                },
+                "nickName": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "photo": {
+                    "type": "string"
+                },
+                "salt": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UserWcsInfoDto": {
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "birthday": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "district": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "id": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "mobile": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "nickName": {
+                    "type": "string"
+                },
+                "photo": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "updateTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "zipCode": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UserWechatBindDto": {
+            "properties": {
+                "bindDate": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "bindType": {
+                    "type": "string"
+                },
+                "cardNo": {
+                    "type": "string"
+                },
+                "openId": {
+                    "type": "string"
+                },
+                "userId": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "WcsProductCommentDto": {
+            "properties": {
+                "cardType": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "createTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "esProductCommentImageList": {
+                    "items": {
+                        "$ref": "#/definitions/ESProductCommentImage"
+                    },
+                    "type": "array"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "isDisable": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "isGoodView": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "kolUserLevel": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "nickName": {
+                    "type": "string"
+                },
+                "orderId": {
+                    "type": "string"
+                },
+                "phone1": {
+                    "type": "string"
+                },
+                "phone2": {
+                    "type": "string"
+                },
+                "photo": {
+                    "type": "string"
+                },
+                "postId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "productId": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "productName": {
+                    "type": "string"
+                },
+                "score": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "sequence": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "status": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "type": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "updateTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "userId": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "uuid": {
+                    "type": "string"
+                },
+                "weight": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "host": "10.157.24.125:10001",
+    "info": {
+        "description": "通用项目接口文档",
+        "license": {},
+        "termsOfService": "http://www.sephora.cn",
+        "title": "SEPHORA SOA RESTFUL APIs",
+        "version": "1.0"
+    },
+    "paths": {
+        "/mnt/eureka/client/unregister": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "unRegisterServiceUsingDELETE",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "summary": "unRegisterService",
+                "tags": [
+                    "mnt-controller"
+                ]
+            }
+        },
+        "/v1/wcs/brandBox/getAllBrandBox": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getAllBrandBoxUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«BrandAllDto»»"
+                        }
+                    }
+                },
+                "summary": "getAllBrandBox",
+                "tags": [
+                    "brand-box-controller"
+                ]
+            }
+        },
+        "/v1/wcs/card/wcsBindCard": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "bindWcsCardUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«CardWcsDto»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«CardWcsDto»"
+                        }
+                    }
+                },
+                "summary": "bindWcsCard",
+                "tags": [
+                    "card-controller"
+                ]
+            }
+        },
+        "/v1/wcs/card/wcsCardData": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getWcsCardDataUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«CardSearchDto»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«CardWcsDto»»"
+                        }
+                    }
+                },
+                "summary": "getWcsCardData",
+                "tags": [
+                    "card-controller"
+                ]
+            }
+        },
+        "/v1/wcs/card/wcsCardDataByBindingVoucher": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getWcsCardDataByBindingVoucherUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "email",
+                        "in": "query",
+                        "name": "email",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "mobile",
+                        "in": "query",
+                        "name": "mobile",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«CardWcsDto»»"
+                        }
+                    }
+                },
+                "summary": "getWcsCardDataByBindingVoucher",
+                "tags": [
+                    "card-controller"
+                ]
+            }
+        },
+        "/v1/wcs/card/wcsCardListByCardNo": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getWcsCardListByCardNoUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«List«string»»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«CardWcsDto»»"
+                        }
+                    }
+                },
+                "summary": "getWcsCardListByCardNo",
+                "tags": [
+                    "card-controller"
+                ]
+            }
+        },
+        "/v1/wcs/card/wcsNewPinkCard": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getWcsNewPinkCardUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«CardSearchDto»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«CardWcsDto»"
+                        }
+                    }
+                },
+                "summary": "getWcsNewPinkCard",
+                "tags": [
+                    "card-controller"
+                ]
+            }
+        },
+        "/v1/wcs/card/wcsOptionalCardData": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getWcsOptionalCardDataUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«CardSearchDto»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«CardWcsDto»»"
+                        }
+                    }
+                },
+                "summary": "getWcsOptionalCardData",
+                "tags": [
+                    "card-controller"
+                ]
+            }
+        },
+        "/v1/wcs/category/getCatgoryLevelTree": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getCatgorLevelTreeUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«int»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«CategoryLevelModel»»"
+                        }
+                    }
+                },
+                "summary": "getCatgorLevelTree",
+                "tags": [
+                    "category-controller"
+                ]
+            }
+        },
+        "/v1/wcs/inventory/inventoryRelease/{catentryId}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "releaseInventoryUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "catentryId",
+                        "in": "path",
+                        "name": "catentryId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "quantity",
+                        "format": "double",
+                        "in": "query",
+                        "name": "quantity",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse"
+                        }
+                    }
+                },
+                "summary": "releaseInventory",
+                "tags": [
+                    "inventory-controller"
+                ]
+            }
+        },
+        "/v1/wcs/inventory/updateInventory": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "updateInventoryUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "skuCode",
+                        "in": "path",
+                        "name": "skuCode",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "consumeQty",
+                        "format": "double",
+                        "in": "path",
+                        "name": "consumeQty",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse"
+                        }
+                    }
+                },
+                "summary": "updateInventory",
+                "tags": [
+                    "inventory-controller"
+                ]
+            }
+        },
+        "/v1/wcs/product/allProductConsultation": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getAllProductConsultationUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "createTime",
+                        "in": "query",
+                        "name": "createTime",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«ProductConsultationDto»»"
+                        }
+                    }
+                },
+                "summary": "getAllProductConsultation",
+                "tags": [
+                    "product-controller"
+                ]
+            }
+        },
+        "/v1/wcs/product/commentList": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getProductCommentListUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«ProductCommentJobParamDto»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«WcsProductCommentDto»»"
+                        }
+                    }
+                },
+                "summary": "getProductCommentList",
+                "tags": [
+                    "product-controller"
+                ]
+            }
+        },
+        "/v1/wcs/product/findTopCategories": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "findTopCategoriesUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«Map«string,CategoryModel»»"
+                        }
+                    }
+                },
+                "summary": "findTopCategories",
+                "tags": [
+                    "product-controller"
+                ]
+            }
+        },
+        "/v1/wcs/product/getCatentryPublishStatus": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getCatentryPublishStatusUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "catentryIdList",
+                        "in": "body",
+                        "name": "catentryIdList",
+                        "required": true,
+                        "schema": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«Map«string,string»»"
+                        }
+                    }
+                },
+                "summary": "getCatentryPublishStatus",
+                "tags": [
+                    "product-controller"
+                ]
+            }
+        },
+        "/v1/wcs/product/getFlashSaleTypeInfo": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getFlashSaleTypeInfoUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "skuId",
+                        "in": "body",
+                        "name": "skuId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«FlashSaleTypeModel»"
+                        }
+                    }
+                },
+                "summary": "getFlashSaleTypeInfo",
+                "tags": [
+                    "product-controller"
+                ]
+            }
+        },
+        "/v1/wcs/product/getProductIdBySKUCode": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getProductIdBySKUCodeUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "skuCode",
+                        "in": "body",
+                        "name": "skuCode",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    }
+                },
+                "summary": "getProductIdBySKUCode",
+                "tags": [
+                    "product-controller"
+                ]
+            }
+        },
+        "/v1/wcs/product/getSkuPrice": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getSkuPriceUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "skuId",
+                        "in": "body",
+                        "name": "skuId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«SkuRTPriceModel»"
+                        }
+                    }
+                },
+                "summary": "getSkuPrice",
+                "tags": [
+                    "product-controller"
+                ]
+            }
+        },
+        "/v1/wcs/product/getSolrGWPFacetKey": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getSolrGWPFacetKeyUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    }
+                },
+                "summary": "getSolrGWPFacetKey",
+                "tags": [
+                    "product-controller"
+                ]
+            }
+        },
+        "/v1/wcs/product/isVirtualBundleProduct": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "isVirtualBundleProductUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "productId",
+                        "in": "body",
+                        "name": "productId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    }
+                },
+                "summary": "isVirtualBundleProduct",
+                "tags": [
+                    "product-controller"
+                ]
+            }
+        },
+        "/v1/wcs/product/queryCurrentMonthWord": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "queryCurrentMonthWordUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/QueryCurrentMonthWordResponse"
+                        }
+                    }
+                },
+                "summary": "queryCurrentMonthWord",
+                "tags": [
+                    "product-controller"
+                ]
+            }
+        },
+        "/v1/wcs/product/replacementList": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getProductReplacementListUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "startIndex",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "startIndex",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "endIndex",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "endIndex",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«ProductReplacementDto»»"
+                        }
+                    }
+                },
+                "summary": "getProductReplacementList",
+                "tags": [
+                    "product-controller"
+                ]
+            }
+        },
+        "/v1/wcs/product/replacementTotalNum": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getProductReplacementTotalNumUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«long»"
+                        }
+                    }
+                },
+                "summary": "getProductReplacementTotalNum",
+                "tags": [
+                    "product-controller"
+                ]
+            }
+        },
+        "/v1/wcs/product/skuCode": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "querySkuCodeByCatentryIdUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«int»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    }
+                },
+                "summary": "querySkuCodeByCatentryId",
+                "tags": [
+                    "product-controller"
+                ]
+            }
+        },
+        "/v1/wcs/product/syncCommentCount": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getSyncCommentCountUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "startTime",
+                        "format": "date-time",
+                        "in": "query",
+                        "name": "startTime",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "endTime",
+                        "format": "date-time",
+                        "in": "query",
+                        "name": "endTime",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«int»"
+                        }
+                    }
+                },
+                "summary": "getSyncCommentCount",
+                "tags": [
+                    "product-controller"
+                ]
+            }
+        },
+        "/v1/wcs/user/insertWechatUser": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "insertWechatUserUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«UserWechatBindDto»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "format": "int32",
+                            "type": "integer"
+                        }
+                    }
+                },
+                "summary": "insertWechatUser",
+                "tags": [
+                    "user-controller"
+                ]
+            }
+        },
+        "/v1/wcs/user/queryCardNumber": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "queryCardNumberUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "userId",
+                        "in": "body",
+                        "name": "userId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    }
+                },
+                "summary": "queryCardNumber",
+                "tags": [
+                    "product-controller"
+                ]
+            }
+        },
+        "/v1/wcs/user/queryUserDataById": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "queryUserDataByIdUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "commonRequest",
+                        "in": "body",
+                        "name": "commonRequest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«int»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«User4WcsDto»"
+                        }
+                    }
+                },
+                "summary": "queryUserDataById",
+                "tags": [
+                    "user-controller"
+                ]
+            }
+        },
+        "/v1/wcs/user/queryUserLastPurchaseTime": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "queryUserLastPurchaseTimeUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "commonRequest",
+                        "in": "body",
+                        "name": "commonRequest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«int»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«date-time»"
+                        }
+                    }
+                },
+                "summary": "queryUserLastPurchaseTime",
+                "tags": [
+                    "user-controller"
+                ]
+            }
+        },
+        "/v1/wcs/user/syncUser2Wcs": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "syncUser2WcsUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "commonRequest",
+                        "in": "body",
+                        "name": "commonRequest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«UserSyncWcsDto»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    }
+                },
+                "summary": "syncUser2Wcs",
+                "tags": [
+                    "user-controller"
+                ]
+            }
+        },
+        "/v1/wcs/user/syncUserPwd2Wcs": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "syncUserPwd2WcsUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "commonRequest",
+                        "in": "body",
+                        "name": "commonRequest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«UserBaseDto»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«int»"
+                        }
+                    }
+                },
+                "summary": "syncUserPwd2Wcs",
+                "tags": [
+                    "user-controller"
+                ]
+            }
+        },
+        "/v1/wcs/user/userWcsInfo": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "queryUserWcsInfoUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "userId",
+                        "format": "int64",
+                        "in": "query",
+                        "name": "userId",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«UserWcsInfoDto»"
+                        }
+                    }
+                },
+                "summary": "queryUserWcsInfo",
+                "tags": [
+                    "user-controller"
+                ]
+            },
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "updateUserWcsInfoUsingPUT",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«UserWcsInfoDto»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«string»"
+                        }
+                    }
+                },
+                "summary": "updateUserWcsInfo",
+                "tags": [
+                    "user-controller"
+                ]
+            }
+        },
+        "/v1/wcs/user/wechatUser": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "queryUserByOpenIdUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "openid",
+                        "in": "query",
+                        "name": "openid",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«UserWechatBindDto»"
+                        }
+                    }
+                },
+                "summary": "queryUserByOpenId",
+                "tags": [
+                    "user-controller"
+                ]
+            }
+        },
+        "/v1/wcs/user/wechatuser/{pageNo}/{pageSize}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "queryWechatListByPageUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "default": 1,
+                        "description": "页数",
+                        "format": "int32",
+                        "in": "path",
+                        "name": "pageNo",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "default": 10,
+                        "description": "条数",
+                        "format": "int32",
+                        "in": "path",
+                        "name": "pageSize",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«UserWechatBindDto»»"
+                        }
+                    }
+                },
+                "summary": "queryWechatListByPage",
+                "tags": [
+                    "user-controller"
+                ]
+            }
+        }
+    },
+    "swagger": "2.0",
+    "tags": [
+        {
+            "description": "Brand Box Controller",
+            "name": "brand-box-controller"
+        },
+        {
+            "description": "Product Controller",
+            "name": "product-controller"
+        },
+        {
+            "description": "Mnt Controller",
+            "name": "mnt-controller"
+        },
+        {
+            "description": "Card Controller",
+            "name": "card-controller"
+        },
+        {
+            "description": "User Controller",
+            "name": "user-controller"
+        },
+        {
+            "description": "Category Controller",
+            "name": "category-controller"
+        },
+        {
+            "description": "Inventory Controller",
+            "name": "inventory-controller"
+        }
+    ]
+}

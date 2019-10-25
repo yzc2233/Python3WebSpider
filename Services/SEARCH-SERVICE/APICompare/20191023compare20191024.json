@@ -1,0 +1,565 @@
+{
+    "1、上一版本接口个数": 25,
+    "2、当前接口个数": 25,
+    "3、新增接口数": 0,
+    "4、删除接口数": 0,
+    "5、修改接口数": 3,
+    "6、检查结果": {
+        "删除接口详情": [],
+        "新增接口详情": [],
+        "编辑接口详情": [
+            {
+                "(1)路径": "GET/v1/search-service/product/list/keyword",
+                "(2)上一版本入参": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "页数",
+                        "in": "query",
+                        "name": "pageNum",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "每页条目数",
+                        "in": "query",
+                        "name": "pageSize",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序字段",
+                        "in": "query",
+                        "name": "sortField",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序方式",
+                        "in": "query",
+                        "name": "sortMode",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "仅看有货",
+                        "in": "query",
+                        "name": "hasInventory",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "筛选条件",
+                        "in": "query",
+                        "name": "filters",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商店",
+                        "in": "query",
+                        "name": "store",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商品类型",
+                        "in": "query",
+                        "name": "type",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品筛选属性显示排序方式",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "facetAttrSortMode",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "搜索关键词",
+                        "in": "query",
+                        "name": "keyWords",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品ID",
+                        "in": "query",
+                        "name": "productId",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "(3)当前版本入参": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "页数",
+                        "in": "query",
+                        "name": "pageNum",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "每页条目数",
+                        "in": "query",
+                        "name": "pageSize",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序字段",
+                        "in": "query",
+                        "name": "sortField",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序方式",
+                        "in": "query",
+                        "name": "sortMode",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "仅看有货",
+                        "in": "query",
+                        "name": "hasInventory",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "筛选条件",
+                        "in": "query",
+                        "name": "filters",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商店",
+                        "in": "query",
+                        "name": "store",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商品类型",
+                        "in": "query",
+                        "name": "type",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品筛选属性显示排序方式",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "facetAttrSortMode",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "搜索关键词",
+                        "in": "query",
+                        "name": "keyWords",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品ID",
+                        "in": "query",
+                        "name": "productId",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "是否启用品牌权重分",
+                        "in": "query",
+                        "name": "enableBrandWeight",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "(1)路径": "GET/v1/search-service/product/list/keyword",
+                "(2)上一版本入参": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "页数",
+                        "in": "query",
+                        "name": "pageNum",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "每页条目数",
+                        "in": "query",
+                        "name": "pageSize",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序字段",
+                        "in": "query",
+                        "name": "sortField",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序方式",
+                        "in": "query",
+                        "name": "sortMode",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "仅看有货",
+                        "in": "query",
+                        "name": "hasInventory",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "筛选条件",
+                        "in": "query",
+                        "name": "filters",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商店",
+                        "in": "query",
+                        "name": "store",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商品类型",
+                        "in": "query",
+                        "name": "type",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品筛选属性显示排序方式",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "facetAttrSortMode",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "搜索关键词",
+                        "in": "query",
+                        "name": "keyWords",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品ID",
+                        "in": "query",
+                        "name": "productId",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "(3)当前版本入参": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "页数",
+                        "in": "query",
+                        "name": "pageNum",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "每页条目数",
+                        "in": "query",
+                        "name": "pageSize",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序字段",
+                        "in": "query",
+                        "name": "sortField",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序方式",
+                        "in": "query",
+                        "name": "sortMode",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "仅看有货",
+                        "in": "query",
+                        "name": "hasInventory",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "筛选条件",
+                        "in": "query",
+                        "name": "filters",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商店",
+                        "in": "query",
+                        "name": "store",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商品类型",
+                        "in": "query",
+                        "name": "type",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品筛选属性显示排序方式",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "facetAttrSortMode",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "搜索关键词",
+                        "in": "query",
+                        "name": "keyWords",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品ID",
+                        "in": "query",
+                        "name": "productId",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "是否启用品牌权重分",
+                        "in": "query",
+                        "name": "enableBrandWeight",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "(1)路径": "GET/v1/search-service/product/list/keyword",
+                "(2)上一版本入参": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "页数",
+                        "in": "query",
+                        "name": "pageNum",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "每页条目数",
+                        "in": "query",
+                        "name": "pageSize",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序字段",
+                        "in": "query",
+                        "name": "sortField",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序方式",
+                        "in": "query",
+                        "name": "sortMode",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "仅看有货",
+                        "in": "query",
+                        "name": "hasInventory",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "筛选条件",
+                        "in": "query",
+                        "name": "filters",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商店",
+                        "in": "query",
+                        "name": "store",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商品类型",
+                        "in": "query",
+                        "name": "type",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品筛选属性显示排序方式",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "facetAttrSortMode",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "搜索关键词",
+                        "in": "query",
+                        "name": "keyWords",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品ID",
+                        "in": "query",
+                        "name": "productId",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "(3)当前版本入参": [
+                    {
+                        "description": "当前登陆用户系统编号",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "页数",
+                        "in": "query",
+                        "name": "pageNum",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "每页条目数",
+                        "in": "query",
+                        "name": "pageSize",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序字段",
+                        "in": "query",
+                        "name": "sortField",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "排序方式",
+                        "in": "query",
+                        "name": "sortMode",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "仅看有货",
+                        "in": "query",
+                        "name": "hasInventory",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "筛选条件",
+                        "in": "query",
+                        "name": "filters",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商店",
+                        "in": "query",
+                        "name": "store",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "商品类型",
+                        "in": "query",
+                        "name": "type",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品筛选属性显示排序方式",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "facetAttrSortMode",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "搜索关键词",
+                        "in": "query",
+                        "name": "keyWords",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "产品ID",
+                        "in": "query",
+                        "name": "productId",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "是否启用品牌权重分",
+                        "in": "query",
+                        "name": "enableBrandWeight",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,97 @@
+{
+    "1、上一版本接口个数": 160,
+    "2、当前接口个数": 181,
+    "3、新增接口数": 21,
+    "4、删除接口数": 0,
+    "5、修改接口数": 0,
+    "6、检查结果": {
+        "删除接口详情": [],
+        "新增接口详情": [
+            [
+                "POST",
+                "/test/hotfixed"
+            ],
+            [
+                "PUT",
+                "/test/hotfixed"
+            ],
+            [
+                "PATCH",
+                "/test/hotfixed"
+            ],
+            [
+                "HEAD",
+                "/test/hotfixed"
+            ],
+            [
+                "OPTIONS",
+                "/test/hotfixed"
+            ],
+            [
+                "GET",
+                "/test/hotfixed"
+            ],
+            [
+                "DELETE",
+                "/test/hotfixed"
+            ],
+            [
+                "POST",
+                "/test/retry"
+            ],
+            [
+                "PUT",
+                "/test/retry"
+            ],
+            [
+                "PATCH",
+                "/test/retry"
+            ],
+            [
+                "HEAD",
+                "/test/retry"
+            ],
+            [
+                "OPTIONS",
+                "/test/retry"
+            ],
+            [
+                "GET",
+                "/test/retry"
+            ],
+            [
+                "DELETE",
+                "/test/retry"
+            ],
+            [
+                "POST",
+                "/test/"
+            ],
+            [
+                "PUT",
+                "/test/"
+            ],
+            [
+                "PATCH",
+                "/test/"
+            ],
+            [
+                "HEAD",
+                "/test/"
+            ],
+            [
+                "OPTIONS",
+                "/test/"
+            ],
+            [
+                "GET",
+                "/test/"
+            ],
+            [
+                "DELETE",
+                "/test/"
+            ]
+        ],
+        "编辑接口详情": []
+    }
+}

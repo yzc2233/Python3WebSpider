@@ -1,0 +1,2218 @@
+{
+    "basePath": "/",
+    "definitions": {
+        "AutoSuggestDto": {
+            "properties": {
+                "suggestCategoryDtoList": {
+                    "items": {
+                        "$ref": "#/definitions/SuggestCategoryDto"
+                    },
+                    "type": "array"
+                },
+                "suggestList": {
+                    "items": {
+                        "$ref": "#/definitions/SuggestKeyWordDto"
+                    },
+                    "type": "array"
+                },
+                "topProductList": {
+                    "items": {
+                        "$ref": "#/definitions/SuggestProductDto"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "BrandListDto": {
+            "properties": {
+                "brandTitle": {
+                    "type": "string"
+                },
+                "brands": {
+                    "items": {
+                        "$ref": "#/definitions/FacetBrandDto"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "BrandWallDto": {
+            "properties": {
+                "brandId": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "brandNameCN": {
+                    "type": "string"
+                },
+                "brandNameEN": {
+                    "type": "string"
+                },
+                "brandNickNames": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "imagePath": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BrandWallListDto": {
+            "properties": {
+                "brandList": {
+                    "items": {
+                        "$ref": "#/definitions/BrandWallDto"
+                    },
+                    "type": "array"
+                },
+                "brandTitle": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CommonRequest«QueryBrandListParamDto»": {
+            "properties": {
+                "head": {
+                    "$ref": "#/definitions/RequestHead"
+                },
+                "queryBody": {
+                    "$ref": "#/definitions/QueryBrandListParamDto"
+                }
+            },
+            "type": "object"
+        },
+        "CommonRequest«QueryCategoryListParamDto»": {
+            "properties": {
+                "head": {
+                    "$ref": "#/definitions/RequestHead"
+                },
+                "queryBody": {
+                    "$ref": "#/definitions/QueryCategoryListParamDto"
+                }
+            },
+            "type": "object"
+        },
+        "CommonRequest«QueryExclusiveListParamDto»": {
+            "properties": {
+                "head": {
+                    "$ref": "#/definitions/RequestHead"
+                },
+                "queryBody": {
+                    "$ref": "#/definitions/QueryExclusiveListParamDto"
+                }
+            },
+            "type": "object"
+        },
+        "CommonRequest«QueryGiftSetListParamDto»": {
+            "properties": {
+                "head": {
+                    "$ref": "#/definitions/RequestHead"
+                },
+                "queryBody": {
+                    "$ref": "#/definitions/QueryGiftSetListParamDto"
+                }
+            },
+            "type": "object"
+        },
+        "CommonRequest«QuerySearchListParamDto»": {
+            "properties": {
+                "head": {
+                    "$ref": "#/definitions/RequestHead"
+                },
+                "queryBody": {
+                    "$ref": "#/definitions/QuerySearchListParamDto"
+                }
+            },
+            "type": "object"
+        },
+        "CommonRequest«UserLoginDto»": {
+            "properties": {
+                "head": {
+                    "$ref": "#/definitions/RequestHead"
+                },
+                "queryBody": {
+                    "$ref": "#/definitions/UserLoginDto"
+                }
+            },
+            "type": "object"
+        },
+        "CommonRequest«long»": {
+            "properties": {
+                "head": {
+                    "$ref": "#/definitions/RequestHead"
+                },
+                "queryBody": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "CommonRequest«string»": {
+            "properties": {
+                "head": {
+                    "$ref": "#/definitions/RequestHead"
+                },
+                "queryBody": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«AutoSuggestDto»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "$ref": "#/definitions/AutoSuggestDto",
+                    "description": "返回结果"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "CommonResponse«List«BrandWallListDto»»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "description": "返回结果",
+                    "items": {
+                        "$ref": "#/definitions/BrandWallListDto"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "CommonResponse«List«GroupCategoryDto»»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "description": "返回结果",
+                    "items": {
+                        "$ref": "#/definitions/GroupCategoryDto"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "CommonResponse«O2OUserBaseResponse»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "$ref": "#/definitions/O2OUserBaseResponse",
+                    "description": "返回结果"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "CommonResponse«PageProductList»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "$ref": "#/definitions/PageProductList",
+                    "description": "返回结果"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "FacetAttrDto": {
+            "properties": {
+                "identifier": {
+                    "type": "string"
+                },
+                "items": {
+                    "items": {
+                        "$ref": "#/definitions/FacetAttrItemDto"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "seoIdentifier": {
+                    "type": "string"
+                },
+                "sequence": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FacetAttrItemDto": {
+            "properties": {
+                "brandId": {
+                    "type": "string"
+                },
+                "brandLogoPath": {
+                    "type": "string"
+                },
+                "brandNameCN": {
+                    "type": "string"
+                },
+                "brandNameEN": {
+                    "type": "string"
+                },
+                "checked": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "colorPath": {
+                    "type": "string"
+                },
+                "count": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "identifier": {
+                    "type": "string"
+                },
+                "seoIdentifier": {
+                    "type": "string"
+                },
+                "sequence": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "valueName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FacetBrandDto": {
+            "properties": {
+                "brandId": {
+                    "type": "string"
+                },
+                "brandLogoPath": {
+                    "type": "string"
+                },
+                "brandNameCN": {
+                    "type": "string"
+                },
+                "brandNameEN": {
+                    "type": "string"
+                },
+                "brandTitle": {
+                    "type": "string"
+                },
+                "checked": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "count": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "hasBrandStory": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "longDescription": {
+                    "type": "string"
+                },
+                "seoIdentifier": {
+                    "type": "string"
+                },
+                "sequence": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "simpleBrandNameEN": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FacetCategoryDto": {
+            "properties": {
+                "categoryId": {
+                    "type": "string"
+                },
+                "categoryLogoPath": {
+                    "type": "string"
+                },
+                "categoryName": {
+                    "type": "string"
+                },
+                "childFacetCategoriesMap": {
+                    "additionalProperties": {
+                        "$ref": "#/definitions/FacetCategoryDto"
+                    },
+                    "type": "object"
+                },
+                "count": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "sequence": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "FacetCategoryEntry": {
+            "properties": {
+                "categoryId": {
+                    "type": "string"
+                },
+                "categoryLogoPath": {
+                    "type": "string"
+                },
+                "categoryName": {
+                    "type": "string"
+                },
+                "checked": {
+                    "type": "boolean"
+                },
+                "childFacetCategories": {
+                    "items": {
+                        "$ref": "#/definitions/FacetCategoryEntry"
+                    },
+                    "type": "array"
+                },
+                "count": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "sequence": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "GroupCategoryDto": {
+            "properties": {
+                "checked": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "childCategories": {
+                    "items": {
+                        "$ref": "#/definitions/GroupCategoryDto"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "imagePath": {
+                    "type": "string"
+                },
+                "level": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "nameCN": {
+                    "type": "string"
+                },
+                "parentId": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "sequence": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "O2OStore": {
+            "properties": {
+                "city": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "nameCN": {
+                    "type": "string"
+                },
+                "nameEN": {
+                    "type": "string"
+                },
+                "openYear": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "O2OUserBaseResponse": {
+            "properties": {
+                "o2OStore": {
+                    "$ref": "#/definitions/O2OStore"
+                },
+                "userBaseDto": {
+                    "$ref": "#/definitions/UserBaseDto"
+                }
+            },
+            "type": "object"
+        },
+        "OfflineShopInfo": {
+            "properties": {
+                "count": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "priority": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "zoneCode": {
+                    "type": "string"
+                },
+                "zoneName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OfflineShopInfoResponse": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "description": "返回结果",
+                    "items": {
+                        "$ref": "#/definitions/OfflineShopInfo"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "PageProductList": {
+            "properties": {
+                "attrWords": {
+                    "type": "string"
+                },
+                "brandList": {
+                    "items": {
+                        "$ref": "#/definitions/BrandListDto"
+                    },
+                    "type": "array"
+                },
+                "brandStoryUrl": {
+                    "type": "string"
+                },
+                "brandStoryUrlForMobile": {
+                    "type": "string"
+                },
+                "categoryId": {
+                    "type": "string"
+                },
+                "categoryIds": {
+                    "type": "string"
+                },
+                "categoryTree": {
+                    "items": {
+                        "$ref": "#/definitions/FacetCategoryEntry"
+                    },
+                    "type": "array"
+                },
+                "categoryTreeMap": {
+                    "additionalProperties": {
+                        "$ref": "#/definitions/FacetCategoryDto"
+                    },
+                    "type": "object"
+                },
+                "content": {
+                    "items": {
+                        "$ref": "#/definitions/ProductListDto"
+                    },
+                    "type": "array"
+                },
+                "currentBrand": {
+                    "$ref": "#/definitions/FacetBrandDto"
+                },
+                "currentCategory": {
+                    "$ref": "#/definitions/FacetCategoryDto"
+                },
+                "currentPage": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "facetAttrs": {
+                    "items": {
+                        "$ref": "#/definitions/FacetAttrDto"
+                    },
+                    "type": "array"
+                },
+                "facetBrands": {
+                    "items": {
+                        "$ref": "#/definitions/FacetBrandDto"
+                    },
+                    "type": "array"
+                },
+                "facetBrandsWithSorted": {
+                    "items": {
+                        "$ref": "#/definitions/FacetBrandDto"
+                    },
+                    "type": "array"
+                },
+                "facetCategories": {
+                    "items": {
+                        "$ref": "#/definitions/FacetCategoryDto"
+                    },
+                    "type": "array"
+                },
+                "filters": {
+                    "type": "string"
+                },
+                "funWords": {
+                    "type": "string"
+                },
+                "hasInventory": {
+                    "type": "string"
+                },
+                "hasNext": {
+                    "type": "boolean"
+                },
+                "hotWords": {
+                    "type": "string"
+                },
+                "keyWords": {
+                    "type": "string"
+                },
+                "notFoundKeyWord": {
+                    "type": "string"
+                },
+                "numberOfContent": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "rootCategoryId": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "rootCategoryName": {
+                    "type": "string"
+                },
+                "rootNickName": {
+                    "type": "string"
+                },
+                "searchType": {
+                    "type": "string"
+                },
+                "secondCategoryId": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "secondCategoryName": {
+                    "type": "string"
+                },
+                "secondNickName": {
+                    "type": "string"
+                },
+                "sortField": {
+                    "type": "string"
+                },
+                "sortMode": {
+                    "type": "string"
+                },
+                "swapWords": {
+                    "items": {
+                        "$ref": "#/definitions/SwapDetail"
+                    },
+                    "type": "array"
+                },
+                "thirdCategoryId": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "thirdCategoryName": {
+                    "type": "string"
+                },
+                "thirdNickName": {
+                    "type": "string"
+                },
+                "totalPages": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "totalRecord": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "ProductListDto": {
+            "properties": {
+                "brandCN": {
+                    "type": "string"
+                },
+                "brandEN": {
+                    "type": "string"
+                },
+                "hasInventory": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "hasNew": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "imagePath": {
+                    "type": "string"
+                },
+                "maxDiscountPrice": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "maxDisplayPrice": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "minDiscountPrice": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "minDisplayPrice": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "productCN": {
+                    "type": "string"
+                },
+                "productDetailUrl": {
+                    "type": "string"
+                },
+                "productEN": {
+                    "type": "string"
+                },
+                "productId": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "salesAmount": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "tagsList": {
+                    "items": {
+                        "$ref": "#/definitions/TagsDto"
+                    },
+                    "type": "array"
+                },
+                "weight": {
+                    "format": "double",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "QueryBrandListParamDto": {
+            "properties": {
+                "brandCategoryId": {
+                    "type": "string"
+                },
+                "brandId": {
+                    "type": "string"
+                },
+                "enableCache": {
+                    "type": "boolean"
+                },
+                "filters": {
+                    "type": "string"
+                },
+                "hasInventory": {
+                    "type": "string"
+                },
+                "indexName": {
+                    "type": "string"
+                },
+                "pageNum": {
+                    "type": "string"
+                },
+                "pageSize": {
+                    "type": "string"
+                },
+                "sortField": {
+                    "type": "string"
+                },
+                "sortMode": {
+                    "type": "string"
+                },
+                "store": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "QueryCategoryListParamDto": {
+            "properties": {
+                "categoryId": {
+                    "type": "string"
+                },
+                "enableCache": {
+                    "type": "boolean"
+                },
+                "filters": {
+                    "type": "string"
+                },
+                "hasInventory": {
+                    "type": "string"
+                },
+                "indexName": {
+                    "type": "string"
+                },
+                "keyWords": {
+                    "type": "string"
+                },
+                "pageNum": {
+                    "type": "string"
+                },
+                "pageSize": {
+                    "type": "string"
+                },
+                "sortField": {
+                    "type": "string"
+                },
+                "sortMode": {
+                    "type": "string"
+                },
+                "store": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "QueryExclusiveListParamDto": {
+            "properties": {
+                "brandCategoryId": {
+                    "type": "string"
+                },
+                "enableCache": {
+                    "type": "boolean"
+                },
+                "filters": {
+                    "type": "string"
+                },
+                "hasInventory": {
+                    "type": "string"
+                },
+                "indexName": {
+                    "type": "string"
+                },
+                "pageNum": {
+                    "type": "string"
+                },
+                "pageSize": {
+                    "type": "string"
+                },
+                "sortField": {
+                    "type": "string"
+                },
+                "sortMode": {
+                    "type": "string"
+                },
+                "store": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "QueryGiftSetListParamDto": {
+            "properties": {
+                "enableCache": {
+                    "type": "boolean"
+                },
+                "filters": {
+                    "type": "string"
+                },
+                "hasInventory": {
+                    "type": "string"
+                },
+                "indexName": {
+                    "type": "string"
+                },
+                "pageNum": {
+                    "type": "string"
+                },
+                "pageSize": {
+                    "type": "string"
+                },
+                "sortField": {
+                    "type": "string"
+                },
+                "sortMode": {
+                    "type": "string"
+                },
+                "store": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "QuerySearchListParamDto": {
+            "properties": {
+                "categoryId": {
+                    "type": "string"
+                },
+                "enableCache": {
+                    "type": "boolean"
+                },
+                "filters": {
+                    "type": "string"
+                },
+                "hasInventory": {
+                    "type": "string"
+                },
+                "indexName": {
+                    "type": "string"
+                },
+                "keyWords": {
+                    "type": "string"
+                },
+                "pageNum": {
+                    "type": "string"
+                },
+                "pageSize": {
+                    "type": "string"
+                },
+                "productId": {
+                    "type": "string"
+                },
+                "sortField": {
+                    "type": "string"
+                },
+                "sortMode": {
+                    "type": "string"
+                },
+                "store": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RequestHead": {
+            "properties": {
+                "token": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ResponseEntity": {
+            "properties": {
+                "body": {
+                    "type": "object"
+                },
+                "statusCode": {
+                    "enum": [
+                        "100",
+                        "101",
+                        "102",
+                        "103",
+                        "200",
+                        "201",
+                        "202",
+                        "203",
+                        "204",
+                        "205",
+                        "206",
+                        "207",
+                        "208",
+                        "226",
+                        "300",
+                        "301",
+                        "302",
+                        "302",
+                        "303",
+                        "304",
+                        "305",
+                        "307",
+                        "308",
+                        "400",
+                        "401",
+                        "402",
+                        "403",
+                        "404",
+                        "405",
+                        "406",
+                        "407",
+                        "408",
+                        "409",
+                        "410",
+                        "411",
+                        "412",
+                        "413",
+                        "413",
+                        "414",
+                        "414",
+                        "415",
+                        "416",
+                        "417",
+                        "418",
+                        "419",
+                        "420",
+                        "421",
+                        "422",
+                        "423",
+                        "424",
+                        "426",
+                        "428",
+                        "429",
+                        "431",
+                        "500",
+                        "501",
+                        "502",
+                        "503",
+                        "504",
+                        "505",
+                        "506",
+                        "507",
+                        "508",
+                        "509",
+                        "510",
+                        "511"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SuggestCategoryDto": {
+            "properties": {
+                "suggestCategoryCount": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "suggestCategoryId": {
+                    "type": "string"
+                },
+                "suggestCategoryName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SuggestKeyWordDto": {
+            "properties": {
+                "suggestKeyWord": {
+                    "type": "string"
+                },
+                "suggestKeyWordCount": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "SuggestProductDto": {
+            "properties": {
+                "salesQuantity": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "suggestCatentryId": {
+                    "type": "string"
+                },
+                "suggestProductName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SwapDetail": {
+            "properties": {
+                "appUri": {
+                    "type": "string"
+                },
+                "brandId": {
+                    "type": "string"
+                },
+                "brandName": {
+                    "type": "string"
+                },
+                "categoryId": {
+                    "type": "string"
+                },
+                "categoryName": {
+                    "type": "string"
+                },
+                "webUrl": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TagsDto": {
+            "properties": {
+                "tagKey": {
+                    "type": "string"
+                },
+                "tagValue": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UserBaseDto": {
+            "properties": {
+                "groupId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "groupName": {
+                    "type": "string"
+                },
+                "id": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "isFirstTime": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "isSoa": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "loginId": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "salt": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UserLoginDto": {
+            "properties": {
+                "channel": {
+                    "type": "string"
+                },
+                "groupId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "groupName": {
+                    "type": "string"
+                },
+                "id": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "isFirstTime": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "isSoa": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "loginId": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "salt": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                },
+                "valiCode": {
+                    "type": "string"
+                },
+                "valiCodeToken": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "host": "10.157.24.75:10000",
+    "info": {
+        "description": "通用项目接口文档",
+        "license": {},
+        "termsOfService": "http://www.sephora.cn",
+        "title": "SEPHORA SOA RESTFUL APIs",
+        "version": "1.0"
+    },
+    "paths": {
+        "/mnt/eureka/client/unregister": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "unRegisterServiceUsingDELETE",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "summary": "unRegisterService",
+                "tags": [
+                    "mnt-controller"
+                ]
+            }
+        },
+        "/mnt/rabbitmq/ids": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getAllContainsIdUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        }
+                    }
+                },
+                "summary": "getAllContainsId",
+                "tags": [
+                    "rabbitmq-mnt-controller"
+                ]
+            }
+        },
+        "/mnt/rabbitmq/start/{containerId}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "startContainerByIdUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "containerId",
+                        "in": "path",
+                        "name": "containerId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "summary": "startContainerById",
+                "tags": [
+                    "rabbitmq-mnt-controller"
+                ]
+            }
+        },
+        "/mnt/rabbitmq/startAll": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "startAllListenerUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "summary": "startAllListener",
+                "tags": [
+                    "rabbitmq-mnt-controller"
+                ]
+            }
+        },
+        "/mnt/rabbitmq/stop/{containerId}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "stopContainerByIdUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "containerId",
+                        "in": "path",
+                        "name": "containerId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "summary": "stopContainerById",
+                "tags": [
+                    "rabbitmq-mnt-controller"
+                ]
+            }
+        },
+        "/mnt/rabbitmq/stopAll": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "stopAllListenerUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "summary": "stopAllListener",
+                "tags": [
+                    "rabbitmq-mnt-controller"
+                ]
+            }
+        },
+        "/mnt/rabbitmq/update/{containerId}/{consumer}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "updateContainerConsumerUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "containerId",
+                        "in": "path",
+                        "name": "containerId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "consumer",
+                        "format": "int32",
+                        "in": "path",
+                        "name": "consumer",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "summary": "updateContainerConsumer",
+                "tags": [
+                    "rabbitmq-mnt-controller"
+                ]
+            }
+        },
+        "/prometheus": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "valueUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "collectionFormat": "multi",
+                        "description": "name[]",
+                        "in": "query",
+                        "items": {
+                            "type": "string"
+                        },
+                        "name": "name[]",
+                        "required": false,
+                        "type": "array"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseEntity"
+                        }
+                    }
+                },
+                "summary": "value",
+                "tags": [
+                    "prometheus-mvc-endpoint"
+                ]
+            }
+        },
+        "/prometheus.json": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "valueUsingGET_1",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "collectionFormat": "multi",
+                        "description": "name[]",
+                        "in": "query",
+                        "items": {
+                            "type": "string"
+                        },
+                        "name": "name[]",
+                        "required": false,
+                        "type": "array"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseEntity"
+                        }
+                    }
+                },
+                "summary": "value",
+                "tags": [
+                    "prometheus-mvc-endpoint"
+                ]
+            }
+        },
+        "/v1/o2o/brand/queryAllBrands": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "queryAllBrandsUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«BrandWallListDto»»"
+                        }
+                    }
+                },
+                "summary": "queryAllBrands",
+                "tags": [
+                    "o-2-o-brand-controller"
+                ]
+            }
+        },
+        "/v1/o2o/product/autoSuggest": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "autoSuggestUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«string»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«AutoSuggestDto»"
+                        }
+                    }
+                },
+                "summary": "autoSuggest",
+                "tags": [
+                    "o-2-o-product-controller"
+                ]
+            }
+        },
+        "/v1/o2o/product/exclusive": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "独家发售商品",
+                "operationId": "getProductByExclusiveUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«QueryExclusiveListParamDto»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«PageProductList»"
+                        }
+                    }
+                },
+                "summary": "独家发售商品",
+                "tags": [
+                    "o-2-o-product-controller"
+                ]
+            }
+        },
+        "/v1/o2o/product/getGroupCategory": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getGroupCategoryUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«long»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«GroupCategoryDto»»"
+                        }
+                    }
+                },
+                "summary": "getGroupCategory",
+                "tags": [
+                    "o-2-o-product-controller"
+                ]
+            }
+        },
+        "/v1/o2o/product/getProductByBrand": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getProductByBrandUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«QueryBrandListParamDto»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«PageProductList»"
+                        }
+                    }
+                },
+                "summary": "getProductByBrand",
+                "tags": [
+                    "o-2-o-product-controller"
+                ]
+            }
+        },
+        "/v1/o2o/product/getProductByCategory": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getProductByCategoryUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«QueryCategoryListParamDto»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«PageProductList»"
+                        }
+                    }
+                },
+                "summary": "getProductByCategory",
+                "tags": [
+                    "o-2-o-product-controller"
+                ]
+            }
+        },
+        "/v1/o2o/product/getProductByKeyWords": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getProductByKeyWordsUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«QuerySearchListParamDto»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«PageProductList»"
+                        }
+                    }
+                },
+                "summary": "getProductByKeyWords",
+                "tags": [
+                    "o-2-o-product-controller"
+                ]
+            }
+        },
+        "/v1/o2o/product/giftset": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "礼物套装商品",
+                "operationId": "getProductByGiftSetUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«QueryGiftSetListParamDto»"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«PageProductList»"
+                        }
+                    }
+                },
+                "summary": "礼物套装商品",
+                "tags": [
+                    "o-2-o-product-controller"
+                ]
+            }
+        },
+        "/v1/o2o/store/queryStore/{userId}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "queryStoreUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "userId",
+                        "format": "int64",
+                        "in": "path",
+                        "name": "userId",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/O2OStore"
+                        }
+                    }
+                },
+                "summary": "queryStore",
+                "tags": [
+                    "o-2-o-store-controller"
+                ]
+            }
+        },
+        "/v1/o2o/store/store/{storeId}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "storeUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "storeId",
+                        "format": "int32",
+                        "in": "path",
+                        "name": "storeId",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/O2OStore"
+                        }
+                    }
+                },
+                "summary": "store",
+                "tags": [
+                    "o-2-o-store-controller"
+                ]
+            }
+        },
+        "/v1/o2o/user/login": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "loginUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CommonRequest«UserLoginDto»"
+                        }
+                    },
+                    {
+                        "description": "channel",
+                        "in": "header",
+                        "name": "channel",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«O2OUserBaseResponse»"
+                        }
+                    }
+                },
+                "summary": "login",
+                "tags": [
+                    "o-2-o-user-controller"
+                ]
+            }
+        },
+        "/v1/offlineShop/getOfflineShopInfo": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getOfflineShopInfoUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/OfflineShopInfoResponse"
+                        }
+                    }
+                },
+                "summary": "getOfflineShopInfo",
+                "tags": [
+                    "offline-shop-controller"
+                ]
+            }
+        },
+        "/v1/offlineShop/query/{appId}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "eurekaQueryUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "appId",
+                        "in": "path",
+                        "name": "appId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        }
+                    }
+                },
+                "summary": "eurekaQuery",
+                "tags": [
+                    "offline-shop-controller"
+                ]
+            }
+        }
+    },
+    "swagger": "2.0",
+    "tags": [
+        {
+            "description": "O 2 O Product Controller",
+            "name": "o-2-o-product-controller"
+        },
+        {
+            "description": "Rabbitmq Mnt Controller",
+            "name": "rabbitmq-mnt-controller"
+        },
+        {
+            "description": "Mnt Controller",
+            "name": "mnt-controller"
+        },
+        {
+            "description": "Prometheus Mvc Endpoint",
+            "name": "prometheus-mvc-endpoint"
+        },
+        {
+            "description": "O 2 O Brand Controller",
+            "name": "o-2-o-brand-controller"
+        },
+        {
+            "description": "O 2 O Store Controller",
+            "name": "o-2-o-store-controller"
+        },
+        {
+            "description": "O 2 O User Controller",
+            "name": "o-2-o-user-controller"
+        },
+        {
+            "description": "Offline Shop Controller",
+            "name": "offline-shop-controller"
+        }
+    ]
+}

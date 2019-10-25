@@ -1,0 +1,1870 @@
+{
+    "basePath": "/",
+    "definitions": {
+        "CacheDefinition": {
+            "properties": {
+                "createTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "createUser": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "enable": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "executionData": {
+                    "type": "string"
+                },
+                "executionMethod": {
+                    "type": "string"
+                },
+                "executionTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "executionUrl": {
+                    "type": "string"
+                },
+                "failureCause": {
+                    "type": "string"
+                },
+                "id": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "lastExecStatus": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "nums": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "source": {
+                    "type": "string"
+                },
+                "storeType": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "updateTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "updateUser": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CdnRequest": {
+            "properties": {
+                "contentDirList": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "contentUrlList": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "delayTime": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "isfetch": {
+                    "type": "boolean"
+                },
+                "siteType": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«List«InstanceSwitchDto»»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "description": "返回结果",
+                    "items": {
+                        "$ref": "#/definitions/InstanceSwitchDto"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "CommonResponse«List«SwitchDashBoardDto»»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "description": "返回结果",
+                    "items": {
+                        "$ref": "#/definitions/SwitchDashBoardDto"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "CommonResponse«ServiceSwitchsDto»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "$ref": "#/definitions/ServiceSwitchsDto",
+                    "description": "返回结果"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "CommonResponse«UserOrUrlLimitProperties»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "$ref": "#/definitions/UserOrUrlLimitProperties",
+                    "description": "返回结果"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "CommonResponse«boolean»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "description": "返回结果",
+                    "example": false,
+                    "type": "boolean"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "CommonResponse«object»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "description": "返回结果",
+                    "type": "object"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "DataCenterInfo": {
+            "properties": {
+                "name": {
+                    "enum": [
+                        "Netflix",
+                        "Amazon",
+                        "MyOwn"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "EurekaRequest": {
+            "properties": {
+                "appId": {
+                    "type": "string"
+                },
+                "instanceId": {
+                    "type": "string"
+                },
+                "ip": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceInfo": {
+            "properties": {
+                "actionType": {
+                    "enum": [
+                        "ADDED",
+                        "MODIFIED",
+                        "DELETED"
+                    ],
+                    "type": "string"
+                },
+                "app": {
+                    "type": "string"
+                },
+                "appGroupName": {
+                    "type": "string"
+                },
+                "asgName": {
+                    "type": "string"
+                },
+                "countryId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "dataCenterInfo": {
+                    "$ref": "#/definitions/DataCenterInfo"
+                },
+                "healthCheckUrl": {
+                    "type": "string"
+                },
+                "homePageUrl": {
+                    "type": "string"
+                },
+                "hostName": {
+                    "type": "string"
+                },
+                "instanceId": {
+                    "type": "string"
+                },
+                "ipAddr": {
+                    "type": "string"
+                },
+                "isCoordinatingDiscoveryServer": {
+                    "type": "boolean"
+                },
+                "lastDirtyTimestamp": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "lastUpdatedTimestamp": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "leaseInfo": {
+                    "$ref": "#/definitions/LeaseInfo"
+                },
+                "metadata": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object"
+                },
+                "overriddenStatus": {
+                    "enum": [
+                        "UP",
+                        "DOWN",
+                        "STARTING",
+                        "OUT_OF_SERVICE",
+                        "UNKNOWN"
+                    ],
+                    "type": "string"
+                },
+                "secureHealthCheckUrl": {
+                    "type": "string"
+                },
+                "secureVipAddress": {
+                    "type": "string"
+                },
+                "sid": {
+                    "type": "string"
+                },
+                "status": {
+                    "enum": [
+                        "UP",
+                        "DOWN",
+                        "STARTING",
+                        "OUT_OF_SERVICE",
+                        "UNKNOWN"
+                    ],
+                    "type": "string"
+                },
+                "statusPageUrl": {
+                    "type": "string"
+                },
+                "vipAddress": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceSwitchDto": {
+            "properties": {
+                "concerted": {
+                    "type": "boolean"
+                },
+                "instanceId": {
+                    "type": "string"
+                },
+                "operationResult": {
+                    "type": "boolean"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "updateTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "LeaseInfo": {
+            "properties": {
+                "durationInSecs": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "evictionTimestamp": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "lastRenewalTimestamp": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "registrationTimestamp": {
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "renewalIntervalInSecs": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "serviceUpTimestamp": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "Page": {
+            "properties": {
+                "content": {
+                    "items": {
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "total": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "ServiceSwitchDto": {
+            "properties": {
+                "applicationDescription": {
+                    "type": "string"
+                },
+                "applicationDescriptionEn": {
+                    "type": "string"
+                },
+                "applicationName": {
+                    "type": "string"
+                },
+                "applicationNameEn": {
+                    "type": "string"
+                },
+                "checked": {
+                    "type": "boolean"
+                },
+                "switchs": {
+                    "items": {
+                        "$ref": "#/definitions/SwitchDto"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ServiceSwitchsDto": {
+            "properties": {
+                "applications": {
+                    "items": {
+                        "$ref": "#/definitions/ServiceSwitchDto"
+                    },
+                    "type": "array"
+                },
+                "switchs": {
+                    "items": {
+                        "$ref": "#/definitions/SwitchDto"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SwitchDashBoardDto": {
+            "properties": {
+                "applicationDescription": {
+                    "type": "string"
+                },
+                "applicationDescriptionEn": {
+                    "type": "string"
+                },
+                "applicationName": {
+                    "type": "string"
+                },
+                "applicationNameEn": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "descriptionEn": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "nameEn": {
+                    "type": "string"
+                },
+                "order": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "turnOffCount": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "turnOnCount": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "SwitchDto": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "descriptionEn": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "nameEn": {
+                    "type": "string"
+                },
+                "order": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "turnOffCount": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "turnOnCount": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "UserOrUrlLimitProperties": {
+            "properties": {
+                "forbiddenIPEndVar": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "forbiddenUrlRegex": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "ipLimitSwitch": {
+                    "type": "boolean"
+                },
+                "protectUserEndVar": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "urlLimitSwitch": {
+                    "type": "boolean"
+                },
+                "userLimitSwitch": {
+                    "type": "boolean"
+                },
+                "whiteListUrlRegex": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "host": "10.157.24.96:9998",
+    "info": {
+        "description": "API Doc for sephora-soa-management service.",
+        "license": {
+            "name": "Sephora Home",
+            "url": "http://www.sephora.cn"
+        },
+        "termsOfService": "http://www.sephora.cn",
+        "title": "sephora-soa-management service API Doc",
+        "version": "1.0-SNAPSHOT"
+    },
+    "paths": {
+        "/application/management/userOrUrlLimitProperties": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getCurrentUserOrUrlLimitPropertiesUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "ip",
+                        "in": "query",
+                        "name": "ip",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«UserOrUrlLimitProperties»"
+                        }
+                    }
+                },
+                "summary": "getCurrentUserOrUrlLimitProperties",
+                "tags": [
+                    "application-management-controller"
+                ]
+            },
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "updatePropertiesUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "properties",
+                        "in": "body",
+                        "name": "properties",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserOrUrlLimitProperties"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«UserOrUrlLimitProperties»"
+                        }
+                    }
+                },
+                "summary": "updateProperties",
+                "tags": [
+                    "application-management-controller"
+                ]
+            }
+        },
+        "/cache-definition/management/clear/{id}": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "clearCacheUsingDELETE",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "id",
+                        "format": "int64",
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "summary": "清除缓存",
+                "tags": [
+                    "cache-definition-management-controller"
+                ]
+            }
+        },
+        "/cache-definition/management/data": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "saveCacheUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "cacheDefinition",
+                        "in": "body",
+                        "name": "cacheDefinition",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CacheDefinition"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        }
+                    }
+                },
+                "summary": "保存缓存定义信息",
+                "tags": [
+                    "cache-definition-management-controller"
+                ]
+            },
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "updateCacheUsingPUT",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "cacheDefinition",
+                        "in": "body",
+                        "name": "cacheDefinition",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CacheDefinition"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "summary": "更新缓存定义信息",
+                "tags": [
+                    "cache-definition-management-controller"
+                ]
+            }
+        },
+        "/cache-definition/management/list": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "findCachesUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "pageNo",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "pageNo",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "pageSize",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "pageSize",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "source",
+                        "in": "query",
+                        "name": "source",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "name",
+                        "in": "query",
+                        "name": "name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "lastExecStatus",
+                        "in": "query",
+                        "name": "lastExecStatus",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "enable",
+                        "in": "query",
+                        "name": "enable",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Page"
+                        }
+                    }
+                },
+                "summary": "获取缓存定义列表",
+                "tags": [
+                    "cache-definition-management-controller"
+                ]
+            }
+        },
+        "/cache-definition/management/{id}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getCacheUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "id",
+                        "format": "int64",
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CacheDefinition"
+                        }
+                    }
+                },
+                "summary": "根据主键获取缓存定义信息",
+                "tags": [
+                    "cache-definition-management-controller"
+                ]
+            }
+        },
+        "/cdn/management/pushContent": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "pushContentUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CdnRequest"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "summary": "pushContent",
+                "tags": [
+                    "cdn-management-controller"
+                ]
+            }
+        },
+        "/consul/management/service/{serviceName}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "findServiceByNameUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "serviceName",
+                        "in": "path",
+                        "name": "serviceName",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "items": {
+                                "$ref": "#/definitions/Map"
+                            },
+                            "type": "array"
+                        }
+                    }
+                },
+                "summary": "findServiceByName",
+                "tags": [
+                    "consul-management-controller"
+                ]
+            }
+        },
+        "/consul/management/services": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "findAllServicesUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "items": {
+                                "type": "object"
+                            },
+                            "type": "array"
+                        }
+                    }
+                },
+                "summary": "findAllServices",
+                "tags": [
+                    "consul-management-controller"
+                ]
+            }
+        },
+        "/eureka/management/inService": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "inEurekaAppByZoneUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/EurekaRequest"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "summary": "inEurekaAppByZone",
+                "tags": [
+                    "eureka-management-controller"
+                ]
+            }
+        },
+        "/eureka/management/outOfService": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "outOfServiceEurekaAppByZoneUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/EurekaRequest"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "summary": "outOfServiceEurekaAppByZone",
+                "tags": [
+                    "eureka-management-controller"
+                ]
+            }
+        },
+        "/eureka/management/queryApp/{appId}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "queryEurekaAppUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "appId",
+                        "in": "path",
+                        "name": "appId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "items": {
+                                "$ref": "#/definitions/InstanceInfo"
+                            },
+                            "type": "array"
+                        }
+                    }
+                },
+                "summary": "queryEurekaApp",
+                "tags": [
+                    "eureka-management-controller"
+                ]
+            }
+        },
+        "/eureka/management/refreshApp/{appId}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "refreshEurekaAppUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "appId",
+                        "in": "path",
+                        "name": "appId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "summary": "refreshEurekaApp",
+                "tags": [
+                    "eureka-management-controller"
+                ]
+            }
+        },
+        "/eureka/management/unregisterApp/{appId}/{zone}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "unRegisterEurekaAppByZoneUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "appId",
+                        "in": "path",
+                        "name": "appId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "zone",
+                        "in": "path",
+                        "name": "zone",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "summary": "unRegisterEurekaAppByZone",
+                "tags": [
+                    "eureka-management-controller"
+                ]
+            }
+        },
+        "/eureka/management/updateMetadata/{appId}/{instanceId}/metadata/{tag}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "updateMetaDataTagUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "appId",
+                        "in": "path",
+                        "name": "appId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "instanceId",
+                        "in": "path",
+                        "name": "instanceId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "tag",
+                        "in": "path",
+                        "name": "tag",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "summary": "updateMetaDataTag",
+                "tags": [
+                    "eureka-management-controller"
+                ]
+            }
+        },
+        "/message/resend/{messageId}": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "reSendMessageUsingPUT",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "messageId",
+                        "format": "int32",
+                        "in": "path",
+                        "name": "messageId",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "summary": "reSendMessage",
+                "tags": [
+                    "common-dead-message-controller"
+                ]
+            }
+        },
+        "/messages/management/v1/messages/maintenance/api/histories": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "queryApiHistoryWraperUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "request",
+                        "in": "body",
+                        "name": "request",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/QueryApiHistoryRequest"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "summary": "queryApiHistoryWraper",
+                "tags": [
+                    "messages-adapter-controller"
+                ]
+            }
+        },
+        "/redis/batchDelete": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "batchDeleteUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "keysRegexPattern",
+                        "in": "body",
+                        "name": "keysRegexPattern",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "summary": "batchDelete",
+                "tags": [
+                    "redis-management-controller"
+                ]
+            }
+        },
+        "/redis/init": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "addUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "summary": "add",
+                "tags": [
+                    "redis-management-controller"
+                ]
+            }
+        },
+        "/redis/keys/{keysRegexPattern}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "keysUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "keysRegexPattern",
+                        "in": "path",
+                        "name": "keysRegexPattern",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        }
+                    }
+                },
+                "summary": "keys",
+                "tags": [
+                    "redis-management-controller"
+                ]
+            }
+        },
+        "/redis/queryRedis/{redisKey}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "queryRedisByKeyUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "redisKey",
+                        "in": "path",
+                        "name": "redisKey",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«object»"
+                        }
+                    }
+                },
+                "summary": "queryRedisByKey",
+                "tags": [
+                    "redis-management-controller"
+                ]
+            }
+        },
+        "/v1/management/switch": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "服务地址没有传，修改所有节点",
+                "operationId": "changeSwitchStatusUsingPUT",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "status",
+                        "enum": [
+                            "ON",
+                            "OFF"
+                        ],
+                        "in": "query",
+                        "name": "status",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "applicationName",
+                        "in": "query",
+                        "name": "applicationName",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "code",
+                        "in": "query",
+                        "name": "code",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "instanceId",
+                        "in": "query",
+                        "name": "instanceId",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«InstanceSwitchDto»»"
+                        }
+                    }
+                },
+                "summary": "修改所有服务/单个服务的某个开关",
+                "tags": [
+                    "switch-management-controller"
+                ]
+            }
+        },
+        "/v1/management/switch/dashboard": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "获取服务开关的dashboard",
+                "operationId": "getDashboardUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«SwitchDashBoardDto»»"
+                        }
+                    }
+                },
+                "summary": "获取服务开关的dashboard",
+                "tags": [
+                    "switch-management-controller"
+                ]
+            }
+        },
+        "/v1/management/switch/refresh": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "刷新缓存",
+                "operationId": "refreshServiceSwitchUsingPUT",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "刷新缓存",
+                "tags": [
+                    "switch-management-controller"
+                ]
+            }
+        },
+        "/v1/management/switch/services": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "服务名称，不填默认选中第一个",
+                "operationId": "getServiceSwitchsUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "applicationName",
+                        "in": "query",
+                        "name": "applicationName",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«ServiceSwitchsDto»"
+                        }
+                    }
+                },
+                "summary": "获取所有服务和服务对应的所有开关",
+                "tags": [
+                    "switch-management-controller"
+                ]
+            }
+        },
+        "/v1/management/switch/{applicationName}/{code}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "获取某个开关所有节点值状态",
+                "operationId": "queryOneSwitchOnAllInstancesUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "applicationName",
+                        "in": "path",
+                        "name": "applicationName",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "code",
+                        "in": "path",
+                        "name": "code",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«InstanceSwitchDto»»"
+                        }
+                    }
+                },
+                "summary": "获取某个开关所有节点值状态",
+                "tags": [
+                    "switch-management-controller"
+                ]
+            }
+        },
+        "/varnish/management/ban": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "varnishBanUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "url",
+                        "in": "body",
+                        "name": "url",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "summary": "varnishBan",
+                "tags": [
+                    "vanish-management-controller"
+                ]
+            }
+        }
+    },
+    "swagger": "2.0",
+    "tags": [
+        {
+            "description": "Eureka Management Controller",
+            "name": "eureka-management-controller"
+        },
+        {
+            "description": "Redis Management Controller",
+            "name": "redis-management-controller"
+        },
+        {
+            "description": "Consul Management Controller",
+            "name": "consul-management-controller"
+        },
+        {
+            "description": "Vanish Management Controller",
+            "name": "vanish-management-controller"
+        },
+        {
+            "description": "Application Management Controller",
+            "name": "application-management-controller"
+        },
+        {
+            "description": "Messages Adapter Controller",
+            "name": "messages-adapter-controller"
+        },
+        {
+            "description": "Common Dead Message Controller",
+            "name": "common-dead-message-controller"
+        },
+        {
+            "description": "Switch Management Controller",
+            "name": "switch-management-controller"
+        },
+        {
+            "description": "Cache Definition Management Controller",
+            "name": "cache-definition-management-controller"
+        },
+        {
+            "description": "Cdn Management Controller",
+            "name": "cdn-management-controller"
+        }
+    ]
+}

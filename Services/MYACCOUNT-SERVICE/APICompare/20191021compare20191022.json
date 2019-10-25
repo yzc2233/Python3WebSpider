@@ -1,0 +1,83 @@
+{
+    "1、上一版本接口个数": 254,
+    "2、当前接口个数": 254,
+    "3、新增接口数": 0,
+    "4、删除接口数": 0,
+    "5、修改接口数": 1,
+    "6、检查结果": {
+        "删除接口详情": [],
+        "新增接口详情": [],
+        "编辑接口详情": [
+            {
+                "(1)路径": "GET/v2/myaccount/coupon/list/{pageno}/{pagesize}",
+                "(2)上一版本入参": [
+                    {
+                        "description": "pageno",
+                        "format": "int32",
+                        "in": "path",
+                        "name": "pageno",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "pagesize",
+                        "format": "int32",
+                        "in": "path",
+                        "name": "pagesize",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "优惠券状态（0已使用,1未使用,2已过期）",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "valid",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "(3)当前版本入参": [
+                    {
+                        "description": "pageno",
+                        "format": "int32",
+                        "in": "path",
+                        "name": "pageno",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "pagesize",
+                        "format": "int32",
+                        "in": "path",
+                        "name": "pagesize",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "default": 0,
+                        "description": "优惠券状态（0已使用,1未使用,2已过期）",
+                        "format": "int32",
+                        "in": "query",
+                        "name": "valid",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": true,
+                        "type": "string"
+                    }
+                ]
+            }
+        ]
+    }
+}

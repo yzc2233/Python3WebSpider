@@ -1,0 +1,2610 @@
+{
+    "basePath": "/",
+    "definitions": {
+        "ChangeInventoryDto": {
+            "properties": {
+                "quantity": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "skuCode": {
+                    "type": "string"
+                },
+                "sourceOrderNo": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ChangeInventoryListDto": {
+            "properties": {
+                "changeInventoryDtoList": {
+                    "items": {
+                        "$ref": "#/definitions/ChangeInventoryDto"
+                    },
+                    "type": "array"
+                },
+                "sourceOrderNo": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CommonResponse«List«QueryInventoryDto»»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "description": "返回结果",
+                    "items": {
+                        "$ref": "#/definitions/QueryInventoryDto"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "CommonResponse«boolean»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "description": "返回结果",
+                    "example": false,
+                    "type": "boolean"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "CommonResponse«int»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "description": "返回结果",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "CommonResponse«long»": {
+            "properties": {
+                "errorCode": {
+                    "description": "错误代码",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "description": "错误描述信息",
+                    "type": "string"
+                },
+                "results": {
+                    "description": "返回结果",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "status": {
+                    "description": "处理状态： 0 正常状态或业务异常，1 系统异常",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "description": "服务端返回请求结果的时间",
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status",
+                "timeStamp"
+            ],
+            "type": "object"
+        },
+        "InventoryDto": {
+            "properties": {
+                "locationCode": {
+                    "description": "库存来源",
+                    "enum": [
+                        "OMS"
+                    ],
+                    "type": "string"
+                },
+                "quantity": {
+                    "description": "库存数量",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "skuCode": {
+                    "description": "商品编号",
+                    "type": "string"
+                },
+                "storeCode": {
+                    "description": "所属商店",
+                    "enum": [
+                        "S001"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "quantity",
+                "skuCode"
+            ],
+            "type": "object"
+        },
+        "QueryInventoryAvailableDto": {
+            "properties": {
+                "locationCode": {
+                    "type": "string"
+                },
+                "skuCodeList": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "storeCode": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "QueryInventoryDto": {
+            "properties": {
+                "quantity": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "sku": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "QueryInventoryListDto": {
+            "properties": {
+                "skuCodeList": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "host": "10.157.24.134:10012",
+    "info": {
+        "description": "API Doc for sephora-inv-service service.",
+        "license": {
+            "name": "Sephora Home",
+            "url": "http://www.sephora.cn"
+        },
+        "termsOfService": "http://www.sephora.cn",
+        "title": "SEPHORA SOA RESTFUL APIs",
+        "version": "1.0"
+    },
+    "paths": {
+        "/v1/inventory/backend/bookInventory/{store}/{warehouse}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "记录在途库存！",
+                "operationId": "bookInventoryUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryDto"
+                        }
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "warehouse",
+                        "in": "path",
+                        "name": "warehouse",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "记录在途库存",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/bookInventoryList/{store}/{warehouse}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "记录在途库存列表！",
+                "operationId": "bookInventoryListUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryListDto"
+                        }
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "warehouse",
+                        "in": "path",
+                        "name": "warehouse",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "记录在途库存列表",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/bookShippedInventory/{store}/{warehouse}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "记录未发货库存！",
+                "operationId": "bookShippedInventoryUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryDto"
+                        }
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "warehouse",
+                        "in": "path",
+                        "name": "warehouse",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "记录未发货库存库存",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/bookShippedInventoryList/{store}/{warehouse}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "记录未发货库存列表！",
+                "operationId": "bookShippedInventoryListUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryListDto"
+                        }
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "warehouse",
+                        "in": "path",
+                        "name": "warehouse",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "记录未发货库存列表",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/clearVirtualInventory/{skuCode}": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "清除虚拟库存数据！",
+                "operationId": "clearVirtualInventoryUsingDELETE",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "skuCode",
+                        "in": "path",
+                        "name": "skuCode",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "清除虚拟库存",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/getAvailableInvByStores/{warehouse}/{skuCode}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "查询多个店铺总在途库存！",
+                "operationId": "findAvailableInventoryQuantityUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "stores",
+                        "in": "body",
+                        "name": "stores",
+                        "required": true,
+                        "schema": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    {
+                        "description": "skuCode",
+                        "in": "path",
+                        "name": "skuCode",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "warehouse",
+                        "in": "path",
+                        "name": "warehouse",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«int»"
+                        }
+                    }
+                },
+                "summary": "查询多个店铺总在途库存",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/getAvailableInventoryQuantity/{store}/{warehouse}/{skuCode}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "获取可用庫存！",
+                "operationId": "findInventoryUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "skuCode",
+                        "in": "path",
+                        "name": "skuCode",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "warehouse",
+                        "in": "path",
+                        "name": "warehouse",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "format": "int32",
+                            "type": "integer"
+                        }
+                    }
+                },
+                "summary": "获取可用庫存",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/getAvailableInventoryQuantityList": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "获取可用庫存！",
+                "operationId": "findInventoryUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "queryInventoryAvailableDto",
+                        "in": "body",
+                        "name": "queryInventoryAvailableDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/QueryInventoryAvailableDto"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«QueryInventoryDto»»"
+                        }
+                    }
+                },
+                "summary": "获取可用庫存",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/getBookedInv/{store}/{warehouse}/{skuCode}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "查询在途库存！",
+                "operationId": "findBookedInventoryQuantityUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "skuCode",
+                        "in": "path",
+                        "name": "skuCode",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "warehouse",
+                        "in": "path",
+                        "name": "warehouse",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«int»"
+                        }
+                    }
+                },
+                "summary": "查询在途库存",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/getBookedInvByStores/{warehouse}/{skuCode}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "查询多个店铺总在途库存！",
+                "operationId": "findBookedInventoryQuantityUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "stores",
+                        "in": "body",
+                        "name": "stores",
+                        "required": true,
+                        "schema": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    {
+                        "description": "skuCode",
+                        "in": "path",
+                        "name": "skuCode",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "warehouse",
+                        "in": "path",
+                        "name": "warehouse",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«int»"
+                        }
+                    }
+                },
+                "summary": "查询多个店铺总在途库存",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/getShippedBookedInv/{store}/{warehouse}/{skuCode}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "查询在途库存！",
+                "operationId": "findShippedBookedInventoryQuantityUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "skuCode",
+                        "in": "path",
+                        "name": "skuCode",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "warehouse",
+                        "in": "path",
+                        "name": "warehouse",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«int»"
+                        }
+                    }
+                },
+                "summary": "查询在途库存",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/getVBAvailableInventoryQuantity/{location}/{skuCode}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "获取指定仓库VB可用庫存！",
+                "operationId": "findVBInventoryUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "location",
+                        "in": "path",
+                        "name": "location",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "skuCode",
+                        "in": "path",
+                        "name": "skuCode",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "format": "int32",
+                            "type": "integer"
+                        }
+                    }
+                },
+                "summary": "获取指定仓库VB可用庫存",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/invFullCheck/{store}/{location}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "获取可用庫存！",
+                "operationId": "calcInvUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "location",
+                        "in": "path",
+                        "name": "location",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "summary": "获取可用庫存",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/reduceInventory/{store}/{warehouse}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "订单下发扣减库存！",
+                "operationId": "reduceInventoryUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryDto"
+                        }
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "warehouse",
+                        "in": "path",
+                        "name": "warehouse",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "下发减扣库存",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/reduceInventoryList/{store}/{warehouse}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "释放在途库存列表！",
+                "operationId": "reduceInventoryListUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryListDto"
+                        }
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "warehouse",
+                        "in": "path",
+                        "name": "warehouse",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "释放在途库存列表",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/releaseInventory/{store}/{warehouse}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "释放在途库存！",
+                "operationId": "releaseInventoryUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryDto"
+                        }
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "warehouse",
+                        "in": "path",
+                        "name": "warehouse",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "释放在途库存",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/releaseInventoryList/{store}/{warehouse}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "释放在途库存列表！",
+                "operationId": "releaseInventoryListUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryListDto"
+                        }
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "warehouse",
+                        "in": "path",
+                        "name": "warehouse",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "释放在途库存列表",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/releaseShippedInventory/{store}/{warehouse}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "释放未发货库存！",
+                "operationId": "releaseShippedInventoryUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryDto"
+                        }
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "warehouse",
+                        "in": "path",
+                        "name": "warehouse",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "释放未发货库存",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/releaseShippedInventoryList/{store}/{warehouse}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "释放未发货库存列表！",
+                "operationId": "releaseShippedInventoryListUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryListDto"
+                        }
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "warehouse",
+                        "in": "path",
+                        "name": "warehouse",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "释放未发货库存列表",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/updateInventory": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "后台更新库存数据！",
+                "operationId": "updateInventoryUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "inventoryDto",
+                        "in": "body",
+                        "name": "inventoryDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/InventoryDto"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "库存更新",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/backend/updateVirtualInventory": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "后台手动更新虚拟库存数据！",
+                "operationId": "updateVirtualInventoryUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "inventoryDto",
+                        "in": "body",
+                        "name": "inventoryDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/InventoryDto"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«int»"
+                        }
+                    }
+                },
+                "summary": "虚拟库存更新",
+                "tags": [
+                    "backend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/fixed/close/{store}/{warehouse}/{skuCode}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "closeFixedInvUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "skuCode",
+                        "in": "path",
+                        "name": "skuCode",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "warehouse",
+                        "in": "path",
+                        "name": "warehouse",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "summary": "closeFixedInv",
+                "tags": [
+                    "fixed-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/fixed/get/{store}/{warehouse}/{skuCode}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "getFixedInvUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "skuCode",
+                        "in": "path",
+                        "name": "skuCode",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "warehouse",
+                        "in": "path",
+                        "name": "warehouse",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "format": "int64",
+                            "type": "integer"
+                        }
+                    }
+                },
+                "summary": "getFixedInv",
+                "tags": [
+                    "fixed-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/fixed/open/{store}/{warehouse}/{skuCode}": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "openFixedInvUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "skuCode",
+                        "in": "path",
+                        "name": "skuCode",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "warehouse",
+                        "in": "path",
+                        "name": "warehouse",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "summary": "openFixedInv",
+                "tags": [
+                    "fixed-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/fixed/set/{store}/{warehouse}/{skuCode}/{quantity}": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "operationId": "setFixedInvUsingPUT",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "skuCode",
+                        "in": "path",
+                        "name": "skuCode",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "warehouse",
+                        "in": "path",
+                        "name": "warehouse",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "quantity",
+                        "format": "int64",
+                        "in": "path",
+                        "name": "quantity",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "summary": "setFixedInv",
+                "tags": [
+                    "fixed-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/bookInventory": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "记录EB在途库存！",
+                "operationId": "bookInventoryUsingPOST_1",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryDto"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "记录EB在途库存",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/bookInventoryList": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "记录在途库存列表！",
+                "operationId": "bookInventoryListUsingPOST_1",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryListDto"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "记录在途库存列表",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/bookVirtualInventory": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "记录虚拟在途库存！",
+                "operationId": "bookVirtualInventoryUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryDto"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "记录虚拟在途库存",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/eb/reduceInventoryList": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "扣除在途库存列表！",
+                "operationId": "reduceInventoryListUsingPOST_1",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryListDto"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "扣除EB在途库存列表",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/eb/releaseInventoryList": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "释放在途库存列表！",
+                "operationId": "releaseInventoryListUsingPOST_1",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryListDto"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "释放在途库存列表",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/getAvailableInventoryQuantity/{skuCode}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "获取EB可用庫存！",
+                "operationId": "findInventoryUsingGET_1",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "skuCode",
+                        "in": "path",
+                        "name": "skuCode",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "format": "int32",
+                            "type": "integer"
+                        }
+                    }
+                },
+                "summary": "获取EB可用庫存",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/getAvailableInventoryQuantity/{store}/{skuCode}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "获取前台渠道可用庫存！",
+                "operationId": "findFrontInventoryUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "skuCode",
+                        "in": "path",
+                        "name": "skuCode",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "format": "int32",
+                            "type": "integer"
+                        }
+                    }
+                },
+                "summary": "获取前台渠道可用庫存",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/getAvailableInventoryQuantityList": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "获取可用庫存列表！",
+                "operationId": "findInventoryListUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "listDto",
+                        "in": "body",
+                        "name": "listDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/QueryInventoryListDto"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«QueryInventoryDto»»"
+                        }
+                    }
+                },
+                "summary": "获取EB可用庫存列表",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/getAvailableVirtualInventoryQuantity/{skuCode}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "获取虚拟可用庫存！",
+                "operationId": "findVirtualInventoryUsingGET",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "skuCode",
+                        "in": "path",
+                        "name": "skuCode",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "format": "int32",
+                            "type": "integer"
+                        }
+                    }
+                },
+                "summary": "获取虚拟可用庫存",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/getAvailableVirtualInventoryQuantityList": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "获取虚拟可用庫存列表！",
+                "operationId": "findVirtualInventoryListUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "listDto",
+                        "in": "body",
+                        "name": "listDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/QueryInventoryListDto"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«QueryInventoryDto»»"
+                        }
+                    }
+                },
+                "summary": "获取虚拟可用庫存列表",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/reduceInventory": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "订单下发扣减库存！",
+                "operationId": "reduceInventoryUsingPOST_1",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryDto"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "订单下发减扣库存",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/reduceInventoryList": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "扣除在途库存列表！",
+                "operationId": "reduceInventoryListUsingPOST_2",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryListDto"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "扣除EB在途库存列表",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/reduceVirtualInventory": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "订单下发扣减虚拟库存！",
+                "operationId": "reduceVirtualInventoryUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryDto"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«long»"
+                        }
+                    }
+                },
+                "summary": "下发减扣虚拟库存",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/releaseInventory": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "释放EB在途库存！",
+                "operationId": "releaseInventoryUsingPOST_1",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryDto"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "释放EB在途库存",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/releaseInventoryList": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "释放在途库存列表！",
+                "operationId": "releaseInventoryListUsingPOST_2",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryListDto"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "释放在途库存列表",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/releaseVirtualInventory": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "释放虚拟在途库存！",
+                "operationId": "releaseVirtualInventoryUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryDto"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«long»"
+                        }
+                    }
+                },
+                "summary": "释放虚拟在途库存",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/{store}/bookInventory": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "记录前台渠道在途库存！",
+                "operationId": "bookFrontInventoryUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryDto"
+                        }
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "记录前台渠道在途库存",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/{store}/bookInventoryList": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "记录在途库存列表！",
+                "operationId": "bookFrontInventoryListUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryListDto"
+                        }
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "记录在途库存列表",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/{store}/getAvailableInventoryQuantityList": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "获取前台渠道可用庫存！",
+                "operationId": "findFrontInventoryListUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "listDto",
+                        "in": "body",
+                        "name": "listDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/QueryInventoryListDto"
+                        }
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«List«QueryInventoryDto»»"
+                        }
+                    }
+                },
+                "summary": "获取前台渠道可用庫存",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/{store}/reduceInventory": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "订单下发减扣前台渠道库存！",
+                "operationId": "reduceFrontInventoryUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryDto"
+                        }
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "订单下发减扣前台渠道库存",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/{store}/reduceInventoryList": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "扣除前台渠道在途库存列表！",
+                "operationId": "reduceFrontInventoryListUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryListDto"
+                        }
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "扣除前台渠道在途库存列表",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/{store}/releaseInventory": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "释放前台渠道在途库存！",
+                "operationId": "releaseFrontInventoryUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryDto"
+                        }
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "释放前台渠道在途库存",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        },
+        "/v1/inventory/front/{store}/releaseInventoryList": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "description": "释放前台渠道在途库存列表！",
+                "operationId": "releaseFrontInventoryListUsingPOST",
+                "parameters": [
+                    {
+                        "description": "uid",
+                        "in": "header",
+                        "name": "uid",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "dto",
+                        "in": "body",
+                        "name": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangeInventoryListDto"
+                        }
+                    },
+                    {
+                        "description": "store",
+                        "in": "path",
+                        "name": "store",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json;charset=UTF-8"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CommonResponse«boolean»"
+                        }
+                    }
+                },
+                "summary": "释放前台渠道在途库存列表",
+                "tags": [
+                    "frontend-inventory-controller"
+                ]
+            }
+        }
+    },
+    "swagger": "2.0",
+    "tags": [
+        {
+            "description": "Fixed Inventory Controller",
+            "name": "fixed-inventory-controller"
+        },
+        {
+            "description": "Backend Inventory Controller",
+            "name": "backend-inventory-controller"
+        },
+        {
+            "description": "Frontend Inventory Controller",
+            "name": "frontend-inventory-controller"
+        }
+    ]
+}
