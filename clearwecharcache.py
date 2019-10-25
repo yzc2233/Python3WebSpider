@@ -10,7 +10,8 @@ if len(sys.argv) < 4:
 else:
     mobile = sys.argv[3]
 
-wechat_ip = GetIP.getIp(env,'wechatcenter-service')
+wechat_ip = GetIP.getIp(env,'sephora-wechatcenter-service')
+crmhub_ip = GetIP.getIp(env,'omni-crmhub-service')
 
 #清除指定openId用户的微信登录注册信息缓存
 def clearRegisterCached():
@@ -60,6 +61,19 @@ def clearCurrentBindActiveMobileCached():
         print('清除指定小程序用户当前绑定的活跃手机的缓存成功')
     print('*'*10,'清除指定小程序用户当前绑定的活跃手机的缓存','--结束','*'*10,'\n')
 
+#清除CRMHUB手机号对应默认卡缓存
+def clearcachemobiledefaultcard():
+    print('*'*10,'清除CRMHUB手机号对应默认卡缓存','--开始','*'*10)
+    clearCurrentBindActiveMobileCached_url = crmhub_ip+'/v1/omni/crm/hub/cache/mobile/default/card?mobile='+mobile
+    req = requests.get(clearCurrentBindActiveMobileCached_url)
+    reqstatus = req.status_code
+    if reqstatus != 200:
+        print('清除CRMHUB手机号对应默认卡缓存,接口status：',reqstatus)
+    else:
+        print('清除CRMHUB手机号对应默认卡缓存成功')
+    print('*'*10,'清除CRMHUB手机号对应默认卡缓存','--结束','*'*10,'\n')
+
+
 if __name__ == '__main__':
     #清除指定openId用户的微信登录注册信息缓存
     clearRegisterCached()
@@ -69,3 +83,5 @@ if __name__ == '__main__':
     clearCurrentAuthorizeMobileIsBindCached()
     #清除指定小程序用户当前绑定的活跃手机的缓存
     clearCurrentBindActiveMobileCached()
+    #清除CRMHUB手机号对应默认卡缓存
+    clearcachemobiledefaultcard()
