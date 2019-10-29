@@ -47,7 +47,7 @@ def query(date,form_station,to_station):
 def g_vehicle():
     if len(data) != 0:
         for g in data:
-            i = g[0].startwith('G') #判断首字母是不是G
+            i = g[0].startswith('G') #判断首字母是不是G
             if i:
                 type_data.append(g)
 
@@ -55,7 +55,7 @@ def g_vehicle():
 def r_g_vehicle():
     if len(data) != 0:
         for g in data:
-            i = g[0].startwith('G') #判断首字母是不是G
+            i = g[0].startswith('G') #判断首字母是不是G
             if i:
                 type_data.remove(g)
 
@@ -63,7 +63,7 @@ def r_g_vehicle():
 def d_vehicle():
     if len(data) != 0:
         for d in data:
-            i = d[0].startwith('D') #判断首字母是不是G
+            i = d[0].startswith('D') #判断首字母是不是G
             if i:
                 type_data.append(d)
 
@@ -71,7 +71,7 @@ def d_vehicle():
 def r_d_vehicle():
     if len(data) != 0:
         for d in data:
-            i = d[0].startwith('D') #判断首字母是不是G
+            i = d[0].startswith('D') #判断首字母是不是G
             if i:
                 type_data.remove(d)
 

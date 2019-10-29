@@ -242,9 +242,6 @@ class Ui_MainWindow(object):
         if isStations() == True:
             stations = eval(read()) #读取所有车站并转换为dic类型
             #判断所有参数是否为空，以及出发地、目的地、出发日期
-            cc = (is_valid_date(get_date))
-            bb = (get_from in stations)
-            aa = (get_to in stations)
             if get_from != '' and get_to != '' and get_date !='':
                 #判断输入的车站名称是否存在，以及时间格式是否正确
                 if get_from in stations and get_to in stations and is_valid_date(get_date):
