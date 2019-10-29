@@ -53,10 +53,10 @@ def g_vehicle():
 
 #移除高铁信息
 def r_g_vehicle():
-    if len(data) != 0:
+    if len(data) != 0 and len(type_data) != 0:
         for g in data:
             i = g[0].startswith('G') #判断首字母是不是G
-            if i:
+            if i == True:
                 type_data.remove(g)
 
 #获取动车信息
@@ -64,15 +64,15 @@ def d_vehicle():
     if len(data) != 0:
         for d in data:
             i = d[0].startswith('D') #判断首字母是不是G
-            if i:
+            if i == True:
                 type_data.append(d)
 
 #动车信息移除
 def r_d_vehicle():
-    if len(data) != 0:
+    if len(data) != 0 and len(type_data) != 0:
         for d in data:
             i = d[0].startswith('D') #判断首字母是不是G
-            if i:
+            if i == True:
                 type_data.remove(d)
 
 
