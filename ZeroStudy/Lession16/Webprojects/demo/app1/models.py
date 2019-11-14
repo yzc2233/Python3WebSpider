@@ -1,11 +1,11 @@
 from django.db import models
 
 # Create your models here.
-class CreateUpdate(models.Model)#创建抽象数据模型，同样要继承与models.Model
+class CreateUpdate(models.Model):#创建抽象数据模型，同样要继承与models.Model
     #创建时间，使用models.DateTimeField
-    create_at = models.DateTimeField(auto_created=True)
+    create_at = models.DateTimeField(auto_now_add=True)
     #修改时间，使用models.DateTimeField
-    update_at = models.DateTimeField(auto_created=True)
+    update_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:#元数据，除了字段以外的所有属性
         #设置model为抽象类。指定该表不应该在数据库创建
