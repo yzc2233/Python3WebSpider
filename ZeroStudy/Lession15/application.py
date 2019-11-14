@@ -9,6 +9,6 @@ def app(environ,start_response):
     else:
         file_data = file.read() #读取文件内容
         file.close()#关闭文件
-        response = file_data.decode('urf-8')#构造响应数据
+        response = file_data.decode('utf-8')#构造响应数据
 
         return [response.encode('utf-8')] #返回数据
