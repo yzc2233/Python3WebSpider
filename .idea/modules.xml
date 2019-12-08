@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/SwaggerCompare.iml" filepath="$PROJECT_DIR$/.idea/SwaggerCompare.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SwaggerCompare.iml" filepath="$PROJECT_DIR$/SwaggerCompare.iml" />
     </modules>
   </component>
 </project>

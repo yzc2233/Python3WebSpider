@@ -1,0 +1,46 @@
+{
+    "服务": "OMNI-ORDERCENTER-SERVICE",
+    "当前环境接口总数": 18,
+    "生产环境接口总数": 13,
+    "新增接口数": 6,
+    "删除接口数": 1,
+    "新增接口详情": [
+        {
+            "Type": "post",
+            "Path": "/v1/omni/order/tmall/sync/dmz/order/info",
+            "Description": "同步DMZ订单数据"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/omni/order/tmall/sync/dmz/order/return",
+            "Description": "同步DMZ退货单数据"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/omni/order/tmall/sync/dmz/order/status",
+            "Description": "同步DMZ订单状态数据"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/omni/order/tmall/sync/oms/fallback/{orderId}/{status}/{type}",
+            "Description": "OMS数据处理回调"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/omni/order/tmall/sync/oms/orderInfo",
+            "Description": "同步TMall订单数据toOMS"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/omni/order/tmall/sync/oms/orderStatus",
+            "Description": "同步TMall订单状态数据toOMS"
+        }
+    ],
+    "删除接口详情": [
+        {
+            "Type": "delete",
+            "Path": "/v1/es/omni/ordercenter/elasticsearch/delete/{p}",
+            "Description": "删除线下订单以及订单项数据"
+        }
+    ]
+}
