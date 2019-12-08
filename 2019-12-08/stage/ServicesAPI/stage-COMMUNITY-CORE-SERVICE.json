@@ -1,0 +1,1139 @@
+{
+    "COMMUNITY-CORE-SERVICE": [
+        {
+            "Type": "put",
+            "Path": "/v1/community/post/block/{openId}/{postId}",
+            "Note": "当前登录用户屏蔽关注流中的帖子"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/post/collect/{openId}/{postId}",
+            "Note": "帖子的收藏"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/post/like/{openId}/{postId}",
+            "Note": "帖子点赞"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/post/uncollect/{openId}/{postId}",
+            "Note": "帖子取消收藏"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/post/unlike/{openId}/{postId}",
+            "Note": "帖子取消点赞"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/posts/others-like",
+            "Note": "个人信息 - 获赞清单"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/posts/self-collect",
+            "Note": "个人信息 - 收藏清单"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/posts/self-like",
+            "Note": "getSelfLikePostList"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/cache/campaign/ribbon",
+            "Note": "清除正在进行的丝带活动列表缓存"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/cache/group-topic",
+            "Note": "清除所有小组列表缓存"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/cache/hot-topic",
+            "Note": "清除热门话题缓存"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/cache/hot-topic/campaign",
+            "Note": "清除话题活动帖列表缓存"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/cache/postsByStatusForCache",
+            "Note": "清除推荐算法缓存"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/cache/postsByStatusForCache",
+            "Note": "更新推荐算法缓存"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/campaign/address",
+            "Note": "活动申领地址保存"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/campaign/campaigns/{type}",
+            "Note": "获取我的活动列表"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/campaign/ribbon",
+            "Note": "根据用户id获取丝带兑换活动列表"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/campaign/trial/{postId}",
+            "Note": "试用申领 - 申请试用"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/posts/campaign/{postId}/{pagingState}",
+            "Note": "活动征集-帖子列表"
+        },
+        {
+            "Type": "get",
+            "Path": "/v2/community/posts/campaign/{postId}/{pagingState}",
+            "Note": "活动征集-帖子列表"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/campaign",
+            "Note": "活动创建"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/campaign",
+            "Note": "活动编辑"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/campaign-sc/message",
+            "Note": "社区消息-发送用户征集活动中奖结果消息"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/campaign/audit",
+            "Note": "活动审核"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/campaign/detail/{id}",
+            "Note": "活动编辑页详情"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/campaign/express",
+            "Note": "批量更新某活动参与用户的运单号"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/campaign/hidden",
+            "Note": "活动在瀑布流隐藏"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/campaign/hidden-job",
+            "Note": "活动显示结束时间到自动在瀑布流隐藏"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/management/campaign/involve-clear",
+            "Note": "清除某活动参与用户缓存"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/campaign/involves-export",
+            "Note": "导出参与活动用户列表"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/campaign/push",
+            "Note": "活动在瀑布流显示"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/campaign/show-job",
+            "Note": "活动显示时间到自动在瀑布流显示"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/campaign/spu/upload",
+            "Note": "整合excel文件中的spu"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/campaign/{id}",
+            "Note": "活动详情"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/campaigns",
+            "Note": "活动管理-获取活动列表"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/hottopic/getcampaigns",
+            "Note": "获取活动列表"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/comment",
+            "Note": "创建非小组帖子的评论"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/comment/replies",
+            "Note": "获取回复列表页"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/comment/reply",
+            "Note": "创建回复"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/comment/topic",
+            "Note": "创建小组帖子评论"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/comments",
+            "Note": "评论 - 帖子 - 列表"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/comments/detail",
+            "Note": "根据帖子ID分页查询评论和回复（为帖子详情页提供）"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/comments/user",
+            "Note": "分页查询当前用户评论列表"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/group-topic/mycomment",
+            "Note": "小组我的评论"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/post/comment/{authorOpenId}/{commentId}",
+            "Note": "删除非小组帖子的评论"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/post/reply/{authorOpenId}/{replyId}",
+            "Note": "删除非小组帖子的回复"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/approve/comments",
+            "Note": "审核通过帖子的评论 - 显示评论或回复"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/approve/group-topic/comments",
+            "Note": "后台管理 - 审核通过小组的评论"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/block/comments",
+            "Note": "屏蔽帖子的评论或回复"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/block/group-topic/comments",
+            "Note": "屏蔽小组的评论"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/group-topic/comments",
+            "Note": "后台管理-获取小组的评论列表"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/post/comments",
+            "Note": "帖子管理-评论或回复列表"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/denounce/post",
+            "Note": "帖子举报信息提交"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/denounce/reasons",
+            "Note": "获取举报关键词列表"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/denounce/post/{postId}",
+            "Note": "获取帖子举报信息列表"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/denounce/posts",
+            "Note": "后台用户管理,举报列表"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/denounce/reasons",
+            "Note": "获取举报理由筛选列表"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/eureka/management/clear/cache/campaign/ribbon",
+            "Note": "清除hot-topic-campaign缓存"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/eureka/management/clear/cache/group-topic",
+            "Note": "清除group-topic缓存"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/eureka/management/clear/cache/hot-topic",
+            "Note": "清除hot-topic缓存"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/eureka/management/clear/cache/hot-topic/campaign",
+            "Note": "清除hot-topic-campaign缓存"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/eureka/management/clear/cache/postsByStatusForCache",
+            "Note": "清除推荐算法缓存"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/eureka/management/clear/cache/postsByStatusForCache",
+            "Note": "清除推荐算法缓存"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/eureka/management/env/{appId}",
+            "Note": "更新属性配置"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/eureka/management/refreshOrReset/{appId}",
+            "Note": "刷新/重置配置"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/group-topic/{groupId}/follow",
+            "Note": "取消关注小组"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/group-topic/{groupId}/follow",
+            "Note": "关注小组"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/group-topic",
+            "Note": "getHotGroupList"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/group-topic/profiles/{groupId}",
+            "Note": "获取小组主页的小组信息"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/group-topic/self",
+            "Note": "getSelfGroupList"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/operation/group-topic-refresh",
+            "Note": "refreshGroupTopicCache"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/group-topic",
+            "Note": "后台管理,新增小组"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/group-topic",
+            "Note": "后台管理,修改小组信息"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/group-topic/detail/{groupId}",
+            "Note": "后台管理,获取小组详情"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/group-topic/dict",
+            "Note": "获取小组字典清单"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/group-topic/follow/details/{userId}",
+            "Note": "后台管理,获取用户参与小组的详情列表"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/group-topic/infos",
+            "Note": "后台管理,获取所有小组的详情分页列表"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/hobbies/keywords",
+            "Note": "首次登陆推荐关键词列表"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/hobbies/keywords",
+            "Note": "保存首次登陆推荐关键词列表数据"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/hobbies/share",
+            "Note": "分享事件保存"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/hobbies/user/{openId}",
+            "Note": "隐藏推荐关注用户"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/hobbies/users",
+            "Note": "获取推荐用户列表"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/hobbies/users",
+            "Note": "隐藏推荐关注用户模块"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/hot-topic/detail/{hotTopicId}",
+            "Note": "获取话题详情信息"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/hot-topics",
+            "Note": "获取所有话题"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/hot-topics/search-results",
+            "Note": "根据关键字搜索对应话题"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/hot-topics/system",
+            "Note": "获取系统配置的热门话题"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/topics",
+            "Note": "获取所有话题"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/management/campaign/{hotTopicId}/{campaignId}",
+            "Note": "话题管理-删除话题关联活动"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/management/hot-topic",
+            "Note": "后台主题管理-删除话题"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/hot-topic",
+            "Note": "后台主题管理-查询话题信息"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/hot-topic",
+            "Note": "后台主题管理-编辑话题"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/hot-topic-show",
+            "Note": "更新当前已存在的话题的热门话题显示(防止旧数据热门话题显示字段不准确问题)"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/hot-topic/add/{topicId}",
+            "Note": "后台主题管理-添加帖子"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/hot-topic/append",
+            "Note": "后台主题管理-新增话题"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/hot-topic/dict",
+            "Note": "获取所有话题列表"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/hot-topic/posts/{hotTopicId}",
+            "Note": "后台主题管理-话题详情包含话题的帖子列表"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/hot-topic/remove/{topicId}",
+            "Note": "后台主题管理-移除帖子"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/hot-topic/update",
+            "Note": "后台主题管理-更新话题及相关活动与小组"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/hot-topic/update/{hotTopicId}/{showInExplore}",
+            "Note": "后台主题管理-控制话题是否在发现页显示"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/hot-topic/{hotTopicId}/{campaignId}",
+            "Note": "话题管理-增加话题关联活动"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/hot-topics",
+            "Note": "获取系统配置的热门话题"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/hot-topics",
+            "Note": "后台主题管理-获取主题列表"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/hot-topics/refresh",
+            "Note": "刷新hotTopic缓存"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/queryTopicPosts/{topicId}",
+            "Note": "后台帖子审核列表"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/image",
+            "Note": "删除图片"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/image",
+            "Note": "更改图片"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/image/image-process",
+            "Note": "切图功能"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/image/refresh",
+            "Note": "刷新CDN缓存"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/image/varnish",
+            "Note": "刷新varnish"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/operation/alias",
+            "Note": "添加别名"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/operation/alias",
+            "Note": "索引别名切换"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/operation/index",
+            "Note": "迁移索引"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/operation/index/comment/{commentId}",
+            "Note": "重新build评论（CommentEntity）到es"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/operation/index/comment_reply/{commentId}/{replyId}",
+            "Note": "重新build回复（CommentReplyEntity）到es"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/operation/index/denounce/{postId}",
+            "Note": "重新build举报（DenounceEntity）到es"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/operation/index/explore-recommend",
+            "Note": "推荐算法全量"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/operation/index/explore-recommend-one",
+            "Note": "推荐算法单个"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/operation/index/explore-recommend-weight",
+            "Note": "推荐算法全量-weight"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/operation/index/explore-recommend-weight-one",
+            "Note": "推荐算法权重单个"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/operation/index/explore-recommend-weight-reset",
+            "Note": "推荐算法重置权重排序区块数据"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/operation/index/post/{openId}/{postId}",
+            "Note": "重新build帖子（SendTimelineEntity）数据到es"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/operation/index/post/{postId}",
+            "Note": "删除帖子"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/operation/index/topic/{openId}/{postId}",
+            "Note": "重新build话题（SendTopicEntity）帖子到es"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/operation/index/user",
+            "Note": "build用户到es"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/operation/mapping/{indexName}",
+            "Note": "创建索引"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/keywords",
+            "Note": "添加推荐关键词"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/operation/keywords/change",
+            "Note": "重新加载推荐关键词"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/operation/timeline/abnormal-receivetimeline",
+            "Note": "清除receive_timeline多余数据"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/timeline/follow",
+            "Note": " 关注主页瀑布流 "
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/timeline/group-topic",
+            "Note": "getUserGroupTimelineData"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/search-results/content",
+            "Note": "搜索内容 "
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/search-results/group-topic",
+            "Note": "搜索小组"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/post/brief-video",
+            "Note": "创建短视频帖子"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/post/brief-video/campaign-sc-auth",
+            "Note": "创建短视频帖子"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/post/brief-video/campaign-trial-auth",
+            "Note": "创建短视频帖子"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/post/detail/brief-video/{authorOpenId}/{postId}",
+            "Note": "获取短视频类型帖子详细数据"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/post/detail/campaign-sc/{authorOpenId}/{postId}",
+            "Note": "获取征集活动类型帖子详细数据"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/post/detail/campaign-trial/{authorOpenId}/{postId}",
+            "Note": "获取试用申领类型帖子详细数据"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/post/detail/graphic-text/{authorOpenId}/{postId}",
+            "Note": "获取图文帖详细数据"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/post/detail/graphic-text/{postId}",
+            "Note": "获取编辑图文帖详细数据"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/post/detail/nine-block/{openId}/{postId}",
+            "Note": "获取九宫格帖详细数据"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/post/detail/nine-block/{postId}",
+            "Note": "获取编辑九宫格帖详细数据"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/post/graphic-text",
+            "Note": "创建图文帖"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/post/graphic-text/campaign-sc-auth",
+            "Note": "创建图文帖"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/post/graphic-text/campaign-trial-auth",
+            "Note": "创建图文帖"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/post/graphic-text/{postId}",
+            "Note": "编辑图文帖"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/post/html",
+            "Note": "创建硬广帖"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/post/html/campaign-sc-auth",
+            "Note": "创建硬广帖"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/post/html/campaign-trial-auth",
+            "Note": "创建硬广帖"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/post/image",
+            "Note": "上传帖子图片"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/post/live",
+            "Note": "后台帖子管理创建直播帖"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/post/nine-block",
+            "Note": "创建九宫格帖子"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/post/nine-block/campaign-sc",
+            "Note": "活动征集-创建参与活动征集帖子"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/post/nine-block/campaign-sc-auth",
+            "Note": "创建九宫格帖子"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/post/nine-block/campaign-trial",
+            "Note": "试用申领-创建收物还图帖子"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/post/nine-block/campaign-trial-auth",
+            "Note": "创建九宫格帖子"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/post/nine-block/{postId}",
+            "Note": "编辑九宫格帖"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/post/tencent-signature",
+            "Note": "getTencentVideoSignature"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/post/{authorOpenId}/{postId}",
+            "Note": "删除帖子"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/posts",
+            "Note": "获取当前用户的发布清单"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/posts/product/mobile/{productId}",
+            "Note": "移动端商品详情页帖子列表"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/posts/product/pc/{productId}",
+            "Note": "PC端商品详情页帖子列表"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/posts/{openId}",
+            "Note": "用户进他人主页查看帖子瀑布流列表"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/timeline/explore",
+            "Note": "获取发现瀑布流数据"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/timeline/hot-topic/{hotTopicId}",
+            "Note": "获取话题详情页帖子列表"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/timeline/product/{productId}",
+            "Note": "产品详情页帖子瀑布流"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/approve/posts",
+            "Note": "帖子审核通过"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/elite/post/",
+            "Note": "帖子申精或取消申精"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/init-explore-post-for-redis",
+            "Note": "后台管理-帖子管理，初始缓存瀑布流帖子"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/init-fixed-post-for-redis",
+            "Note": "后台管理-帖子管理，初始缓存置顶帖子"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/init-user-for-redis",
+            "Note": "后台管理-初始化用户缓存"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/init-user-post-for-redis",
+            "Note": "后台管理-帖子管理，初始用户未审核的缓存"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/post",
+            "Note": "后台管理-帖子管理，修改帖子详情"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/post/bzlike",
+            "Note": "帖子计数器"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/post/detail/brief-video/{postId}",
+            "Note": "后台管理获取短视频帖子详情"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/post/detail/graphic-text/{postId}",
+            "Note": "后台管理获取图文帖子详情"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/post/detail/html/{postId}",
+            "Note": "后台管理获取HTML帖子详情"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/post/detail/live/{postId}",
+            "Note": "后台管理获取直播帖子详情"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/post/detail/nine-block/{postId}",
+            "Note": "后台管理获取九宫格帖子详情"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/post/graphic-text",
+            "Note": "后台帖子管理创建图文帖"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/post/html",
+            "Note": "创建硬广帖"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/post/nine-block",
+            "Note": "后台帖子管理创建九宫格帖"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/post/safety",
+            "Note": "后台管理-安全专项开关"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/posts",
+            "Note": "后台帖子审核列表"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/process-image-for-no-pushed",
+            "Note": "后台管理-帖子管理，未审核通过的帖子切图"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/process-image-for-no-pushed-all",
+            "Note": "后台管理-帖子管理，未审核通过的帖子切图"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/revise/post",
+            "Note": "后台管理-帖子审核未通过，打回修改"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/stick/post/",
+            "Note": "帖子置顶"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/upload/image",
+            "Note": "上传图片（不切图）"
+        },
+        {
+            "Type": "get",
+            "Path": "/v2/community/post/detail/campaign-sc/{authorOpenId}/{postId}",
+            "Note": "获取征集活动类型帖子详细数据"
+        },
+        {
+            "Type": "get",
+            "Path": "/v2/community/post/detail/graphic-text/{postId}",
+            "Note": "获取编辑图文帖详细数据"
+        },
+        {
+            "Type": "get",
+            "Path": "/v2/community/post/detail/nine-block/{postId}",
+            "Note": "获取编辑九宫格帖详细数据"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/group-topic/posts/{groupId}",
+            "Note": "用户小组主页查看小组主页话题列表"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/post/detail/group-topic/{postId}",
+            "Note": "获取未通过审核的小组帖详情"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/post/detail/topic/{authorOpenId}/{postId}",
+            "Note": "获取小组帖子详细数据"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/post/topic",
+            "Note": "创建小组讨论帖"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/post/topic/view",
+            "Note": "获取用户个人信息中我的小组的浏览历史"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/community/post/topic/{authorOpenId}/{postId}",
+            "Note": "删除帖子"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/post/topics",
+            "Note": "获取用户发的小组讨论帖子列表"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/topic-post/{postId}",
+            "Note": "编辑小组帖"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/audit/group-posts",
+            "Note": "审核小组帖子"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/elite/group-topic",
+            "Note": "小组帖子申精或取消申精"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/group-topic/post",
+            "Note": "后台管理-小组帖子管理，修改帖子详情"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/management/group/posts",
+            "Note": "后台小组帖子审核列表"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/post/detail/topic/{postId}",
+            "Note": "后台管理-获取小组帖子详细数据"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/revise/group-post",
+            "Note": "后台管理-小组帖审核-打回修改"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/stick/group-topic",
+            "Note": "小组帖子置顶"
+        },
+        {
+            "Type": "get",
+            "Path": "/v2/community/post/detail/group-topic/{postId}",
+            "Note": "获取未通过审核的小组帖详情"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/switch",
+            "Note": "获取配置开关"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/management/switch",
+            "Note": "更新配置开关"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/operation/user/openid",
+            "Note": "getUserOpenId"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/user/fans",
+            "Note": "获取当前用户粉丝信息"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/user/follow",
+            "Note": "关注用户"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/user/follows",
+            "Note": "获取当前用户关注的明星用户列表信息"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/user/level-and-wealth",
+            "Note": "获取member portal 信息"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/user/profiles/{openId}",
+            "Note": "主页帖子作者的个人信息"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/community/user/unfollow",
+            "Note": "取关用户"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/comments/details/{userId}",
+            "Note": "后台管理,获取用户的评论"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/posts/details/{userId}",
+            "Note": "后台管理,获取用户的帖子数详情"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/replys/details/{userId}",
+            "Note": "后台管理,获取用户的回复"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/user-id-from-open-id",
+            "Note": "testOpenId"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/user/comment/userid-commentcount",
+            "Note": "获取评论审核未通过的所有用户编号与我的评论计数聚合关系"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/user/info",
+            "Note": "获取用户部分信息"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/management/user/post/counts",
+            "Note": "获取用户发帖数"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/community/detectPorn",
+            "Note": "分页查询个人信息-我的获评列表"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/community/user/replies",
+            "Note": "分页查询个人信息-我的获评列表"
+        }
+    ]
+}
