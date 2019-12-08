@@ -1,0 +1,219 @@
+{
+    "MYACCOUNT-PORTAL-SERVICE": [
+        {
+            "Type": "post",
+            "Path": "/v1/myaccount/portal/cas/auth/login",
+            "Description": "Cas auth login demonstration"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/myaccount/portal/cas/auth/oauth/profile",
+            "Description": "Cas auth profile demonstration"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/myaccount/portal/cas/auth/social-login",
+            "Description": "Cas auth social login demonstration"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/app/homepage/newborn/zone",
+            "Description": "getAppHomepageNewbornZone"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/portal/logout",
+            "Description": "logout"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/o2o/backend/shop/detail/{id}",
+            "Description": "获取门店详情信息"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/portal/o2o/backend/shop/info",
+            "Description": "新增/更新门店信息"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/portal/o2o/backend/shop/info/{id}",
+            "Description": "注销门店信息"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/o2o/backend/shop/list",
+            "Description": "获取门店及账号信息列表"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/portal/o2o/backend/shop/user",
+            "Description": "新增账号信息"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/o2o/backend/shop/user/List/{shopId}",
+            "Description": "查询指定门店有效账号信息"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/portal/reglogin/autoCodeLogin",
+            "Description": "手机验证码一键登录、注册"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/portal/reglogin/pwdLogin",
+            "Description": "用户密码登录"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/portal/reglogin/saveRegistrationSource",
+            "Description": "保存用户注册来源追踪记录"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/portal/sms/smsCode",
+            "Description": "send sms code"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/sms/smsCode/{mobile}/{module}/{validCode}",
+            "Description": "send sms code"
+        },
+        {
+            "Type": "delete",
+            "Path": "/v1/portal/cms/tag",
+            "Description": "删除标签"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/portal/cms/tag",
+            "Description": "新增标签"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/portal/cms/tag",
+            "Description": "修改标签"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/cms/tag/CustomTags",
+            "Description": "查询自定义标签"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/cms/tag/allTags",
+            "Description": "查询所有标签"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/portal/cms/tag/batchUsers/{tagId}",
+            "Description": "批量导入用户"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/cms/tag/feign/tag",
+            "Description": "获取标签信息"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/cms/tag/feign/tagInfoDto",
+            "Description": "获取标签信息"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/cms/tag/feign/useIds/{tagId}",
+            "Description": "getUserIdsByTagIdUserPage"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/cms/tag/searchUsers/{pageNo}",
+            "Description": "根据条件查找用户列表"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/cms/tag/tagGroup",
+            "Description": "查询用户组列表及相应用户数量"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/portal/cms/tag/tagsOfUser",
+            "Description": "修改用户标签接口"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/cms/tag/templateUrl",
+            "Description": "获取模板地址"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/cms/tag/usersInTag/{tagId}/{pageNo}",
+            "Description": "查询指定标签下的用户信息列表"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/card/base/info",
+            "Description": "获取会员卡权益信息"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/card/points-flow",
+            "Description": "获取积分流水"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/portal/card/replaceCard",
+            "Description": "更换会员卡"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/card/replaceableCards",
+            "Description": "获取可更换的会员卡列表信息"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/app/member/management/info",
+            "Description": "获取管理页面基础信息"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/member/homepage/info",
+            "Description": "获取个人主页基础信息"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/member/profile/info",
+            "Description": "获取个人信息详情"
+        },
+        {
+            "Type": "put",
+            "Path": "/v1/portal/member/profile/info",
+            "Description": "更新个人信息详情"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/mobile/member/management/info",
+            "Description": "获取管理页面基础信息"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/portal/captcha/check",
+            "Description": "captcha check"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/portal/captcha/jsUrl",
+            "Description": "get JS Url"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/portal/captcha/url",
+            "Description": "get url"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/portal/xunfei/member/card/base/info",
+            "Description": "获取会员卡基本信息"
+        }
+    ]
+}
