@@ -17,8 +17,8 @@ TodayDate = str(datetime.date.today())   #获取当前日期
 
 #检查service文件夹是否存在，不存在则创建
 def createServiceDir(env='stage'):
-    serviceFileDir = os.path.join(curDir,TodayDate,env,'ServicesAPI') #API数据文件目录
-    compareServiceFileDir = os.path.join(curDir,TodayDate,env,'CompareResults') #对比结果文件目录
+    serviceFileDir = os.path.join(curDir,'Results',TodayDate,env,'ServicesAPI') #API数据文件目录
+    compareServiceFileDir = os.path.join(curDir,'Results',TodayDate,env,'CompareResults') #对比结果文件目录
     #判断目录是否已存在
     isExist_data = os.path.exists(serviceFileDir)
     #不存在则创建
