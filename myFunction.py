@@ -90,6 +90,13 @@ def getAddAndDeleteCount(prdAPIList,envAPIList):
             addCount += 1
     return prdLen,envLen,addCount,addList,deleteCount,deleteList
 
+#判断是否高亮输出
+def lightoutprint(count,highlight=0):
+    if highlight != 0 or count > 0:
+        cmdprintcolor.printYellowRed(str(count)+'\n')
+        cmdprintcolor.resetColor()
+    else:
+        print(count)
 
 #显示对比结果
 def showCompareResults(service,prdLen,envLen,addCount,addList,deleteCount,deleteList):
@@ -129,25 +136,3 @@ def showCompareResults(service,prdLen,envLen,addCount,addList,deleteCount,delete
         print('\t\t无')
     print('\n\n')
     return compare
-
-def saveAllcompareresult(compareFileDir,compare,isNew=False):
-    compareFilePath = os.path.join(compareFileDir,'AllServicesCompare','.josn')
-    #保存对比文件
-    if isNew:
-        with open(compareFilePath,'w',encoding='utf8') as file:
-            json.dump(compare,file,ensure_ascii=False,indent=4)
-    else:
-        with open(compareFilePath,'a',encoding='utf8') as file:
-            json.dump(compare,file,ensure_ascii=False,indent=4)
-    return compareFilePath
-
-#判断是否高亮输出
-def lightoutprint(count,highlight=0):
-    if highlight != 0 or count > 0:
-        cmdprintcolor.printYellowRed(str(count)+'\n')
-        cmdprintcolor.resetColor()
-    else:
-        print(count)
-
-
-

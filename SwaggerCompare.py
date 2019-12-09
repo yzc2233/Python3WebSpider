@@ -16,14 +16,12 @@ from myFunction import *
 # for service in serviceList:
 #     print(serviceList.index(service),':',service)
 
-DealServicesList = ['MYACCOUNT-PORTAL-SERVICE']
+DealServicesList = ['MYACCOUNT-PORTAL-SERVICE','OMNI-ORDERCENTER-SERVICE']
 env = 'qa2'
 
 def main(DealServicesList):
-    envFilePathList = []#生成的env文件路径列表
-    prdFilePathList = []#生成的prd文件路径列表
-    compareFilePathList = []#对比结果文件路径列表
-    isNew = True
+    AllCompareData = []
+    # isNew = True
     for service in DealServicesList:
         # 创建相应文件夹
         serviceFileDir,compareServiceFileDir = createServiceDir(service,env)
@@ -35,19 +33,16 @@ def main(DealServicesList):
         prdData = {service:prdApiList}
         #保存env环境API数据
         envFileDir = saveAPIJosn(serviceFileDir,env+'-'+service,envData)
-        envFilePathList.append(envFileDir)
         #保存prd环境API数据
         prdFileDir = saveAPIJosn(serviceFileDir,'prd'+'-'+service,prdData)
-        prdFilePathList.append(prdFileDir)
         #对比两个文件
         prdLen,envLen,addCount,addList,deleteCount,deleteList = getAddAndDeleteCount(prdAPIList=prdApiList,envAPIList=envApiList)
         compare = showCompareResults(service,prdLen,envLen,addCount,addList,deleteCount,deleteList)
+        AllCompareData.append(compare)
         #保存service对比结果
         compareFileDir = saveAPIJosn(compareServiceFileDir,'compare'+'-'+service,compare)
-        compareFilePathList.append(compareFileDir)
-        #将service对比结果保存进对比汇总文件中
-        compareFilePath = saveAllcompareresult(compareFileDir,compare,isNew=isNew)
-        isNew = False
+    #将service对比结果保存进对比汇总文件中
+    compareFilePath = saveAPIJosn(compareServiceFileDir,'AllServicesCompare',AllCompareData)
     print('对比结果文件路径：' + compareFilePath)
 
     #
