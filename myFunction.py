@@ -1,22 +1,22 @@
 import os
 import json
-import time
 import requests
 import getIP
 import cmdprintcolor
 import datetime
-from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
+import sys
+# from bs4 import BeautifulSoup
+# from selenium import webdriver
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver.support.wait import WebDriverWait
 from collections import OrderedDict
 
 curDir = os.getcwd() #获取当前目录路径
 TodayDate = str(datetime.date.today())   #获取当前日期
 
 #检查service文件夹是否存在，不存在则创建
-def createServiceDir(service,env='stage'):
+def createServiceDir(env='stage'):
     serviceFileDir = os.path.join(curDir,TodayDate,env,'ServicesAPI') #API数据文件目录
     compareServiceFileDir = os.path.join(curDir,TodayDate,env,'CompareResults') #对比结果文件目录
     #判断目录是否已存在
@@ -35,38 +35,63 @@ def getSwaggerUrl(service,env='stage'):
     url = ip + '/swagger-ui.html'
     return url
 
-#从swagger页面获取API数据
-def getApiList(service,env='stage'):
-    #获取service对应的Html路径
-    url = getSwaggerUrl(service,env)
-    #设置FireFox驱动器路径
-    DriverFlieDir = os.path.join(curDir,'geckodriver')
-    #设置浏览器
-    option = webdriver.firefox.options.Options()
-    option.add_argument('-headless')#无头模式，后台打开浏览器
-    browser = webdriver.Firefox(executable_path=DriverFlieDir,firefox_options=option)
-    browser.get(url)
-    wait = WebDriverWait(browser,10)
-    wait.until(EC.presence_of_element_located((By.ID,'resources')))
-    data = browser.page_source
-    datahtml = BeautifulSoup(data,'lxml')
-    ApiHtmlList = datahtml.select("ul > li > ul > li > ul > li .heading") #Api元素列表
+# #从swagger页面获取API数据-太慢
+# def getApiList(service,env='stage'):
+#     #获取service对应的Html路径
+#     url = getSwaggerUrl(service,env)
+#     #设置FireFox驱动器路径
+#     DriverFlieDir = os.path.join(curDir,'geckodriver')
+#     #设置浏览器
+#     option = webdriver.firefox.options.Options()
+#     option.add_argument('-headless')#无头模式，后台打开浏览器
+#     browser = webdriver.Firefox(executable_path=DriverFlieDir,firefox_options=option)
+#     browser.get(url)
+#     wait = WebDriverWait(browser,10)
+#     wait.until(EC.presence_of_element_located((By.ID,'resources')))
+#     data = browser.page_source
+#     datahtml = BeautifulSoup(data,'lxml')
+#     ApiHtmlList = datahtml.select("ul > li > ul > li > ul > li .heading") #Api元素列表
+#     ApiList = []
+#     for ApiHtml in ApiHtmlList:
+#         Api = OrderedDict()
+#         Api_type = ApiHtml.h3.span.a.string
+#         Api_path = ApiHtml.find(class_='path').a.string
+#         Api_Note = ApiHtml.ul.li.a.span.p.string
+#         Api['Type'] = Api_type
+#         Api['Path'] = Api_path
+#         Api['Description'] = Api_Note
+#         ApiList.append(Api)
+#     browser.close()
+#     return ApiList
+
+#从swagger API接口获取API数据
+def getAPI(service,env='stage'):
+    typeList = ['GET','POST','PUT','DELETE']
     ApiList = []
-    for ApiHtml in ApiHtmlList:
-        Api = OrderedDict()
-        Api_type = ApiHtml.h3.span.a.string
-        Api_path = ApiHtml.find(class_='path').a.string
-        Api_Note = ApiHtml.ul.li.a.span.p.string
-        Api['Type'] = Api_type
-        Api['Path'] = Api_path
-        Api['Description'] = Api_Note
-        ApiList.append(Api)
-    browser.close()
+    service_ip = getIP.getIP(service=service,env=env)
+    url = service_ip+'/v2/api-docs'
+    res = requests.get(url)
+    res_json = json.loads(res.text)
+    pathList = res_json['paths']
+    for path in pathList.keys():
+
+        for type in pathList[path].keys():
+            Api = OrderedDict()
+            Api_path = path
+            Api_type = type.upper()
+            Api_control = pathList[path][type]['tags'][0]
+            Api_Note = pathList[path][type]['summary']
+            Api['Control'] = Api_control
+            Api['Type'] = Api_type
+            Api['Path'] = Api_path
+            Api['Description'] = Api_Note
+            if Api_type in typeList:
+                ApiList.append(Api)
     return ApiList
 
 #保存最新的Swagger接口信息
-def saveAPIJosn(path,name,data):
-    filepath = os.path.join(path,name+'.json')
+def saveAPIJosn(path,name,data,type='.json'):
+    filepath = os.path.join(path,name+type)
     with open(filepath,'w',encoding='utf8') as file:
         json.dump(data,file,ensure_ascii=False,indent=4)
     return filepath
@@ -95,6 +120,7 @@ def lightoutprint(count,highlight=0):
     if highlight != 0 or count > 0:
         cmdprintcolor.printYellowRed(str(count)+'\n')
         cmdprintcolor.resetColor()
+        # print('\033[31m %s \033[0m' %count)
     else:
         print(count)
 
@@ -136,3 +162,136 @@ def showCompareResults(service,prdLen,envLen,addCount,addList,deleteCount,delete
         print('\t\t无')
     print('\n\n')
     return compare
+
+#创建所有Services对比结果汇总Html文件
+
+def allServicesResultHtml(AllCompareData):
+    satrtHtmlText = """<DOCTYPE HTML>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>所选Services对比结果汇总</title>
+    </head>
+    <body>
+    <h1>所选Services对比结果汇总</h1>
+    """
+    bodyHtmlText = """"""
+    for compareData in AllCompareData:
+        bodyHtmlText += """<table border="1">
+        <tr>
+            <td><b>服务</b></td>
+            <td><b>"""+compareData['服务']+"""</b></td>
+        </tr>
+        <tr>
+            <td><b>当前环境接口总数</b></td>
+            <td>"""+str(compareData['当前环境接口总数'])+"""</td>
+        </tr>
+        <tr>
+            <td><b>生产环境接口总数</b></td>
+            <td>"""+str(compareData['生产环境接口总数'])+"""</td>
+        </tr>
+        <tr>
+            <td><b>新增接口数</b></td>"""
+        if compareData['新增接口数']:
+            bodyHtmlText += """<td style="color: red">"""+str(compareData['新增接口数'])+"""</td>"""
+        else:
+            bodyHtmlText += """<td>"""+str(compareData['新增接口数'])+"""</td>"""
+        bodyHtmlText += """
+        </tr>
+        <tr>
+            <td><b>删除接口数</b></td>"""
+        if compareData['删除接口数']:
+            bodyHtmlText += """<td style="color: red">"""+str(compareData['删除接口数'])+"""</td>"""
+        else:
+            bodyHtmlText += """<td>"""+str(compareData['删除接口数'])+"""</td>"""
+        bodyHtmlText += """
+        </tr>
+        <tr>
+            <td><b>新增接口详情</b></td>
+            <td>
+                <table border="1">"""
+        if compareData['新增接口详情']:
+            for add in compareData['新增接口详情']:
+                bodyHtmlText += """
+                    <tr>
+                        <td><b>Control:</b>
+                        """+add['Control']+"""
+                        <b>Type:</b>
+                        """+add['Type']+"""
+                        <b>Path:</b>
+                        """+add['Path']+"""
+                        <b>Description:</b>
+                        """+add['Description']+"""</td>
+                    </tr>"""
+        else:
+            bodyHtmlText += """
+                        无"""
+        bodyHtmlText += """           
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td border="1"><b>删除接口详情</b></td>
+            <td>"""
+        if compareData['删除接口详情']:
+            for add in compareData['删除接口详情']:
+                bodyHtmlText += """
+                <table border="1">
+                    <tr>
+                        <td><b>Control:</b>
+                        """+add['Control']+"""
+                        <b>Type:</b>
+                        """+add['Type']+"""
+                        <b>Path:</b>
+                        """+add['Path']+"""
+                        <b>Description:</b>
+                        """+add['Description']+"""</td>
+                    </tr>"""
+        else:
+            bodyHtmlText += """
+                        无"""
+        bodyHtmlText += """
+                </table>
+            </td>
+        </tr>
+    </table>
+    </br>
+    </br>"""
+    endHtmlText = """
+    </body>
+    </html>"""
+    ResultHtml = satrtHtmlText+bodyHtmlText+endHtmlText
+    return ResultHtml
+
+#保存对比汇总Html文件
+def saveHtml(path,name,data):
+    filepath = os.path.join(path,name+'.html')
+    with open(filepath,'w',encoding='utf8') as file:
+        file.write(data)
+    return filepath
+
+#处理输入数据
+def gerInputArgus(serviceList):
+    envList = ['qa2','stage']
+    if len(sys.argv) == 1:
+        while True:
+            inputdata = input('请输入正确的对比环境与service序号：')
+            inputdata = inputdata.split(' ')
+            if inputdata[0] not in envList:
+                print('输入的环境有误，应该为qa2或者stage')
+            elif len(inputdata) == 2:
+                break
+        env = inputdata[0]
+        inservices = inputdata[1]
+    else:
+        env = sys.argv[1]
+        inservices = sys.argv[2]
+    inservicesList = inservices.split(',')
+    realservicelist = []
+    if '0' in inservicesList:
+        realservicelist = serviceList[1:]
+    else:
+        for i in inservicesList:
+            realservicelist.append(serviceList[int(i)])
+    print(env,realservicelist)
+    return env,realservicelist

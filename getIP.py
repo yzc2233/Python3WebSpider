@@ -1,4 +1,3 @@
-import sys
 import os
 
 try:
@@ -44,7 +43,7 @@ def getIP(env='stage',service=''):
             ip = 'http://' + ipInfo[-2] + ':' + port[-1]
 
     if ip == '':
-        return '未找到对应Service的IP，请检查入参！'
+        print('未找到对应Service的IP，请检查入参！')
         exit()
     else:
         return ip

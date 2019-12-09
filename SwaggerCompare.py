@@ -1,68 +1,49 @@
 import os
-import json
+
 import sys
 from myFunction import *
+from Config import *
 
-#
-# serviceList = ['ALL service','COMMUNITY-CORE-SERVICE','CRM-SERVICE','FINANCE-SERVICE','INV-SERVICE',
-#                'KOL-SERVICE','MARKETING-ACTIVITY-SERVICE','MESSAGES-SERVICE','MP-CMS-SERVICE',
-#                'MYACCOUNT-PORTAL-SERVICE','MYACCOUNT-SERVICE','OFFLINE-SHOP-SERVICE','OMNI-CRMHUB-SERVICE',
-#               # 'OMNI-MEMBER-MSG-SERVICE','OMNI-ORDERCENTER-SERVICE',
-#                'ORDER-SERVICE','PIM-BACKEND',
-#                'PRODUCT-SERVICE','PROMOTION-SERVICE','SEARCH-SERVICE',
-#                'SHOP-CART-SERVICE','SOA-MANAGEMENT','OMS-SERVICE','WCS-SERVICE','WECHATCENTER-SERVICE']
-# print('命令示例：python SwaggerCompare.py 1')
-# print('示例中的1是service序号，以下为各service序号(0代表以下所有services)')
-# for service in serviceList:
-#     print(serviceList.index(service),':',service)
+print('命令示例：python SwaggerCompare.py stage 1,2,3')
+print('示例中的stage是与生产环境对比的环境，1,2,3是services序号，以下为各service序号(0代表以下所有services)')
+for service in serviceList:
+    print(serviceList.index(service),':',service)
 
-DealServicesList = ['MYACCOUNT-PORTAL-SERVICE','OMNI-ORDERCENTER-SERVICE']
-env = 'qa2'
+def compareSingleService(service,env):
+    #从swagger页面获取env环境API数据
+    envApiList = getAPI(service,env)
+    envData = {service:envApiList}
+    #从swagger页面获取pr环境API数据
+    prdApiList = getAPI(service,'prd')
+    prdData = {service:prdApiList}
+    #保存env环境API数据
+    saveAPIJosn(serviceFileDir,env+'-'+service,envData)
+    #保存prd环境API数据
+    saveAPIJosn(serviceFileDir,'prd'+'-'+service,prdData)
+    #对比两个文件
+    prdLen,envLen,addCount,addList,deleteCount,deleteList = getAddAndDeleteCount(prdAPIList=prdApiList,envAPIList=envApiList)
+    compare = showCompareResults(service,prdLen,envLen,addCount,addList,deleteCount,deleteList)
+    AllCompareData.append(compare)
+    #保存service对比结果
+    saveAPIJosn(compareServiceFileDir,'compare'+'-'+service,compare)
+    return compare
 
-def main(DealServicesList):
+def main(DealServicesList,env):
     AllCompareData = []
-    # isNew = True
+    serviceFileDir,compareServiceFileDir = createServiceDir(env)
     for service in DealServicesList:
-        # 创建相应文件夹
-        serviceFileDir,compareServiceFileDir = createServiceDir(service,env)
-        #从swagger页面获取env环境API数据
-        envApiList = getApiList(service,env)
-        envData = {service:envApiList}
-        #从swagger页面获取pr环境API数据
-        prdApiList = getApiList(service,'prd')
-        prdData = {service:prdApiList}
-        #保存env环境API数据
-        envFileDir = saveAPIJosn(serviceFileDir,env+'-'+service,envData)
-        #保存prd环境API数据
-        prdFileDir = saveAPIJosn(serviceFileDir,'prd'+'-'+service,prdData)
-        #对比两个文件
-        prdLen,envLen,addCount,addList,deleteCount,deleteList = getAddAndDeleteCount(prdAPIList=prdApiList,envAPIList=envApiList)
-        compare = showCompareResults(service,prdLen,envLen,addCount,addList,deleteCount,deleteList)
-        AllCompareData.append(compare)
-        #保存service对比结果
-        compareFileDir = saveAPIJosn(compareServiceFileDir,'compare'+'-'+service,compare)
+        compareSingleService(service,env)
     #将service对比结果保存进对比汇总文件中
-    compareFilePath = saveAPIJosn(compareServiceFileDir,'AllServicesCompare',AllCompareData)
-    print('对比结果文件路径：' + compareFilePath)
+    saveAPIJosn(compareServiceFileDir,'AllServicesCompare',AllCompareData)
+    #获取汇总结果Html
+    allResultsHtml = allServicesResultHtml(AllCompareData)
+    #保存Html
+    ResultHtmlPath = saveHtml(compareServiceFileDir,'AllServicesCompare',allResultsHtml)
+    os.startfile(ResultHtmlPath)
+    print('对比结果汇总Html文件路径：' + ResultHtmlPath)
 
-    #
-    # for service in realservicelist:
-    #
-    #
-    #
-    #     #对比两个文件保存结果并展示
-    #     CompareTwoFileAndSave(oldFilePath,newFilePath,APICompare_Dir)
-#
+
 if __name__ == '__main__':
-#     if len(sys.argv) == 1:
-#         serviceIndex = int(input('请输入service序号：'))
-#     else:
-#         serviceIndex = int(sys.argv[1])
-#     # serviceIndex = 19
-#     realservicelist = []
-#     if serviceIndex != 0:
-#         realservicelist.append(serviceList[serviceIndex])
-#     else:
-#         realservicelist = serviceList[1:]
-    main(DealServicesList)
+    env,realservicelist = gerInputArgus(serviceList)
+    # main(env=env,DealServicesList=realservicelist)
 
