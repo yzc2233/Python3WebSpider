@@ -1,0 +1,94 @@
+{
+    "OMNI-ORDERCENTER-SERVICE": [
+        {
+            "Type": "get",
+            "Path": "/v1/es/omni/ordercenter/elasticsearch/buildAllOfflineOrderIndex/{p}",
+            "Description": "索引全量线下订单数据"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/es/omni/ordercenter/elasticsearch/buildAllOfflineOrderItemIndex/{p}",
+            "Description": "索引全量线下订单项数据"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/es/omni/ordercenter/elasticsearch/buildSingleOfflineOrderIndex",
+            "Description": "索引指定线下订单以及订单项数据"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/es/omni/ordercenter/elasticsearch/buildSingleOfflineOrderItemIndex",
+            "Description": "索引指定线下订单数据"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/es/omni/ordercenter/elasticsearch/createIndices/{p}/{indexName}/{shard}/{replicas}",
+            "Description": "创建指定索引库"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/es/omni/ordercenter/elasticsearch/createMapping/{index}/{type}",
+            "Description": "创建索引库中指定的Mapping结构"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/es/omni/ordercenter/elasticsearch/initOmniOrdercenter/{p}/{indexName}/{shard}/{replicas}",
+            "Description": "初始化omni_ordercenter-elasticsearch"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/es/omni/ordercenter/elasticsearch/initOmniOrdercenterConfiguration/{p}",
+            "Description": "初始化指定[omni_ordercenter]索引结构"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/omni/order/es/offline/query",
+            "Description": "线下订单es查询"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/omni/order/offlineOrder/list/{pageNo}",
+            "Description": "获取用户线下订单"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/omni/order/sync/offline-order/info",
+            "Description": "CRM线下订单入库"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/omni/order/sync/offline-order/sku/info",
+            "Description": "同步线下订单新上线的产品信息"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/omni/order/tmall/sync/dmz/order/info",
+            "Description": "同步DMZ订单数据"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/omni/order/tmall/sync/dmz/order/return",
+            "Description": "同步DMZ退货单数据"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/omni/order/tmall/sync/dmz/order/status",
+            "Description": "同步DMZ订单状态数据"
+        },
+        {
+            "Type": "get",
+            "Path": "/v1/omni/order/tmall/sync/oms/fallback/{orderId}/{status}/{type}",
+            "Description": "OMS数据处理回调"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/omni/order/tmall/sync/oms/orderInfo",
+            "Description": "同步TMall订单数据toOMS"
+        },
+        {
+            "Type": "post",
+            "Path": "/v1/omni/order/tmall/sync/oms/orderStatus",
+            "Description": "同步TMall订单状态数据toOMS"
+        }
+    ]
+}
