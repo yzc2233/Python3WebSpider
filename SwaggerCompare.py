@@ -9,6 +9,8 @@ print('示例中的stage是与生产环境对比的环境，1,2,3是services序�
 for service in serviceList:
     print(serviceList.index(service),':',service)
 
+
+
 def compareSingleService(service,env):
     #从swagger页面获取env环境API数据
     envApiList = getAPI(service,env)
@@ -29,8 +31,6 @@ def compareSingleService(service,env):
     return compare
 
 def main(DealServicesList,env):
-    AllCompareData = []
-    serviceFileDir,compareServiceFileDir = createServiceDir(env)
     for service in DealServicesList:
         compareSingleService(service,env)
     #将service对比结果保存进对比汇总文件中
@@ -45,5 +45,7 @@ def main(DealServicesList,env):
 
 if __name__ == '__main__':
     env,realservicelist = gerInputArgus(serviceList)
-    # main(env=env,DealServicesList=realservicelist)
+    AllCompareData = []
+    serviceFileDir,compareServiceFileDir = createServiceDir(env)
+    main(env=env,DealServicesList=realservicelist)
 

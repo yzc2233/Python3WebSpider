@@ -17,7 +17,6 @@ except:
 def getIP(env='stage',service=''):
     env = env.lower()
     service = service.lower()
-
     if env == 'qa2':
         SwaggerURL = 'http://10.157.46.143:1111'
     elif env == 'stage':
@@ -27,14 +26,11 @@ def getIP(env='stage',service=''):
     else:
         print('环境输入有误，请输入qa2、stage或prd')
         exit()
-
     res = requests.get(SwaggerURL)
     res.encoding = 'GB2312'
     soup = BeautifulSoup(res.text,'html.parser')
     ans = soup.find_all(['a','_blank'])
-
     ip = ''
-
     for an in ans:
         mlist = str(an.string)
         if mlist.find(service) >= 0:
@@ -43,8 +39,8 @@ def getIP(env='stage',service=''):
             ip = 'http://' + ipInfo[-2] + ':' + port[-1]
 
     if ip == '':
-        print('未找到对应Service的IP，请检查入参！')
-        exit()
+        print('未找到对应Service：%s 的IP，请检查入参！' %service)
+        return
     else:
         return ip
 

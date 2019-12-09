@@ -69,12 +69,13 @@ def getAPI(service,env='stage'):
     typeList = ['GET','POST','PUT','DELETE']
     ApiList = []
     service_ip = getIP.getIP(service=service,env=env)
+    if not service_ip:
+        return ApiList
     url = service_ip+'/v2/api-docs'
     res = requests.get(url)
     res_json = json.loads(res.text)
     pathList = res_json['paths']
     for path in pathList.keys():
-
         for type in pathList[path].keys():
             Api = OrderedDict()
             Api_path = path
@@ -284,6 +285,12 @@ def gerInputArgus(serviceList):
         env = inputdata[0]
         inservices = inputdata[1]
     else:
+        if len(sys.argv) != 3:
+            print('请输入正确的对比环境与service序号,例如：python SwaggerCompare.py stage 1,2,3')
+            exit()
+        elif sys.argv[1] not in envList:
+            print('输入的环境有误，应该为qa2或者stage')
+            exit()
         env = sys.argv[1]
         inservices = sys.argv[2]
     inservicesList = inservices.split(',')
@@ -293,5 +300,4 @@ def gerInputArgus(serviceList):
     else:
         for i in inservicesList:
             realservicelist.append(serviceList[int(i)])
-    print(env,realservicelist)
     return env,realservicelist
