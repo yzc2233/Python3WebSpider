@@ -1,1 +1,1 @@
-{"activityId":"4","city":"北京市","date":"2020-04-05","district":"朝阳区","lat":39.992661,"lng":116.469065,"page":1,"province":"北京市","storeCode":"6007"}
+{"availablePoints":110,"cardNo":"6062263461","email":"13800001112@qq1.com","level":"BLACK","mobile":"13800001112","registerSource":"MINIPROGRAM","registerStoreCode":"6011","registerTime":"2020-06-27 09:13:19","status":"1","totalPoints":1200}

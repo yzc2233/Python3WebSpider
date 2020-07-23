@@ -5,6 +5,7 @@ import sys
 import GetIP
 import time
 import json
+import datetime
 
 try:
     import pymysql
@@ -28,7 +29,7 @@ allowedenv = allowedenv.split(',')
 
 
 
-def createNewOrdercheckInputArgus():
+def createNewOrdercheckInputArgus(skuNumberLimit='3'):
     skuIdlist = []
     inputargvlength = len(sys.argv)
     if inputargvlength < 3:
@@ -58,17 +59,17 @@ def createNewOrdercheckInputArgus():
                     print('输入的skuId集合中 %s 格式错误！' %arg)
                     exit()
         elif inputargvlength == 3:
-            skuIdlist = getskuIdlist(mysqlhost,mysqluser,mysqlpassword)
+            skuIdlist = getskuIdlist(mysqlhost,mysqluser,mysqlpassword,skuNumberLimit)
         else:
             skuIdlist = defaultskuId
         return env,uid,skuIdlist,mysqlhost,mysqluser,mysqlpassword
 
-def getskuIdlist(mysqlhost,mysqluser,mysqlpassword):
+def getskuIdlist(mysqlhost,mysqluser,mysqlpassword,skuNumberLimit):
     print('-'*20,'开始数据库随机获取两个skuId，请稍作等待','-'*20)
     datalist = []
     conn = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'product')
     cur = conn.cursor()
-    sql = "select b.sku_id from prod_product a LEFT JOIN prod_sku b on a.id=b.product_id left join  inventory.inventory c on CONVERT(c.sku_code USING utf8) COLLATE utf8_unicode_ci  =b.sku_code JOIN (SELECT ROUND(RAND() * ((SELECT MAX(id) FROM prod_product)-(SELECT MIN(id) FROM prod_product))+(SELECT MIN(id) FROM prod_product)) AS id) AS t2 where a.`status`=1 and b.`status`=1 and b.sku_type=1  and b.sale_channel->'$[0]'='ALL' and  c.inventory_type=1 and c.quantity>100  and a.id >= t2.id limit 2"
+    sql = "select b.sku_id from prod_product a LEFT JOIN prod_sku b on a.id=b.product_id where a.`status`=1 and b.`status`=1 and b.sku_type=1  and b.sale_channel->'$[0]'='ALL' order by RAND() limit "+str(skuNumberLimit)+';'
     cur.execute(sql)
     data = cur.fetchall()
     for da in data:
@@ -145,11 +146,12 @@ def addOrders(ShopCart_IP,uid,skuIdlist):
     response = json.loads(req.text)
     if response['errorCode'] is not None or response['results']['resultStatus'] != 'SUCCESS':
         print('提交订单失败',response)
-        #清除添加的商品
-        for skuId in skuIdlist:
-            time.sleep(1)
-            clearShopcartSkuId(skuId)
-            print('\n创建订单失败')
+        #清除购物车
+        # for skuId in skuIdlist:
+        #     time.sleep(1)
+        #     clearShopcartSkuId(ShopCart_IP,uid,skuId)
+        # print('\n创建订单失败')
+        clearCartAll(ShopCart_IP,uid)
         exit()
     else:
         orderId = response['results']['orderId']
@@ -204,18 +206,33 @@ def forwadOnehour(mysqlhost,mysqluser,mysqlpassword,orderId):
         cursor.close()
         print('-'*20,'将订单提前一小时结束','-'*20 ,'\n\n')
 
-
+def getSkuIdList2SkuCodelist(mysqlhost,mysqluser,mysqlpassword,skuIdList):
+    skuCodeList = []
+    con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'product')
+    cur = con.cursor()
+    for skuId in skuIdList:
+        sql = 'select sku_code from prod_sku where sku_id= '+str(skuId)+';'
+        cur.execute(sql)
+        data = cur.fetchall()
+        skuCodeList.append(data[0][0])
+    return skuCodeList
 
 def CreateNewOrder():
     print('仅支持Python3环境')
 
-    env,uid,skuIdlist,mysqlhost,mysqluser,mysqlpassword = createNewOrdercheckInputArgus()
+    env,uid,skuIdlist,mysqlhost,mysqluser,mysqlpassword = createNewOrdercheckInputArgus(2)
     ShopCart_IP = GetIP.getIp(env,'shop-cart')
     Order_IP = GetIP.getIp(env,'order')
+    PIM_IP = GetIP.getIp(env,'pim')
+    OMS_IP = GetIP.getIp(env,'OMS')
+
+    #更新库存
+    skuCodeList = getSkuIdList2SkuCodelist(mysqlhost,mysqluser,mysqlpassword,skuIdlist)
+    updateInventory(PIM_IP,skuCodeList)
 
     ## 循环添加单个商品至购物车
     for sku in skuIdlist:
-        addToCartForSingleProduct(ShopCart_IP,uid,sku)
+        addToCartForSingleProduct(ShopCart_IP,uid,sku,3)
 
     ## 购物车第二步
     getShopcartStepTwo(ShopCart_IP,uid)
@@ -232,6 +249,10 @@ def CreateNewOrder():
 
     ## 推送订单至OMS并索引至elasticSearch
     orderSync(Order_IP,orderId)
+
+    ##OMS处理订单流程
+    dealNormalOrderOMSProcess(OMS_IP,mysqlhost,mysqluser,mysqlpassword,orderId)
+
     print('%s环境创建处理中订单成功，订单号：%s\n' %(env,orderId))
     return orderId
 
@@ -416,6 +437,24 @@ def dealNormalOrderOMSProcess(OMS_IP,mysqlhost,mysqluser,mysqlpassword,orderId):
             print('已等待五次还未处理成功，目前订单%s 状态是%s' %(orderId,OrderStatus))
             exit()
 
+def modifyFullPreSaleOrderEstimatedDeliveryTime(mysqlhost,mysqluser,mysqlpassword,orderId):
+    con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'orders')
+    cur = con.cursor()
+    sql = "select order_type from orders where order_id=" + "'" + str(orderId) + "'"
+    print(sql)
+    cur.execute(sql)
+    data = cur.fetchone()
+    oneDayBeforedate = (datetime.datetime.now()-datetime.timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')
+    if data == 3:
+        con2 = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'orders')
+        cur2 = con2.cursor()
+        sql2 = 'update purchase_order set ORDER_SHIPPING_TIME=' +"'" +str(oneDayBeforedate) + "'" + 'where SALES_ORDER_NUMBER=' + "'" +str(orderId) + "';"
+        con2.close()
+    con.close()
+
+
+
+
 ##创建已签收订单
 def UpdateOrderDelivered():
     env = sys.argv[1]
@@ -490,8 +529,8 @@ def getSkuInfo(mysqlhost,mysqluser,mysqlpassword,normalQuanty,vbQuanty=0):
     #获取套装商品信息列表
     if vbQuanty != 0:
         for i in range(vbQuanty):
-            dbskuList = dbGetSku(mysqlhost,mysqluser,mysqlpassword,skuType='6')
-            vbSkuList = vbSkuList + dbskuList
+            dbvbskuList = dbGetSku(mysqlhost,mysqluser,mysqlpassword,skuType='6')
+            vbSkuList = vbSkuList + dbvbskuList
     #校验必须有商品数量
     if not (normalQuanty or vbQuanty):
         print('普通商品和VB套装商品数量不能都为0！')
@@ -566,6 +605,23 @@ def updateInventory(PIM_IP,skucodelist,locationCode='OMS',quantity=999):
             print('更新库存成功:%s' %param)
     print('-'*20,'更新库存结束','-'*20 ,'\n\n')
 
+def updateInventory2(PIM_IP,skucodelist,locationCode='OMS',quantity=999):
+    # print('-'*20,'开始更新库存','-'*20)
+    url = PIM_IP + '/v1/pimBackend/productVirtualInv/updateInventory'
+    for skucode in skucodelist:
+        headers = {"Content-Type":"application/json"}
+        param = {"locationCode":locationCode,"quantity":quantity,"skuCode":str(skucode),"storeCode":"S001"}
+        req = requests.post(url,json=param,headers=headers)
+        response = json.loads(req.text)
+        if response['errorCode'] is not None:
+            response = json.dumps(response,encoding='utf-8',ensure_ascii=False)
+            # print('更新库存失败',response)
+        else:
+            pass
+            # print('更新库存成功:%s' %param)
+    # print('-'*20,'更新库存结束','-'*20 ,'\n\n')
+
+
 def updateVirtualInventory(PIM_IP,skucodelist,locationCode='OMS',quantity=999):
     print('-'*20,'开始更新虚拟库存','-'*20)
     url = PIM_IP + '/v1/pimBackend/productVirtualInv/updateVirtualInventory'
@@ -587,12 +643,18 @@ def updateSplitOrderSkuInventory(PIM_IP,skucodelist,type='normal'):
     #序号奇数的商品BJ仓无货，偶数商品SH仓无货
     for i in range(len(skucodelist)):
         if (i+1)%2 == 0:
-            updateInventory(PIM_IP,[skucodelist[i]],locationCode='SH')
+            if not skucodelist[i].startswith('VS'):
+                updateInventory(PIM_IP,[skucodelist[i]],locationCode='SH')
+            else:
+                updateInventory(PIM_IP,[skucodelist[i]],locationCode='SH',quantity=-777)
             updateInventory(PIM_IP,[skucodelist[i]],locationCode='BJ',quantity=-888)
         else:
             updateInventory(PIM_IP,[skucodelist[i]],locationCode='SH',quantity=-888)
-            updateInventory(PIM_IP,[skucodelist[i]],locationCode='BJ')
-        # if type.lower() == 'vb':
+            if not skucodelist[i].startswith('VS'):
+                updateInventory(PIM_IP,[skucodelist[i]],locationCode='BJ')
+            else:
+                updateInventory(PIM_IP,[skucodelist[i]],locationCode='BJ',quantity=-777)
+        # if type.lower() != 'vb':
         updateInventory(PIM_IP,[skucodelist[i]],locationCode='OMS')
     print('-'*20,'更新拆单商品库存结束','-'*20 ,'\n\n')
 
@@ -740,7 +802,7 @@ def CreateSpiltOrder():
 
     #添加商品至购物车
     for skuId in skuIdList:
-        addToCartForSingleProduct(ShopCart_IP,uid,skuId,quantity=1)
+        addToCartForSingleProduct(ShopCart_IP,uid,skuId,quantity=2)
 
     ## 购物车第二步
     getShopcartStepTwo(ShopCart_IP,uid)
@@ -751,6 +813,10 @@ def CreateSpiltOrder():
     ## 提交订单
     orderId = addOrders(ShopCart_IP,uid,skuIdList)
     time.sleep(3)
+
+    #VB套装商品库存变更
+    for vbSku in vbSkuList:
+        updateInventory(PIM_IP,[vbSku[1]],'OMS',quantity=-666)
 
     ## 将订单提前一小时
     forwadOnehour(mysqlhost,mysqluser,mysqlpassword,orderId)
@@ -770,7 +836,32 @@ def CreateSpiltOrder():
     #推送OMS拆单信息至Order
     dealOmsSplitOrderToOrder(OMS_IP)
 
+    #VB套装商品库存恢复
+    for vbSku in vbSkuList:
+        updateInventory2(PIM_IP,[vbSku[1]],'OMS',quantity=1000)
+
     if splitFlag:
         print('\n\n成功生成拆单订单，订单号是：%s\nOMS中Purchase订单信息%s' %(orderId,data))
     else:
         print('\n\n成功生成拆单订单失败，OMS中订单：%s非拆单' %orderId)
+
+
+
+
+# uid = '130'
+
+# clearCartAll(ShopCart_IP,uid,orderType=1)
+#
+
+# env = 'stage'
+#
+# mysqlhost = config['mysql_'+ env]['host']
+# mysqluser = config['mysql_'+ env]['user']
+# mysqlpassword = config['mysql_'+ env]['password']
+#
+# ShopCart_IP = GetIP.getIp(env,'shop-cart')
+# PIM_IP = GetIP.getIp(env,'pim')
+# Order_IP = GetIP.getIp(env,'order')
+# OMS_IP = GetIP.getIp(env,'oms')
+# #
+# dealNormalOrderOMSProcess(OMS_IP,mysqlhost,mysqluser,mysqlpassword,'1149819229177666')
