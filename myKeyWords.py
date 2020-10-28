@@ -222,7 +222,7 @@ def CreateNewOrder():
 
     env,uid,skuIdlist,mysqlhost,mysqluser,mysqlpassword = createNewOrdercheckInputArgus(2)
     ShopCart_IP = GetIP.getIp(env,'shop-cart')
-    Order_IP = GetIP.getIp(env,'order')
+    Order_IP = GetIP.getIp(env,'sephora-order-service')
     PIM_IP = GetIP.getIp(env,'pim')
     OMS_IP = GetIP.getIp(env,'OMS')
 
@@ -463,7 +463,7 @@ def UpdateOrderDelivered():
     # uid = '2000000070'
 
     OMS_IP = GetIP.getIp(env,'oms')
-    Order_IP = GetIP.getIp(env,'order')
+    Order_IP = GetIP.getIp(env,'sephora-order-service')
 
     mysqlhost = config['mysql_'+ env]['host']
     mysqluser = config['mysql_'+ env]['user']
@@ -479,8 +479,14 @@ def UpdateOrderDelivered():
 
     orderId = str(orderId)
 
-    # 处理订单状态至WAIT_SAPPROCESS
-    dealNormalOrderOMSProcess(OMS_IP,mysqlhost,mysqluser,mysqlpassword,orderId)
+    ## 将订单提前一小时
+    # forwadOnehour(mysqlhost,mysqluser,mysqlpassword,orderId)
+    #
+    # ## 推送订单至OMS并索引至elasticSearch
+    # orderSync(Order_IP,orderId)
+    #
+    # # 处理订单状态至WAIT_SAPPROCESS
+    # dealNormalOrderOMSProcess(OMS_IP,mysqlhost,mysqluser,mysqlpassword,orderId)
 
     # 获取purchase_order对应订单记录
     data = getPurchaseOrder(mysqlhost,mysqluser,mysqlpassword,orderId)
@@ -757,7 +763,7 @@ def CreateSpiltOrder():
 
     ShopCart_IP = GetIP.getIp(env,'shop-cart')
     PIM_IP = GetIP.getIp(env,'pim')
-    Order_IP = GetIP.getIp(env,'order')
+    Order_IP = GetIP.getIp(env,'sephora-order-service')
     OMS_IP = GetIP.getIp(env,'oms')
 
     skuIdList = []
@@ -840,6 +846,9 @@ def CreateSpiltOrder():
     for vbSku in vbSkuList:
         updateInventory2(PIM_IP,[vbSku[1]],'OMS',quantity=1000)
 
+    #修改订单状态为配送中
+    orderStatusSync(Order_IP,uid,orderId,'SHIPPED')
+
     if splitFlag:
         print('\n\n成功生成拆单订单，订单号是：%s\nOMS中Purchase订单信息%s' %(orderId,data))
     else:
@@ -861,7 +870,7 @@ def CreateSpiltOrder():
 #
 # ShopCart_IP = GetIP.getIp(env,'shop-cart')
 # PIM_IP = GetIP.getIp(env,'pim')
-# Order_IP = GetIP.getIp(env,'order')
+# Order_IP = GetIP.getIp(env,'sephora-order-service')
 # OMS_IP = GetIP.getIp(env,'oms')
 # #
 # dealNormalOrderOMSProcess(OMS_IP,mysqlhost,mysqluser,mysqlpassword,'1149819229177666')

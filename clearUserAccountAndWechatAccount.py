@@ -131,10 +131,18 @@ def db_delete_CRMHUBWechatRegister(mysqlhost,mysqluser,mysqlpassword,openId):
 
 if __name__ == '__main__':
     #获取入参：环境、手机号
-    # env = sys.argv[1]
-    env = 'stage'
-    # mobile = sys.argv[2]
-    mobile = '16621790415'
+    env = sys.argv[1]
+    mobile = sys.argv[2]
+    switch_deluser = False
+    try :
+        deluser = sys.argv[3]
+        if deluser == '1':
+            switch_deluser = True
+    except:
+        pass
+
+    # env = 'stage'
+    # mobile = '16621790415'
 
     #获取所需service的IP
     myaccount_ip = getIp(env,'sephora-myaccount-service')
@@ -153,7 +161,9 @@ if __name__ == '__main__':
     if user_id:
         #清除user中redis缓存
         clearUserRedisCache(myaccount_ip,user_id)
-        # #user数据库清除相应记录
+
+    if switch_deluser:
+        #user数据库清除相应记录
         db_delete_userRegister(mysqlhost,mysqluser,mysqlpassword,mobile)
         # #clearUserRedisCache(myaccount_ip,user_id) #
 
