@@ -158,6 +158,7 @@ if __name__ == '__main__':
 
     #获取user_id
     user_id = getUserInfo(mysqlhost,mysqluser,mysqlpassword,mobile)
+    # user_id = 258
     if user_id:
         #清除user中redis缓存
         clearUserRedisCache(myaccount_ip,user_id)
@@ -175,6 +176,7 @@ if __name__ == '__main__':
     # print(user_id)
     #获取openId
     openIdList = getWechatOpenId(mysqlhost,mysqluser,mysqlpassword,mobile)
+    # openIdList = ['ojmVG4_OjZjjD6F_19AeHNUGcW7o']
     if openIdList:
         #删除WECHATCENTER数据库中手机号对应注册信息
         for openId in openIdList:
