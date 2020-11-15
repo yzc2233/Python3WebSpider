@@ -846,8 +846,8 @@ def CreateSpiltOrder():
     for vbSku in vbSkuList:
         updateInventory2(PIM_IP,[vbSku[1]],'OMS',quantity=1000)
 
-    #修改订单状态为配送中
-    orderStatusSync(Order_IP,uid,orderId,'SHIPPED')
+    # #修改订单状态为配送中
+    # orderStatusSync(Order_IP,uid,orderId,'SHIPPED')
 
     if splitFlag:
         print('\n\n成功生成拆单订单，订单号是：%s\nOMS中Purchase订单信息%s' %(orderId,data))
