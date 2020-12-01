@@ -6,7 +6,7 @@ import requests
 from clearwecharcache import clearwechatcache
 from clearwecharcache import clearcachemobiledefaultcard
 from GetIP import getIp
-
+from rediscluster import RedisCluster
 
 def getUserInfo(mysqlhost,mysqluser,mysqlpassword,mobile):
     """根据手机号获取user_id"""
@@ -81,7 +81,7 @@ def db_delete_crmhubMobilemapping(mysqlhost,mysqluser,mysqlpassword,mobile):
     print('*'*10,'CRMHUB数据库删除相应手机号卡号绑定关系','--开始','*'*10)
     con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'crmhub')
     cur = con.cursor()
-    sql1 = "DELETE  FROM crmhub.omni_card_mobile_mapping WHERE MOBILE='{0}';".format(mobile)
+    sql1 = "DELETE FROM crmhub.omni_card_mobile_mapping WHERE MOBILE='{0}';".format(mobile)
     cur.execute(sql1)
     con.commit()
     cur.close()
@@ -129,6 +129,13 @@ def db_delete_CRMHUBWechatRegister(mysqlhost,mysqluser,mysqlpassword,openId):
     con.close()
     print('*'*10,'删除CRMHUB数据库中小程序对应注册信息','--结束','*'*10,'\n')
 
+def delUserCenterTpBindRedis(mobile):
+    print('*'*10,'清除usercenter缓存开始','*'*10)
+    r = RedisCluster(startup_nodes=nodes,decode_responses=True)
+    rkey = "SOA:USERCENTER:SMS:LOGIN::{mobile}".format(mobile=mobile)
+    r.delete(rkey)
+    print('*'*10,'清除usercenter缓存结束','*'*10)
+
 if __name__ == '__main__':
     #获取入参：环境、手机号
     env = sys.argv[1]
@@ -143,7 +150,26 @@ if __name__ == '__main__':
 
     # env = 'stage'
     # mobile = '16621790415'
+    if env.lower()=='stage':
+        env_IP = 'https://stageapi.sephora.cn'
+        db_host = '10.157.24.94'
+        db_user = 'sephora_app'
+        db_password = '123456'
+        nodes = [{'host':'10.157.24.45', 'port':6379},{'host':'10.157.24.46', 'port':6379},
+                 {'host':'10.157.24.47', 'port':6379}, {'host':'10.157.24.54', 'port':6379},
+                 {'host':'10.157.24.55', 'port':6379}]
 
+    elif env.lower()=='qa2':
+        env_IP = 'https://testapi.sephora.cn'
+        db_host = '10.157.26.92'
+        db_user = 'marketing'
+        db_password = '123456'
+        nodes = [{'host':'10.157.26.84', 'port':6379},{'host':'10.157.26.85', 'port':6379},
+                 {'host':'10.157.26.86', 'port':6379}, {'host':'10.157.26.87', 'port':6379},
+                 {'host':'10.157.26.88', 'port':6379}]
+    else:
+        print('环境输入错误，仅支持qa2/stage环境')
+        exit()
     #获取所需service的IP
     myaccount_ip = getIp(env,'sephora-myaccount-service')
     wechatcenter_ip = getIp(env,'sephora-wechatcenter-service')
@@ -162,6 +188,8 @@ if __name__ == '__main__':
     if user_id:
         #清除user中redis缓存
         clearUserRedisCache(myaccount_ip,user_id)
+
+    delUserCenterTpBindRedis(mobile)
 
     if switch_deluser:
         #user数据库清除相应记录

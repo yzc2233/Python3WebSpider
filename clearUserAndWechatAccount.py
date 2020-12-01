@@ -25,6 +25,13 @@ except:
     os.system('pip install bs4')
     from bs4 import BeautifulSoup
 
+try:
+    from rediscluster import RedisCluster
+except:
+    print('rediscluster模块未安装，现在开始安装')
+    os.system('pip install rediscluster')
+    from rediscluster import RedisCluster
+
 # from configparser import ConfigParser
 # import requests
 # from clearwecharcache import clearwechatcache
@@ -248,6 +255,13 @@ def clearCurrentBindActiveMobileCached(wechat_ip,openId):
         print('清除指定小程序用户当前绑定的活跃手机的缓存成功')
     print('*'*10,'清除指定小程序用户当前绑定的活跃手机的缓存','--结束','*'*10,'\n')
 
+def delUserCenterTpBindRedis(mobile):
+    print('*'*10,'清除usercenter缓存开始','*'*10)
+    r = RedisCluster(startup_nodes=nodes,decode_responses=True)
+    rkey = "SOA:USERCENTER:SMS:LOGIN::{mobile}".format(mobile=mobile)
+    r.delete(rkey)
+    print('*'*10,'清除usercenter缓存结束','*'*10)
+
 def clearwechatcache(wechat_ip,openId,mobile,crmhub_ip):
     #清除指定openId用户的微信登录注册信息缓存
     clearRegisterCached(wechat_ip,openId)
@@ -272,6 +286,26 @@ if __name__ == '__main__':
     except:
         pass
 
+    if env.lower()=='stage':
+        env_IP = 'https://stageapi.sephora.cn'
+        db_host = '10.157.24.94'
+        db_user = 'sephora_app'
+        db_password = '123456'
+        nodes = [{'host':'10.157.24.45', 'port':6379},{'host':'10.157.24.46', 'port':6379},
+                 {'host':'10.157.24.47', 'port':6379}, {'host':'10.157.24.54', 'port':6379},
+                 {'host':'10.157.24.55', 'port':6379}]
+
+    elif env.lower()=='qa2':
+        env_IP = 'https://testapi.sephora.cn'
+        db_host = '10.157.26.92'
+        db_user = 'marketing'
+        db_password = '123456'
+        nodes = [{'host':'10.157.26.84', 'port':6379},{'host':'10.157.26.85', 'port':6379},
+                 {'host':'10.157.26.86', 'port':6379}, {'host':'10.157.26.87', 'port':6379},
+                 {'host':'10.157.26.88', 'port':6379}]
+    else:
+        print('环境输入错误，仅支持qa2/stage环境')
+        exit()
     # env = 'stage'
     # mobile = '16621790415'
 
@@ -294,6 +328,8 @@ if __name__ == '__main__':
     if user_id:
         #清除user中redis缓存
         clearUserRedisCache(myaccount_ip,user_id)
+
+    delUserCenterTpBindRedis(mobile)
 
     if switch_deluser:
         #user数据库清除相应记录
