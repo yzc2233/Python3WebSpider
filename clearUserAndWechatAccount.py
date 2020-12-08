@@ -29,7 +29,7 @@ try:
     from rediscluster import RedisCluster
 except:
     print('rediscluster模块未安装，现在开始安装')
-    os.system('pip install rediscluster')
+    os.system('pip install redis-py-cluster')
     from rediscluster import RedisCluster
 
 # from configparser import ConfigParser
@@ -159,14 +159,14 @@ def db_delete_wechatRegister(mysqlhost,mysqluser,mysqlpassword,mobile,openId):
     con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'wechat')
     cur = con.cursor()
     sql1 = "DELETE FROM wechat_bind_mobile_list WHERE OpenId='{0}' AND MOBILE='{1}';".format(openId,mobile)
-    sql2 = "DELETE FROM wechat_bind_mobile_history where OpenId='{0}';".format(openId)
+    # sql2 = "DELETE FROM wechat_bind_mobile_history where OpenId='{0}';".format(openId)
     sql3 = "DELETE FROM wechat_ba_bind where open_id='{0}';".format(openId)
     sql4 = "DELETE FROM wechat_ba_bind_history where open_id='{0}';".format(openId)
     sql5 = "DELETE FROM  wechat_register_info WHERE OpenId='{0}';".format(openId)
     sql6 = "DELETE FROM monitor_wechat_user_access_history_log where OpenId='{0}';".format(openId)
     sql7 = "DELETE FROM wechat_mgm_register_bind_history where referral_open_id='{0}';".format(openId)
     cur.execute(sql1)
-    cur.execute(sql2)
+    # cur.execute(sql2)
     cur.execute(sql3)
     cur.execute(sql4)
     cur.execute(sql5)
@@ -258,9 +258,16 @@ def clearCurrentBindActiveMobileCached(wechat_ip,openId):
 def delUserCenterTpBindRedis(mobile):
     print('*'*10,'清除usercenter缓存开始','*'*10)
     r = RedisCluster(startup_nodes=nodes,decode_responses=True)
-    rkey = "SOA:USERCENTER:SMS:LOGIN::{mobile}".format(mobile=mobile)
+    rkey = "SOA:USERCENTER:SMS:LOGIN:{mobile}".format(mobile=mobile)
     r.delete(rkey)
     print('*'*10,'清除usercenter缓存结束','*'*10)
+
+def delWechatCenterbindMobileStatusRedis(openId):
+    print('*'*10,'清除wechatcenter-bindMobileStatus缓存开始','*'*10)
+    r = RedisCluster(startup_nodes=nodes,decode_responses=True)
+    rkey = "cache:wechat_center_user_bind_mobile_status:WECHAT_CENTER_USER_BIND_MOBILE_STATUS_{openId}".format(openId=openId)
+    r.delete(rkey)
+    print('*'*10,'清除wechatcenter-bindMobileStatus缓存开始','*'*10)
 
 def clearwechatcache(wechat_ip,openId,mobile,crmhub_ip):
     #清除指定openId用户的微信登录注册信息缓存
@@ -356,6 +363,9 @@ if __name__ == '__main__':
 
             #删除小程序注册信息相关缓存
             clearwechatcache(wechatcenter_ip,openId,mobile,crmhub_ip)
+
+            #清除wechatcenter-bindMobileStatus缓存开始
+            delWechatCenterbindMobileStatusRedis(openId)
 
 
 
