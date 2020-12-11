@@ -159,6 +159,39 @@ def addOrders(ShopCart_IP,uid,skuIdlist):
         print('-'*20,'提交订单结束','-'*20 ,'\n\n')
         return orderId
 
+def addOrdersV3(ShopCart_IP,uid,skuIdlist,addressId):
+    print('-'*20,'开始提交订单','-'*20)
+    headers = {"Content-Type":"application/json","uid":uid}
+    param = {"queryBody":{"addressId":addressId,"comments":None,"giftComments":None,"payMethod":"ONLINE_PAY","type":1,"deliveryInfo":"1","channel":"PC","firstOrderSource":{"utm_source":"ebtrgremail","utm_medium":"ecrm","utm_campaign":"edm_ebsystem_password","utm_content":"undefined","utm_term":"undefined"}}}
+    addOrders_url = ShopCart_IP + '/v3/shopcart/order/commitOrderExtend'
+    req = requests.post(addOrders_url,json=param,headers=headers)
+    response = json.loads(req.text)
+    if response['errorCode'] is not None or response['results']['resultStatus'] != 'SUCCESS':
+        print('提交订单失败',response)
+        #清除购物车
+        # for skuId in skuIdlist:
+        #     time.sleep(1)
+        #     clearShopcartSkuId(ShopCart_IP,uid,skuId)
+        # print('\n创建订单失败')
+        clearCartAll(ShopCart_IP,uid)
+        exit()
+    else:
+        orderId = response['results']['orderId']
+        print('提交订单成功，订单号：',orderId)
+        print('-'*20,'提交订单结束','-'*20 ,'\n\n')
+        return orderId
+
+def getaddressIdByUid(mysqlhost,mysqluser,mysqlpassword,uid):
+    print('-'*20,'开始获取收货地址','-'*20)
+    con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'shopcart')
+    cur = con.cursor()
+    sql = r"select addr_id from addr_cneeinfo where user_id={0} and status='E' order by is_default desc,create_time desc limit 1;".format(uid)
+    cur.execute(sql)
+    data = cur.fetchall()
+    if data:
+        addressId = data[0][0]
+    print('-'*20,'获取收货地址结束','-'*20,'\n\n')
+    return addressId
 
 def orderSync(Order_IP,orderId):
     print('-'*20,'开始推送订单至OMS并索引至elasticSearch','-'*20)
@@ -229,6 +262,7 @@ def CreateNewOrder():
     #更新库存
     skuCodeList = getSkuIdList2SkuCodelist(mysqlhost,mysqluser,mysqlpassword,skuIdlist)
     updateInventory(PIM_IP,skuCodeList)
+    time.sleep(3)
 
     ## 循环添加单个商品至购物车
     for sku in skuIdlist:
@@ -240,8 +274,15 @@ def CreateNewOrder():
     ## 修改支付方式
     changePayment(ShopCart_IP,uid)
 
+    #获取收货地址
+    addressId = getaddressIdByUid(mysqlhost,mysqluser,mysqlpassword,uid)
+    if not addressId:
+        print('未找到收货地址，请设置！')
+        exit()
+
     ## 提交订单
-    orderId = addOrders(ShopCart_IP,uid,skuIdlist)
+    # orderId = addOrders(ShopCart_IP,uid,skuIdlist)
+    orderId = addOrdersV3(ShopCart_IP,uid,skuIdlist,addressId)
     time.sleep(3)
 
     ## 将订单提前一小时
@@ -816,8 +857,16 @@ def CreateSpiltOrder():
     ## 修改支付方式
     changePayment(ShopCart_IP,uid)
 
+    #获取收货地址
+    addressId = getaddressIdByUid(mysqlhost,mysqluser,mysqlpassword,uid)
+
+    if not addressId:
+        print('未找到收货地址，请设置！')
+        exit()
+
     ## 提交订单
-    orderId = addOrders(ShopCart_IP,uid,skuIdList)
+    # orderId = addOrders(ShopCart_IP,uid,skuIdList)
+    orderId = addOrdersV3(ShopCart_IP,uid,skuIdList,addressId)
     time.sleep(3)
 
     #VB套装商品库存变更
