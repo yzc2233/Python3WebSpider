@@ -612,7 +612,7 @@ def getCartSku(ShopCart_IP,uid,orderType=1):
     header = {'Content-Type':'application/json','uid':str(uid)}
     #展示购物车，获取已存在商品skuId
     url = ShopCart_IP + '/v1/shopcart/shopcart/cartInfoDisplaying'
-    body = {"queryBody":{"orderType":orderType,"channel":"PC"}}
+    body = {"queryBody":{"orderType":orderType,"channel":"PC","autoApplyCoupon":True}}
     req = requests.post(url,json=body,headers=header)
     Response = json.loads(req.text)
     return Response
@@ -623,10 +623,11 @@ def clearCartAll(ShopCart_IP,uid,orderType=1):
     url = ShopCart_IP + '/v1/shopcart/shopcart/removeFromCart'
     param = {"head":{"token":"string","userId":"string"},"queryBody":[]}
     #获取购物车信息
-    CartSkuInfo = getCartSku(ShopCart_IP,uid)['results']['shopcartSkuGroups']
+    CartSkuInfo = getCartSku(ShopCart_IP,uid)['results']['shopcartSkuGroups'][0]['shopcartSkus']
     for i in range(len(CartSkuInfo)):
-        skuId = CartSkuInfo[i]['shopcartSkus'][0]['skuId']
-        skuIdDic = {"skuId":skuId,"type":1,"userId":uid}
+        skuId = CartSkuInfo[i]['skuId']
+        quantity = CartSkuInfo[i]['quantity']
+        skuIdDic = {"skuId":skuId,"type":1,"quantity":quantity,"channel":"PC"}
         param['queryBody'].append(skuIdDic)
     req = requests.post(url,json=param,headers=headers)
     response = json.loads(req.text)
