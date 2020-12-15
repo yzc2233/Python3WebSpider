@@ -3,7 +3,7 @@
 	老流程发送的短信验证码：python MyClusterRedis2.py stage 14444404550 r
 	usercenter新流程获取的短信验证码：python MyClusterRedis2.py stage 18817943321 new  ios forget
 	usercenter新流程场景（忘记密码：FORGET；账号密码注册：REGIST；手机验证码登录：SMS；账号密码登录：
-	`	PWD；联合登录绑定手机：SOCIALBIND；用户手机号身份验证：TELREGISTED；用户留资：COMPLETETEL）
+	`	PWD；联合登录绑定手机：SOCIALBIND；用户手机号身份验证：TELREGISTED；用户留资：COMPLETETEL；邮箱登录绑定手机：EMAILBIND）
 
 """
 import sys

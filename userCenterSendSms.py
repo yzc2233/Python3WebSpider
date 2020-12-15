@@ -4,10 +4,12 @@ import json
 from rediscluster import RedisCluster
 
 print('''请求命令Sample:python userCenterSendSms.py stage android 14444404547 forget
-场景（账号密码注册：REGIST；忘记密码：FORGET；手机验证码登录：SMS；账号密码登录：PWD；联合登录绑定手机：SOCIALBIND；用户手机号身份验证：TELREGISTED；用户留资：COMPLETETEL）
+场景（账号密码注册：REGIST；忘记密码：FORGET；手机验证码登录：SMS；账号密码登录：PWD；联合登录绑定手机：SOCIALBIND；
+用户手机号身份验证：TELREGISTED；用户留资：COMPLETETEL；邮箱登录绑定手机：EMAILBIND）
 ''')
 #
-scenedict = {'REGIST':'账号密码注册','FORGET':'忘记密码','SMS':'手机验证码登录','PWD':'账号密码登录','SOCIALBIND':'联合登录绑定手机','TELREGISTED':'用户手机号身份验证','COMPLETETEL':'用户留资'}
+scenedict = {'REGIST':'账号密码注册','FORGET':'忘记密码','SMS':'手机验证码登录','PWD':'账号密码登录','SOCIALBIND':'联合登录绑定手机',\
+             'TELREGISTED':'用户手机号身份验证','COMPLETETEL':'用户留资','EMAILBIND':'邮箱登录绑定手机'}
 
 def getcaptcha(identification,imageType=1):
     headers = {'channel':channel}
