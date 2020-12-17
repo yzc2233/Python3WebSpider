@@ -195,6 +195,7 @@ def getaddressIdByUid(mysqlhost,mysqluser,mysqlpassword,uid):
 
 def orderSync(Order_IP,orderId):
     print('-'*20,'开始推送订单至OMS并索引至elasticSearch','-'*20)
+    time.sleep(3)
     orderSync_url = Order_IP + '/v1/order/orderSync/orderSync/' + orderId
     req = requests.get(orderSync_url)
     response = json.loads(req.text)
@@ -204,6 +205,71 @@ def orderSync(Order_IP,orderId):
     else:
         print('推送订单至OMS并索引至elasticSearch成功')
     print('-'*20,'推送订单至OMS并索引至elasticSearch结束','-'*20 ,'\n\n')
+
+
+def createorderpay(Order_IP,uid,orderId,paymentCode='WxPay'):
+    print('-'*20,'开始创建订单支付记录','-'*20)
+    headers = {"Content-Type":"application/json","uid":uid}
+    orderpay_url = '{Order_IP}/v1/order/pay/payInfo/{orderId}/PC/1?paymentCode={paymentCode}'.format(Order_IP=Order_IP,orderId=orderId,paymentCode=paymentCode)
+    req = requests.get(url=orderpay_url,json=headers,headers=headers)
+    response = json.loads(req.text)
+    if response['errorCode'] is not None or response['errorMessage'] is not None:
+        print('创建订单支付记录失败:',response)
+        exit()
+    else:
+        print('创建订单支付记录成功')
+    print('-'*20,'创建订单支付记录结束','-'*20 ,'\n\n')
+
+def getorderpayandupdate(mysqlhost,mysqluser,mysqlpassword,orderId):
+    print('-'*20,'开始更新订单支付记录状态','-'*20)
+    # 连接数据库
+    conn = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'order')
+    # 得到一个可执行的光标对象
+    cursor = conn.cursor()
+    # 定义要执行的额SQL语句
+    print('查询订单号为 %s 的订单可支付记录' %orderId)
+    sql = "SELECT ID FROM order_pay WHERE order_id='{orderId}' AND is_del=0 ORDER BY create_time DESC LIMIT 1;".format(orderId=orderId)
+    print(sql)
+    cursor.execute(sql)
+    data = cursor.fetchone()
+    if not data:
+        print('未找到订单号为 %s 的可支付记录' %orderId)
+        exit()
+    payid = data[0]
+    print('数据库开始更新 %s 的可支付记录状态' %orderId)
+    updatesql = "update order_pay set pay_status=1 where order_id={orderId} and id='{payid}';".format(orderId=orderId,payid=payid)
+    print(updatesql)
+    try :
+        # 执行更新语句
+        cursor.execute(updatesql)
+        # 提交到数据库执行
+        conn.commit()
+        print('数据库开始更新 %s 的可支付记录状态成功' %orderId)
+        time.sleep(3)
+    except:
+        # 发生错误时回滚
+        conn.rollback()
+        print('数据库开始更新 %s 的可支付记录状态失败' %orderId)
+        exit()
+    finally:
+        cursor.close()
+        print('-'*20,'更新可支付记录状态结束','-'*20 ,'\n\n')
+
+def updateorderstatus(mysqlhost,mysqluser,mysqlpassword,orderId,status='I'):
+    print('-'*20,'数据库更新订单状态开始','-'*20)
+    con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'order')
+    cur = con.cursor()
+    try:
+        sql = "update orders set status='{status}' where order_id='{orderId}';".format(status=status,orderId=orderId)
+        print(sql)
+        cur.execute(sql)
+        con.commit()
+    except:
+        con.rollback()
+        print('数据库更新 %s 的订单状态失败' %orderId)
+    print('-'*20,'数据库更新订单状态结束','-'*20 ,'\n\n')
+
+
 
 def forwadOnehour(mysqlhost,mysqluser,mysqlpassword,orderId):
     print('-'*20,'开始将订单提前一小时','-'*20)
@@ -271,8 +337,8 @@ def CreateNewOrder():
     ## 购物车第二步
     getShopcartStepTwo(ShopCart_IP,uid)
 
-    ## 修改支付方式
-    changePayment(ShopCart_IP,uid)
+    # # ## 修改支付方式
+    # changePayment(ShopCart_IP,uid)
 
     #获取收货地址
     addressId = getaddressIdByUid(mysqlhost,mysqluser,mysqlpassword,uid)
@@ -285,8 +351,17 @@ def CreateNewOrder():
     orderId = addOrdersV3(ShopCart_IP,uid,skuIdlist,addressId)
     time.sleep(3)
 
-    ## 将订单提前一小时
-    forwadOnehour(mysqlhost,mysqluser,mysqlpassword,orderId)
+    # ## 将订单提前一小时
+    # forwadOnehour(mysqlhost,mysqluser,mysqlpassword,orderId)
+
+    ##创建支付记录
+    createorderpay(Order_IP,uid,orderId)
+
+    #更新支付记录状态
+    getorderpayandupdate(mysqlhost,mysqluser,mysqlpassword,orderId)
+
+    ##数据库更新订单状态
+    updateorderstatus(mysqlhost,mysqluser,mysqlpassword,orderId,status='I')
 
     ## 推送订单至OMS并索引至elasticSearch
     orderSync(Order_IP,orderId)
@@ -855,8 +930,8 @@ def CreateSpiltOrder():
     ## 购物车第二步
     getShopcartStepTwo(ShopCart_IP,uid)
 
-    ## 修改支付方式
-    changePayment(ShopCart_IP,uid)
+    # ## 修改支付方式
+    # changePayment(ShopCart_IP,uid)
 
     #获取收货地址
     addressId = getaddressIdByUid(mysqlhost,mysqluser,mysqlpassword,uid)
@@ -874,8 +949,17 @@ def CreateSpiltOrder():
     for vbSku in vbSkuList:
         updateInventory(PIM_IP,[vbSku[1]],'OMS',quantity=-666)
 
-    ## 将订单提前一小时
-    forwadOnehour(mysqlhost,mysqluser,mysqlpassword,orderId)
+    # ## 将订单提前一小时
+    # forwadOnehour(mysqlhost,mysqluser,mysqlpassword,orderId)
+
+    ##创建支付记录
+    createorderpay(Order_IP,uid,orderId)
+
+    #更新支付记录状态
+    getorderpayandupdate(mysqlhost,mysqluser,mysqlpassword,orderId)
+
+    ##数据库更新订单状态
+    updateorderstatus(mysqlhost,mysqluser,mysqlpassword,orderId,status='I')
 
     ## 推送订单至OMS并索引至elasticSearch
     orderSync(Order_IP,orderId)
