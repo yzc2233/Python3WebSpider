@@ -9,6 +9,8 @@
 import sys
 from rediscluster import RedisCluster
 
+redis_db_ebf = [{'host':'10.157.46.44', 'port':6379},{'host':'10.157.46.45', 'port':6379}]
+
 redis_db_qa2 = [{'host':'10.157.26.84', 'port':6379},{'host':'10.157.26.85', 'port':6379},
 				{'host':'10.157.26.86', 'port':6379}, {'host':'10.157.26.87', 'port':6379},
 				{'host':'10.157.26.88', 'port':6379}]
@@ -35,13 +37,15 @@ def getsmCode(env,node,rediskey):
 			return smsCode
 
 if __name__ == '__main__':
-	env = sys.argv[1]
+	env = sys.argv[1].lower()
 	if env == 'qa2':
 		target_redis = redis_db_qa2
 	elif env == 'stage':
 		target_redis = redis_db_stage
 	elif env == 'prd':
 		target_redis = redis_db_prd
+	elif env == 'ebf':
+		target_redis = redis_db_ebf
 	else:
 		print('Bad argument!!!!!!!')
 		sys.exit(1)

@@ -174,8 +174,15 @@ if __name__ == '__main__':
         nodes = [{'host':'10.157.26.84', 'port':6379},{'host':'10.157.26.85', 'port':6379},
                  {'host':'10.157.26.86', 'port':6379}, {'host':'10.157.26.87', 'port':6379},
                  {'host':'10.157.26.88', 'port':6379}]
+
+    elif env.lower()=='ebf':
+        env_IP = 'https://ebfapi.sephora.cn'
+        db_host = '10.157.24.252'
+        db_user = 'sephora_app'
+        db_password = '123456'
+        nodes = [{'host':'10.157.46.44', 'port':6379},{'host':'10.157.46.45', 'port':6379}]
     else:
-        print('环境输入错误，仅支持qa2/stage环境')
+        print('环境输入错误，仅支持qa2/stage/ebf环境')
         exit()
     #获取所需service的IP
     myaccount_ip = getIp(env,'sephora-myaccount-service')

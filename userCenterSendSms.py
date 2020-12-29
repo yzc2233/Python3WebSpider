@@ -83,6 +83,9 @@ if __name__ == '__main__':
         nodes = [{'host':'10.157.26.84', 'port':6379},{'host':'10.157.26.85', 'port':6379},
                  {'host':'10.157.26.86', 'port':6379}, {'host':'10.157.26.87', 'port':6379},
                  {'host':'10.157.26.88', 'port':6379}]
+    elif env.lower()=='ebf':
+        env_IP = 'https://ebfapi.sephora.cn'
+        nodes = [{'host':'10.157.46.44', 'port':6379},{'host':'10.157.46.45', 'port':6379}]
     elif env.lower()=='prd':
         env_IP = 'https://api.sephora.cn'
         nodes = [{'host':'10.157.32.78', 'port':6479},
@@ -91,7 +94,7 @@ if __name__ == '__main__':
                  {'host':'10.157.32.69', 'port':6479}]
         nodes2 = [{'host':'10.157.32.78', 'port':6379}]
     else:
-        print('环境输入错误，仅支持qa2/stage环境')
+        print('环境输入错误，仅支持qa2/stage/ebf环境')
 
 
     #获取图形验证码codeToken

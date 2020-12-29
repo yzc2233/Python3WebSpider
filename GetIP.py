@@ -24,8 +24,10 @@ def getIp(env='stage',service=''):
         SwaggerURL = 'http://10.157.40.131:1111'
     elif env == 'stage':
         SwaggerURL = 'http://10.157.26.160:1111'
+    elif env == 'ebf':
+        SwaggerURL = 'http://10.157.40.13:1111'
     else:
-        print('非QA2&Stage环境暂不支持，请谨慎操作')
+        print('非QA2&Stage&ebf环境暂不支持，请谨慎操作')
         exit()
 
     res = requests.get(SwaggerURL)

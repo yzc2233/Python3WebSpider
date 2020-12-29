@@ -49,8 +49,10 @@ def getIp(env='stage',service=''):
         SwaggerURL = 'http://10.157.40.131:1111'
     elif env == 'stage':
         SwaggerURL = 'http://10.157.26.160:1111'
+    elif env == 'ebf':
+        SwaggerURL = 'http://10.157.40.13:1111'
     else:
-        print('非QA2&Stage环境暂不支持，请谨慎操作')
+        print('非QA2&Stage&EBF环境暂不支持，请谨慎操作')
         exit()
 
     res = requests.get(SwaggerURL)
@@ -310,6 +312,13 @@ if __name__ == '__main__':
         nodes = [{'host':'10.157.26.84', 'port':6379},{'host':'10.157.26.85', 'port':6379},
                  {'host':'10.157.26.86', 'port':6379}, {'host':'10.157.26.87', 'port':6379},
                  {'host':'10.157.26.88', 'port':6379}]
+
+    elif env.lower()=='ebf':
+        env_IP = 'https://ebfapi.sephora.cn'
+        db_host = '10.157.24.252'
+        db_user = 'sephora_app'
+        db_password = '123456'
+        nodes = [{'host':'10.157.46.44', 'port':6379},{'host':'10.157.46.45', 'port':6379}]
     else:
         print('环境输入错误，仅支持qa2/stage环境')
         exit()
