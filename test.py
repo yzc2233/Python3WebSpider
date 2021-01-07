@@ -11,27 +11,33 @@ mysqlpassword = mysqlUser[env]['password']
 
 # print(timestamp)
 
-client_id_part1 = 'Android-Ag-PILIANGDAORUTAGSDevicetest1-'
+# client_id_part1 = 'Android-Ag-PILIANGDAORUTAGSDevicetest1-'
 
-with open(r'E:\SoftWare\JetBrains\IntellijCode\PythonCode\createorder\deviceuserimport.csv') as f:
-    con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'user')
-    cur = con.cursor()
-
-    userids = f.readlines()
-    for uid in userids:
-        # print(str(uid).strip())
-        try:
-            timestamp = str(int(time.time()*1000))
-            uid = uid.strip()
-            print(uid)
-            # sql = "insert into `user_device_status` (`client_id`, `user_id`, `supplier`, `status`, `create_time`, `update_time`) \
-            # values('{0}','{1}','UM','1','2020-11-30 00:00:00','2020-11-30 00:00:00');".format(client_id_part1+timestamp,uid)
-            # cur.execute(sql)
-            # con.commit()
-        except:
-            print(uid,'插入数据失败。。。。。')
-            continue
-
-    cur.close()
-    con.close()
+# with open(r'F:\丝芙兰\压测\单服务压测2020-2021\Order\user_stage_1.csv','r+') as f:
+#     con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'user')
+#     cur = con.cursor()
+#
+#     userids = f.readlines()
+#     for uidline in userids:
+#         uid = uidline.split(',')[0]
+#         # print(str(uid).strip())
+#         try:
+#             # timestamp = str(int(time.time()*1000))
+#             uid = uid.strip()
+#             print(uid)
+#             sql = "SELECT order_id FROM order.orders WHERE user_id={uid} ORDER BY create_time LIMIT 1;".format(uid=uid)
+#             # print(sql)
+#             cur.execute(sql)
+#             order_id = cur.fetchone()[0]
+#             # print(order_id)
+#         # con.commit()
+#             data = "{old},{order_id}\n".format(old=uidline.strip(),order_id=order_id)
+#             f.write(data)
+#             # break
+#         except:
+#             print(uid,'查询order_id失败。。。。。')
+#             continue
+#
+#     cur.close()
+#     con.close()
 
