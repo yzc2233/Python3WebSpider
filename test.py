@@ -120,13 +120,13 @@ with open(r'F:\丝芙兰\压测\单服务压测2020-2021\Myaccount\对比压测\
                 "totalAmount": 218.50,
                 "totalQuantity": 1
             }
-            Response = requests.post(url=url,json=body,headers=header)
-            Response = json.loads(Response.text)
-            if not Response['results']:
-                # print(uid,'成功')
-            #     pass
-            # else:
-                print(uid,'失败')
+            # Response = requests.post(url=url,json=body,headers=header)
+            # Response = json.loads(Response.text)
+            # if not Response['results']:
+            #     # print(uid,'成功')
+            # #     pass
+            # # else:
+            #     print(uid,'失败')
         except:
             print(uid,'插入数据失败。。。。。')
             continue

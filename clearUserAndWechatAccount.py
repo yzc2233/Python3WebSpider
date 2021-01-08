@@ -38,7 +38,8 @@ except:
 # from clearwecharcache import clearcachemobiledefaultcard
 # from GetIP import getIp
 
-mysqlUser = {'qa2':{'host':'10.157.26.92','user':'marketing','password':'123456'},'stage':{'host':'10.157.24.94','user':'sephora_app','password':'123456'}}
+mysqlUser = {'qa2':{'host':'10.157.26.92','user':'marketing','password':'123456'},'stage':{'host':'10.157.24.94','user':'sephora_app','password':'123456'}
+             ,'ebf':{'host':'10.157.24.252','user':'sephora_app','password':'123456'}}
 
 
 def getIp(env='stage',service=''):
@@ -297,27 +298,27 @@ if __name__ == '__main__':
 
     if env.lower()=='stage':
         env_IP = 'https://stageapi.sephora.cn'
-        db_host = '10.157.24.94'
-        db_user = 'sephora_app'
-        db_password = '123456'
+        # db_host = '10.157.24.94'
+        # db_user = 'sephora_app'
+        # db_password = '123456'
         nodes = [{'host':'10.157.24.45', 'port':6379},{'host':'10.157.24.46', 'port':6379},
                  {'host':'10.157.24.47', 'port':6379}, {'host':'10.157.24.54', 'port':6379},
                  {'host':'10.157.24.55', 'port':6379}]
 
     elif env.lower()=='qa2':
         env_IP = 'https://testapi.sephora.cn'
-        db_host = '10.157.26.92'
-        db_user = 'marketing'
-        db_password = '123456'
+        # db_host = '10.157.26.92'
+        # db_user = 'marketing'
+        # db_password = '123456'
         nodes = [{'host':'10.157.26.84', 'port':6379},{'host':'10.157.26.85', 'port':6379},
                  {'host':'10.157.26.86', 'port':6379}, {'host':'10.157.26.87', 'port':6379},
                  {'host':'10.157.26.88', 'port':6379}]
 
     elif env.lower()=='ebf':
         env_IP = 'https://ebfapi.sephora.cn'
-        db_host = '10.157.24.252'
-        db_user = 'sephora_app'
-        db_password = '123456'
+        # db_host = '10.157.24.252'
+        # db_user = 'sephora_app'
+        # db_password = '123456'
         nodes = [{'host':'10.157.46.44', 'port':6379},{'host':'10.157.46.45', 'port':6379}]
     else:
         print('环境输入错误，仅支持qa2/stage环境')
