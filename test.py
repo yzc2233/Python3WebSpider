@@ -70,67 +70,144 @@ mysqlpassword = mysqlUser[env]['password']
 
 
 ##压测数据创建线下订单
-
-import requests,json
-ticketNumber_base = '20210107'
-count = 0
-with open(r'F:\丝芙兰\压测\单服务压测2020-2021\Myaccount\对比压测\user_stage.csv') as f:
-    con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'user')
-    cur = con.cursor()
-
-    userids = f.readlines()
-    for uid in userids:
-        # print(str(uid).strip())
-        try:
-            timestamp = str(int(time.time()*1000))
-            uid = uid.split(',')[0]
-            # print(uid)
-            sql = "select card_no from user.user_profile where user_id={user_id} limit 1;".format(user_id=uid)
-            cur.execute(sql)
-            data = cur.fetchone()
-            count += 1
-            print(count)
-            if not data:
-                continue
-            cardNo = data[0]
-            ticketNumber = ticketNumber_base + timestamp
-            # print(cardNo)
-            url = 'http://10.157.26.186:10026/v1/omni/order/sync/offline-order/info'
-            header = {'Content-Type':'application/json'}
-            body = {
-                "actualAmount": 118.50,
-                "callBackURL": "callBackURL",
-                "cardNo": cardNo,
-                "discountAmount": 100.00,
-                "productInfo": [
-                    {
-                        "price": 218.50,
-                        "productBrandNameEN": "DIOR",
-                        "productImageUrl": "products/2/7/7/0/9/9/1_n_new03504_",
-                        "productName": "丝芙兰Excel1",
-                        "productSize": "规格: 13 ml",
-                        "productSkuCode": "VS1000842",
-                        "quantity": 1
-                    }
-                ],
-                "purchaseTime": "2020-10-15 11:03:42",
-                "storeCode": "6011",
-                "storeName": "杭州百货大楼店",
-                "ticketNumber": ticketNumber,
-                "totalAmount": 218.50,
-                "totalQuantity": 1
-            }
-            # Response = requests.post(url=url,json=body,headers=header)
-            # Response = json.loads(Response.text)
-            # if not Response['results']:
-            #     # print(uid,'成功')
-            # #     pass
-            # # else:
-            #     print(uid,'失败')
-        except:
-            print(uid,'插入数据失败。。。。。')
-            continue
-
-    cur.close()
-    con.close()
 #
+# import requests,json
+# ticketNumber_base = '20210107'
+# count = 0
+# with open(r'F:\丝芙兰\压测\单服务压测2020-2021\Myaccount\对比压测\user_stage.csv') as f:
+#     con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'user')
+#     cur = con.cursor()
+#
+#     userids = f.readlines()
+#     for uid in userids:
+#         # print(str(uid).strip())
+#         try:
+#             timestamp = str(int(time.time()*1000))
+#             uid = uid.split(',')[0]
+#             # uid = '2003954899'
+#             # print(uid)
+#             sql = "select card_no from user.user_profile where user_id={user_id} limit 1;".format(user_id=uid)
+#             cur.execute(sql)
+#             data = cur.fetchone()
+#             count += 1
+#             print(count)
+#             if not data:
+#                 continue
+#             cardNo = data[0]
+#             ticketNumber = ticketNumber_base + timestamp
+#             nowtime =str(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime()))
+#             # print(nowtime)
+#             # print(cardNo)
+#             url = 'http://10.157.26.169:10026/v1/omni/order/sync/offline-order/info'
+#             header = {'Content-Type':'application/json'}
+#             body = {
+#                 "actualAmount": 118.50,
+#                 "callBackURL": "callBackURL",
+#                 "cardNo": cardNo,
+#                 "discountAmount": 100.00,
+#                 "productInfo": [
+#                     {
+#                         "price": 218.50,
+#                         "productBrandNameEN": "DIOR",
+#                         "productImageUrl": "products/2/7/7/0/9/9/1_n_new03504_",
+#                         "productName": "丝芙兰Excel1",
+#                         "productSize": "规格: 13 ml",
+#                         "productSkuCode": "VS1000842",
+#                         "quantity": 1
+#                     }
+#                 ],
+#                 "purchaseTime": nowtime,
+#                 "storeCode": "6011",
+#                 "storeName": "杭州百货大楼店",
+#                 "ticketNumber": ticketNumber,
+#                 "totalAmount": 218.50,
+#                 "totalQuantity": 1
+#             }
+#             Response = requests.post(url=url,json=body,headers=header)
+#             Response = json.loads(Response.text)
+#             if not Response['results']:
+#                 # print(uid,'成功')
+#             #     pass
+#             # else:
+#                 print(uid,'失败')
+#             time.sleep(3)
+#         except:
+#             print(uid,'插入数据失败。。。。。')
+#             continue
+#
+#     cur.close()
+#     con.close()
+# #
+
+
+
+# #压测用户新增发票抬头
+# import requests,json
+# count = 0
+# with open(r'F:\丝芙兰\压测\单服务压测2020-2021\Myaccount\对比压测\user_stage.csv') as f:
+#     userids = f.readlines()
+#     for uid in userids:
+#         # print(str(uid).strip())
+#         try:
+#             timestamp = str(int(time.time()*1000))
+#             uid = uid.split(',')[0]
+#             count += 1
+#             print(count)
+#             # print(cardNo)
+#             url = 'http://10.157.26.170:10022/v1/portal/invoicetitle'
+#             header = {'Content-Type':'application/json','uid':uid,'channel':'APP'}
+#             body = {
+#                 "type": 1,
+#                 "name": "压测发票抬头-" + uid,
+#                 "taxNo": uid + timestamp,
+#                 "bankName": "银行名称",
+#                 "bankAccount": "BA"+uid + timestamp,
+#                 "address": "上海市静安区南京西路街道{uid}号101室".format(uid=uid),
+#                 "tel": "021-12345678",
+#                 "isDefault": 1
+#             }
+#             Response = requests.post(url=url,json=body,headers=header)
+#             Response = json.loads(Response.text)
+#             # print(Response)
+#             if not Response['results']:
+#                 # print(uid,'成功')
+#             #     pass
+#             # else:
+#                 print(uid,'失败',Response)
+#         except :
+#             continue
+
+
+
+# #压测用户新增生日提醒发券
+# import requests,json
+# count = 0
+# with open(r'F:\丝芙兰\压测\单服务压测2020-2021\Myaccount\对比压测\user_stage.csv') as f:
+#     userids = f.readlines()
+#     for uid in userids:
+#         # print(str(uid).strip())
+#         try:
+#             timestamp = str(int(time.time()*1000))
+#             uid = uid.split(',')[0]
+#             count += 1
+#             print(count)
+#             # print(cardNo)
+#             url = 'http://10.157.26.177:10009/v1/promotion/pxCoupon/crmcoupon2user'
+#             header = {'Content-Type':'application/json'}
+#             body = {
+#                 "endTime": "2021-01-16 05:47:05",
+#                 "promotion": "268917",
+#                 "showTime": "2021-01-12 05:47:05",
+#                 "startTime": "2021-01-12 05:47:05",
+#                 "userId": uid
+#             }
+#             # Response = requests.post(url=url,json=body,headers=header)
+#             # Response = json.loads(Response.text)
+#             # # print(Response)
+#             # if Response['results'] != 'SUCCESS':
+#             #     # print(uid,'成功')
+#             # #     pass
+#             # # else:
+#             #     print(uid,'失败',Response)
+#         except :
+#             continue

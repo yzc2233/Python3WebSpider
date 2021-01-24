@@ -190,6 +190,9 @@ def getaddressIdByUid(mysqlhost,mysqluser,mysqlpassword,uid):
     data = cur.fetchall()
     if data:
         addressId = data[0][0]
+    else:
+        print('当前用户无收货地址')
+        exit()
     print('-'*20,'获取收货地址结束','-'*20,'\n\n')
     return addressId
 
