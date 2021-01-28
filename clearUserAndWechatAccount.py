@@ -80,7 +80,7 @@ def getUserInfo(mysqlhost,mysqluser,mysqlpassword,mobile):
     """根据手机号获取user_id"""
     print('*'*10,'根据手机号获取user_id','--开始','*'*10)
     user_id = None
-    con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'user')
+    con = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='user')
     cur = con.cursor()
     sql = "select id from user where mobile='{0}' and status=1".format(mobile)
     cur.execute(sql)
@@ -99,7 +99,7 @@ def getWechatOpenId(mysqlhost,mysqluser,mysqlpassword,mobile):
     """获取手机号对应小程序openId"""
     print('*'*10,'获取手机号对应小程序openId','--开始','*'*10)
     openIdList = []
-    con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'wechat')
+    con = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='wechat')
     cur = con.cursor()
     sql = "select OpenId from wechat.wechat_bind_mobile_list where Mobile='{0}';".format(mobile)
     cur.execute(sql)
@@ -131,7 +131,7 @@ def clearUserRedisCache(myaccount_ip,user_id):
 def db_delete_userRegister(mysqlhost,mysqluser,mysqlpassword,mobile):
     """user数据库删除相应用户记录"""
     print('*'*10,'user数据库删除相应用户记录','--开始','*'*10)
-    con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'user')
+    con = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='user')
     cur = con.cursor()
     sql1 = "DELETE FROM user.user where mobile='{0}';".format(mobile)
     sql2 = "DELETE FROM user.user_profile where mobile='{0}';".format(mobile)
@@ -147,7 +147,7 @@ def db_delete_userRegister(mysqlhost,mysqluser,mysqlpassword,mobile):
 def db_delete_crmhubMobilemapping(mysqlhost,mysqluser,mysqlpassword,mobile):
     """CRMHUB数据库删除相应手机号卡号绑定关系"""
     print('*'*10,'CRMHUB数据库删除相应手机号卡号绑定关系','--开始','*'*10)
-    con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'crmhub')
+    con = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='crmhub')
     cur = con.cursor()
     sql1 = "DELETE  FROM crmhub.omni_card_mobile_mapping WHERE MOBILE='{0}';".format(mobile)
     cur.execute(sql1)
@@ -159,7 +159,7 @@ def db_delete_crmhubMobilemapping(mysqlhost,mysqluser,mysqlpassword,mobile):
 def db_delete_wechatRegister(mysqlhost,mysqluser,mysqlpassword,mobile,openId):
     """删除WECHATCENTER数据库中手机号对应注册信息"""
     print('*'*10,'删除WECHATCENTER数据库中手机号对应注册信息','--开始','*'*10)
-    con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'wechat')
+    con = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='wechat')
     cur = con.cursor()
     sql1 = "DELETE FROM wechat_bind_mobile_list WHERE OpenId='{0}' AND MOBILE='{1}';".format(openId,mobile)
     # sql2 = "DELETE FROM wechat_bind_mobile_history where OpenId='{0}';".format(openId)
@@ -184,7 +184,7 @@ def db_delete_wechatRegister(mysqlhost,mysqluser,mysqlpassword,mobile,openId):
 def db_delete_CRMHUBWechatRegister(mysqlhost,mysqluser,mysqlpassword,openId):
     """删除CRMHUB数据库中小程序对应注册信息"""
     print('*'*10,'删除CRMHUB数据库中小程序对应注册信息','--开始','*'*10)
-    con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'crmhub')
+    con = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='crmhub')
     cur = con.cursor()
     sql1 = "DELETE FROM omni_crm_wechat_register_info_log where OpenId='{0}';".format(openId)
     sql2 = "DELETE FROM omni_member_recommend WHERE referral_open_id='{0}';".format(openId)

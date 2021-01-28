@@ -6,7 +6,7 @@ print("""例子：python userCenterClearThirdUserBind.py stage android qq UID_BE
 """)
 
 def clearuserbindtplistAndhistory(unionId):
-    conn = pymysql.connect(db_host,db_user,db_password,'usercenter')
+    conn = pymysql.connect(host=db_host,user=db_user,password=db_password,database='usercenter')
     cur = conn.cursor()
     delsql1 = "delete FROM usercenter.user_bind_tp_list where union_id='{union_id}';".format(union_id=unionId,channel=channel)
     delsql2 = "delete FROM usercenter.user_bind_tp_history where union_id='{union_id}';".format(union_id=unionId,channel=channel)
@@ -27,7 +27,7 @@ def delUserCenterTpBindRedis(unionId):
 
 def getBindUserId(unionId):
     userIdList = []
-    conn = pymysql.connect(db_host,db_user,db_password,'user')
+    conn = pymysql.connect(host=db_host,user=db_user,password=db_password,database='user')
     cur = conn.cursor()
     delsql1 = "select user_id FROM user.user_third_party_store where union_id='{union_id}';".format(union_id=unionId)
     cur.execute(delsql1)
@@ -39,7 +39,7 @@ def getBindUserId(unionId):
     return userIdList
 
 def clearuserthirdpartstore(unionId):
-    conn = pymysql.connect(db_host,db_user,db_password,'user')
+    conn = pymysql.connect(host=db_host,user=db_user,password=db_password,database='user')
     cur = conn.cursor()
     delsql1 = "delete FROM user.user_third_party_store where union_id='{union_id}';".format(union_id=unionId)
     delsql2 = "delete FROM user.user_third_party_store_ex where union_id='{union_id}';".format(union_id=unionId)

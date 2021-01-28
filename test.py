@@ -16,7 +16,7 @@ mysqlpassword = mysqlUser[env]['password']
 # client_id_part1 = 'Android-Ag-PILIANGDAORUTAGSDevicetest1-'
 #
 # with open(r'E:\SoftWare\JetBrains\IntellijCode\PythonCode\createorder\deviceuserimport.csv') as f:
-#     con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'user')
+#     con = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='user')
 #     cur = con.cursor()
 #
 #     userids = f.readlines()
@@ -75,7 +75,7 @@ mysqlpassword = mysqlUser[env]['password']
 # ticketNumber_base = '20210107'
 # count = 0
 # with open(r'F:\丝芙兰\压测\单服务压测2020-2021\Myaccount\对比压测\user_stage.csv') as f:
-#     con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'user')
+#     con = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='user')
 #     cur = con.cursor()
 #
 #     userids = f.readlines()

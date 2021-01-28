@@ -139,9 +139,55 @@ import datetime
 # utc_now = datetime.datetime.utcnow()
 # print(utc_now.replace(tzinfo=datetime.timezone.utc).astimezone(tz=None))
 
-utc_time = '2021-01-14T08:38:09'
-utc_time = datetime.datetime.strptime(utc_time,'%Y-%m-%dT%H:%M:%S')
-print(utc_time)
-print(utc_time.replace(tzinfo=datetime.timezone.utc).astimezone(tz=None))
+# utc_time = '2021-01-14T08:38:09'
+# utc_time = datetime.datetime.strptime(utc_time,'%Y-%m-%dT%H:%M:%S')
+# print(utc_time)
+# print(utc_time.replace(tzinfo=datetime.timezone.utc).astimezone(tz=None))
 
 # time.strftime("%Y/%m/%d %H:%M:%S")
+
+results = {
+    "已使用": {
+        "count": 1,
+        "list": [
+            {
+                "imageUrl": "https://sslstage1.sephorastatic.cn/soa/nmobile/img/normalCoupon/express_normal.png",
+                "name": "全场买一件免运费",
+                "timeLimit": "限2020.11.27至2021.11.27使用",
+                "rule": "全场买一件免运费"
+            }
+        ]
+    },
+    "已过期": {
+        "count": 2,
+        "list": [
+            {
+                "imageUrl": "https://sslstage1.sephorastatic.cn/soa/nmobile/img/normalCoupon/off_normal.png",
+                "name": "粉白黑金在O2O端offer Code测试",
+                "timeLimit": "限2020.01.07至2021.01.17使用",
+                "rule": "粉白黑金在O2O端offer Code测试11"
+            },
+            {
+                "imageUrl": "https://sslstage1.sephorastatic.cn/soa/nmobile/img/normalCoupon/gift_normal.png",
+                "name": "crm多个赠券促销",
+                "timeLimit": "限2020.11.28至2020.11.28使用",
+                "rule": "crm多个赠券促销"
+            }
+        ]
+    },
+    "未使用": {
+        "count": 64,
+        "list": [
+            {
+                "imageUrl": "https://sslstage1.sephorastatic.cn/soa/nmobile/img/normalCoupon/off_normal.png",
+                "name": "补100元生日网站电子抵用券",
+                "timeLimit": "限2020.11.20至2021.11.27使用",
+                "rule": "网站专用100元生日礼券"
+            }
+        ]
+    }
+}
+
+bb = results['已使用']
+print(bb)
+print(results.get('已使用'))

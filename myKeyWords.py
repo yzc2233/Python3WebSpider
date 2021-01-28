@@ -67,7 +67,7 @@ def createNewOrdercheckInputArgus(skuNumberLimit='3'):
 def getskuIdlist(mysqlhost,mysqluser,mysqlpassword,skuNumberLimit):
     print('-'*20,'开始数据库随机获取两个skuId，请稍作等待','-'*20)
     datalist = []
-    conn = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'product')
+    conn = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='product')
     cur = conn.cursor()
     sql = "select b.sku_id from prod_product a LEFT JOIN prod_sku b on a.id=b.product_id where a.`status`=1 and b.`status`=1 and b.sku_type=1  and b.sale_channel->'$[0]'='ALL' order by RAND() limit "+str(skuNumberLimit)+';'
     cur.execute(sql)
@@ -183,7 +183,7 @@ def addOrdersV3(ShopCart_IP,uid,skuIdlist,addressId):
 
 def getaddressIdByUid(mysqlhost,mysqluser,mysqlpassword,uid):
     print('-'*20,'开始获取收货地址','-'*20)
-    con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'shopcart')
+    con = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='shopcart')
     cur = con.cursor()
     sql = r"select addr_id from addr_cneeinfo where user_id={0} and status='E' order by is_default desc,create_time desc limit 1;".format(uid)
     cur.execute(sql)
@@ -226,7 +226,7 @@ def createorderpay(Order_IP,uid,orderId,paymentCode='WxPay'):
 def getorderpayandupdate(mysqlhost,mysqluser,mysqlpassword,orderId):
     print('-'*20,'开始更新订单支付记录状态','-'*20)
     # 连接数据库
-    conn = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'order')
+    conn = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='order')
     # 得到一个可执行的光标对象
     cursor = conn.cursor()
     # 定义要执行的额SQL语句
@@ -260,7 +260,7 @@ def getorderpayandupdate(mysqlhost,mysqluser,mysqlpassword,orderId):
 
 def updateorderstatus(mysqlhost,mysqluser,mysqlpassword,orderId,status='I'):
     print('-'*20,'数据库更新订单状态开始','-'*20)
-    con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'order')
+    con = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='order')
     cur = con.cursor()
     try:
         sql = "update orders set status='{status}' where order_id='{orderId}';".format(status=status,orderId=orderId)
@@ -277,7 +277,7 @@ def updateorderstatus(mysqlhost,mysqluser,mysqlpassword,orderId,status='I'):
 def forwadOnehour(mysqlhost,mysqluser,mysqlpassword,orderId):
     print('-'*20,'开始将订单提前一小时','-'*20)
     # 连接数据库
-    conn = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'order')
+    conn = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='order')
     # 得到一个可执行的光标对象
     cursor = conn.cursor()
     # 定义要执行的额SQL语句
@@ -310,7 +310,7 @@ def forwadOnehour(mysqlhost,mysqluser,mysqlpassword,orderId):
 
 def getSkuIdList2SkuCodelist(mysqlhost,mysqluser,mysqlpassword,skuIdList):
     skuCodeList = []
-    con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'product')
+    con = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='product')
     cur = con.cursor()
     for skuId in skuIdList:
         sql = 'select sku_code from prod_sku where sku_id= '+str(skuId)+';'
@@ -378,7 +378,7 @@ def CreateNewOrder():
 
 def get_SalesOrderStatus(mysqlhost,mysqluser,mysqlpassword,orderId):
     print('-'*20,'开始获取sales_order中订单状态','-'*20)
-    conn = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'oms')
+    conn = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='oms')
     cur = conn.cursor()
     sql = "select a.ORDER_INTERNAL_STATUS,a.TYPE,a.SALES_ORDER_SYS_ID from sales_order a where a.SALES_ORDER_NUMBER="+ "'" + orderId + "';"
     print(sql)
@@ -436,7 +436,7 @@ def dealWaitSend(sec):
 
 def getPurchaseOrder(mysqlhost,mysqluser,mysqlpassword,orderId):
     print('-'*20,'开始获取purchase_order对应订单记录','-'*20)
-    conn = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'oms')
+    conn = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='oms')
     cur = conn.cursor()
     sql = "select a.PURCHASE_ORDER_NUMBER,a.SIGN_TIME,a.ORDER_INTERNAL_STATUS  from purchase_order a where a.SALES_ORDER_NUMBER=" + "'" + orderId + "';"
     print(sql)
@@ -461,7 +461,7 @@ def IsSplit(data):
 
 def updateOrder_NotSpilt(mysqlhost,mysqluser,mysqlpassword,data,orderId,signTime):
     print('-'*20,'开始非拆单情况下更新订单数据','-'*20)
-    conn = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'oms')
+    conn = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='oms')
     cur = conn.cursor()
     # sql = "update purchase_order set ORDER_INTERNAL_STATUS ='SIGNED',SIGN_TIME='2019-09-20 09:47:39' where PURCHASE_ORDER_NUMBER="+"'"+data[0][0]+"';"
     sql = ("update purchase_order set ORDER_INTERNAL_STATUS ='SIGNED',SIGN_TIME='%s' where PURCHASE_ORDER_NUMBER='%s';" %(signTime,data[0][0]))
@@ -485,7 +485,7 @@ def updateOrder_NotSpilt(mysqlhost,mysqluser,mysqlpassword,data,orderId,signTime
 def updateOrder_IsSpilt(mysqlhost,mysqluser,mysqlpassword,data,orderId,signTime):
     print('-'*20,'开始拆单情况下更新订单数据','-'*20)
     length = len(data)
-    conn = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'oms')
+    conn = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='oms')
     cur = conn.cursor()
     # sql = "update purchase_order set ORDER_INTERNAL_STATUS ='SIGNED/SIGNED',SIGN_TIME='2019-09-20 09:47:39' where PURCHASE_ORDER_NUMBER="+"'"+data[0][0]+"';"
     sql = ("update purchase_order set ORDER_INTERNAL_STATUS ='SIGNED/SIGNED',SIGN_TIME='%s' where PURCHASE_ORDER_NUMBER='%s';" %(signTime,data[0][0]))
@@ -557,7 +557,7 @@ def dealNormalOrderOMSProcess(OMS_IP,mysqlhost,mysqluser,mysqlpassword,orderId):
             exit()
 
 def modifyFullPreSaleOrderEstimatedDeliveryTime(mysqlhost,mysqluser,mysqlpassword,orderId):
-    con = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'orders')
+    con = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='orders')
     cur = con.cursor()
     sql = "select order_type from orders where order_id=" + "'" + str(orderId) + "'"
     print(sql)
@@ -565,7 +565,7 @@ def modifyFullPreSaleOrderEstimatedDeliveryTime(mysqlhost,mysqluser,mysqlpasswor
     data = cur.fetchone()
     oneDayBeforedate = (datetime.datetime.now()-datetime.timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')
     if data == 3:
-        con2 = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'orders')
+        con2 = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='orders')
         cur2 = con2.cursor()
         sql2 = 'update purchase_order set ORDER_SHIPPING_TIME=' +"'" +str(oneDayBeforedate) + "'" + 'where SALES_ORDER_NUMBER=' + "'" +str(orderId) + "';"
         con2.close()
@@ -627,7 +627,7 @@ def UpdateOrderDelivered():
 def dbGetSku(mysqlhost,mysqluser,mysqlpassword,skuType='1'):
     # print('-'*20,'数据库查询商品开始','-'*20)
     skuInfoList = []
-    conn = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'product')
+    conn = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='product')
     cur = conn.cursor()
     if skuType == '1':
         vbsql = ''
@@ -671,7 +671,7 @@ def getVbSkuRel(mysqlhost,mysqluser,mysqlpassword,vbSkuInfo):
     print('-'*20,'数据库查询VB商品包含的商品信息开始','-'*20)
     skuInfoList = []
     for vbSku in vbSkuInfo:
-        conn = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'product')
+        conn = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='product')
         cur = conn.cursor()
         sql = 'select bind_sku_id,bind_sku_code from prod_vb_sku_rel where vb_sku_id='+"'"+ str(vbSku[0])+"'" +' and vb_sku_code='+"'"+ str(vbSku[1])+"'" + ';'
         print(sql)
@@ -830,7 +830,7 @@ def dealOmsSplitOrderToOrder(OMS_IP):
 
 def getSplitPurchaseOrder(mysqlhost,mysqluser,mysqlpassword,orderId):
     print('-'*20,'开始获取purchase_order对应订单记录','-'*20)
-    conn = pymysql.connect(mysqlhost,mysqluser,mysqlpassword,'oms')
+    conn = pymysql.connect(host=mysqlhost,user=mysqluser,password=mysqlpassword,database='oms')
     cur = conn.cursor()
     sql = "select a.PURCHASE_ORDER_NUMBER,a.SIGN_TIME,a.ORDER_INTERNAL_STATUS  from purchase_order a where a.SALES_ORDER_NUMBER=" + "'" + orderId + "';"
     print(sql)
